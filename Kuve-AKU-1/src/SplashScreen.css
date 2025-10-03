@@ -114,3 +114,12 @@
 .copyright {
   font-weight: 500;
 }
+
+.main-footer {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  color: #5a6e7e;
+  font-size: 12px;
+}
