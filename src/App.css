@@ -84,11 +84,9 @@ body {
 /* Main Container - Centered Layout */
 .container {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr; /* Single column for centering */
-  align-content: center; /* Ensures vertical centering */
-  justify-items: center; /* Center the login card horizontally */
-  min-height: calc(100vh - 60px); /* Account for footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 2rem;
 }
