@@ -50,11 +50,6 @@
   margin-bottom: 3rem;
 }
 
-.splash-logo {
-  width: 250px;
-  text-align: center;
-}
-
 .splash-logo img {
   width: 100%;
   height: auto;
@@ -100,11 +95,11 @@
 
 .splash-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* Align version to the left */
   width: 100%;
   font-size: 12px;
   color: #888;
-  padding-top: 2rem; /* Add some space above the footer */
+  padding-top: 2rem;
 }
 
 .version {
@@ -119,7 +114,9 @@
   position: absolute;
   bottom: 2rem;
   width: 100%;
-  text-align: center;
+  text-align: right; /* Align copyright to the right */
   color: #5a6e7e;
   font-size: 12px;
+  padding-right: 2rem;
+  box-sizing: border-box;
 }
