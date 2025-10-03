@@ -30,6 +30,11 @@ function App() {
     setIsLoginView(false);
   };
 
+  const handleGoBack = () => {
+    setShowForm(false);
+    setTimeout(() => setShowSplash(true), 400); // Allow time for fade-out animation
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -153,17 +158,26 @@ function App() {
               </div>
             )}
 
-            <button
-              type="submit"
-              className={`login-button ${isLoading ? 'loading' : ''}`}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <div className="loading-spinner"></div>
-              ) : (
-                isLoginView ? 'Login' : 'Sign Up'
-              )}
-            </button>
+            <div className="form-actions">
+              <button
+                type="button"
+                className="back-button"
+                onClick={handleGoBack}
+              >
+                Back
+              </button>
+              <button
+                type="submit"
+                className={`login-button ${isLoading ? 'loading' : ''}`}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="loading-spinner"></div>
+                ) : (
+                  isLoginView ? 'Login' : 'Sign Up'
+                )}
+              </button>
+            </div>
 
             <p className="signup-text">
               {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
