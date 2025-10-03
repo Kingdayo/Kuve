@@ -23,16 +23,17 @@
 }
 
 .main-content {
-  flex-grow: 1; /* Takes remaining space */
-  display: flex;
-  align-items: center;
-  /* justify-content: center; /* Removed for alternative centering */
+  flex-grow: 1;
+  position: relative;
 }
 
 .splash-logo {
   width: 250px;
   text-align: center;
-  margin: 0 auto; /* Added for robust horizontal centering */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .splash-title {
