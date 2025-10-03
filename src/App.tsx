@@ -24,9 +24,15 @@ function App() {
     setTimeout(() => setIsLoading(false), 2000)
   }
 
-  const toggleView = () => {
-    setIsLoginView(!isLoginView)
-  }
+  const switchView = (newView: boolean) => {
+    // Only clear state and switch if the view is actually changing
+    if (isLoginView !== newView) {
+      setIsLoginView(newView);
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+    }
+  };
 
   return (
     <div className="app">
@@ -47,13 +53,13 @@ function App() {
             <div className="tab-switcher">
               <button
                 className={`tab-button ${isLoginView ? 'active' : ''}`}
-                onClick={() => setIsLoginView(true)}
+                onClick={() => switchView(true)}
               >
                 Login
               </button>
               <button
                 className={`tab-button ${!isLoginView ? 'active' : ''}`}
-                onClick={() => setIsLoginView(false)}
+                onClick={() => switchView(false)}
               >
                 Sign Up
               </button>
@@ -79,15 +85,13 @@ function App() {
                   />
                   {email.length > 0 && (
                     <div className={`email-validation-icon ${isEmailValid ? 'verified' : 'unverified'}`}>
-                      {isEmailValid ? (
-                        <span className="verified-icon-symbol">✓</span>
-                      ) : (
-                        <svg className="unverified-icon-svg" viewBox="0 0 24 24">
-                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                          <line x1="8" y1="8" x2="16" y2="16" stroke="currentColor" strokeWidth="2" />
-                          <line x1="16" y1="8" x2="8" y2="16" stroke="currentColor" strokeWidth="2" />
-                        </svg>
-                      )}
+                      <svg className="verified-icon-svg" viewBox="0 0 24 24">
+                        <path d="M9 12l2 2 4-4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <svg className="unverified-icon-svg" viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18" strokeWidth="2.5" />
+                        <line x1="6" y1="6" x2="18" y2="18" strokeWidth="2.5" />
+                      </svg>
                     </div>
                   )}
                 </div>
@@ -138,7 +142,7 @@ function App() {
 
               <p className="signup-text">
                 {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
-                <a href="#" className="signup-link" onClick={toggleView}>
+                <a href="#" className="signup-link" onClick={(e) => { e.preventDefault(); switchView(!isLoginView); }}>
                   {isLoginView ? 'Sign Up' : 'Login'}
                 </a>
               </p>
@@ -146,39 +150,6 @@ function App() {
           </div>
         </div>
 
-        {/* Right side - Logo */}
-        <div className={`logo-section ${showForm ? 'animate-in-right' : ''}`}>
-          <div className="logo-container">
-            <div className="logo-wrapper">
-              <div className="logo-icon">
-                <svg viewBox="0 0 100 100" className="akuvera-logo">
-                  <defs>
-                    <radialGradient id="logoGradient" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#4A90E2" />
-                      <stop offset="100%" stopColor="#2E5BBA" />
-                    </radialGradient>
-                  </defs>
-                  <g className="logo-star">
-                    {[...Array(8)].map((_, i) => (
-                      <path
-                        key={i}
-                        d="M50,20 L52,35 L50,50 L48,35 Z"
-                        fill="url(#logoGradient)"
-                        transform={`rotate(${i * 45} 50 50)`}
-                        className={`star-ray ray-${i}`}
-                      />
-                    ))}
-                    <circle cx="50" cy="50" r="8" fill="url(#logoGradient)" className="logo-center" />
-                  </g>
-                </svg>
-              </div>
-              <div className="logo-text">
-                <h2 className="brand-name">akuvera</h2>
-                <p className="brand-tagline">Deliver clarity<br />and truth in denial logic</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Footer */}
