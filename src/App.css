@@ -86,6 +86,9 @@ body {
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
   position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Login Section */
@@ -93,7 +96,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 3rem;
   opacity: 0;
   transform: translateX(-50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -108,10 +111,10 @@ body {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 3rem;
+  padding: 4rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   animation: cardFloat 6s ease-in-out infinite;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -123,11 +126,11 @@ body {
 
 .card-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .welcome-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #2c3e50;
   margin-bottom: 0.5rem;
@@ -141,7 +144,7 @@ body {
 
 .subtitle {
   color: #7f8c8d;
-  font-size: 0.9rem;
+  font-size: 1rem;
   animation: fadeInUp 1s ease-out 0.5s both;
 }
 
@@ -154,11 +157,12 @@ body {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .form-group {
   animation: slideInLeft 0.6s ease-out both;
+  position: relative;
 }
 
 .form-group:nth-child(1) { animation-delay: 0.2s; }
@@ -171,10 +175,10 @@ body {
 
 .form-label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: #2c3e50;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .password-header {
@@ -198,10 +202,10 @@ body {
 
 .form-input {
   width: 100%;
-  padding: 0.875rem 1rem;
+  padding: 1.125rem 1.25rem;
   border: 2px solid #e1e8ed;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border-radius: 12px;
+  font-size: 1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.8);
 }
@@ -218,13 +222,35 @@ body {
   color: #bdc3c7;
 }
 
+.email-verified {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 12px;
+}
+
+.verified-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .back-button {
-  padding: 0.875rem 2rem;
+  padding: 1.125rem 2.5rem;
   border: 2px solid #e1e8ed;
-  border-radius: 10px;
+  border-radius: 12px;
   background: transparent;
   color: #7f8c8d;
   font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   animation: slideInRight 0.6s ease-out 0.6s both;
@@ -237,12 +263,13 @@ body {
 }
 
 .login-button {
-  padding: 0.875rem 2rem;
+  padding: 1.125rem 2.5rem;
   background: linear-gradient(135deg, #4A90E2 0%, #2E5BBA 100%);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -281,7 +308,7 @@ body {
 .signup-text {
   text-align: center;
   color: #7f8c8d;
-  font-size: 0.9rem;
+  font-size: 1rem;
   animation: fadeIn 0.6s ease-out 1s both;
 }
 
@@ -312,7 +339,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 3rem;
   opacity: 0;
   transform: translateX(50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
@@ -339,12 +366,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .logo-icon {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   animation: iconPulse 4s ease-in-out infinite;
 }
 
@@ -406,10 +433,10 @@ body {
 }
 
 .brand-name {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: #4A90E2;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   animation: brandGlow 4s ease-in-out infinite;
 }
 
@@ -420,7 +447,7 @@ body {
 
 .brand-tagline {
   color: #7f8c8d;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   line-height: 1.4;
   animation: taglineFade 1s ease-out 1.5s both;
 }
