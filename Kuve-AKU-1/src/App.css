@@ -10,13 +10,9 @@ body {
 }
 
 .app {
-  min-height: 100vh;
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding: 2rem 0 80px; /* Add vertical padding and space for footer */
+  flex-direction: column;
+  min-height: 100vh;
   background-color: white;
 }
 
@@ -83,20 +79,22 @@ body {
 
 .main-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  padding: 2rem;
-  background-color: rgb(195, 207, 226);
+  flex: 1;
+  align-items: stretch;
 }
 
 .login-section {
-  flex: 1;
-  max-width: 500px;
+  width: 450px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  border-right: 1px solid #e0e0e0;
+  box-shadow: 4px 0 15px -5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateX(-50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -105,9 +103,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transform: translateY(50px);
-  animation: fadeIn 1s ease-out 0.5s both;
+  background-color: rgb(195, 207, 226);
 }
 
 .logo-section img {
@@ -117,23 +113,11 @@ body {
 
 .login-section.animate-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .login-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem; /* Adjusted padding */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  animation: cardFloat 6s ease-in-out infinite;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-@keyframes cardFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
 }
 
 /* Tab Switcher */
@@ -450,8 +434,15 @@ body {
     flex-direction: column;
   }
 
+  .login-section {
+    width: 100%;
+    border-right: none;
+    box-shadow: none;
+    padding: 2rem;
+  }
+
   .logo-section {
-    display: none; /* Hide logo on smaller screens to save space */
+    display: none;
   }
 }
 
