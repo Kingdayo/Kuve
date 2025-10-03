@@ -82,25 +82,13 @@ body {
 }
 
 /* Main Container - Centered Layout */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw; /* Full viewport width - edge to edge */
-  min-height: calc(100vh - 4rem); /* Ensure full height for proper centering */
-  padding: 2rem;
-  margin: 0; /* Remove any default margins */
-  position: relative; /* Ensure proper positioning */
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw; /* Compensate for 100vw width */
-  margin-right: -50vw; /* Compensate for 100vw width */
-}
+/* The .container class has been removed from the JSX. */
 
 /* Login Section - Wider and Centered */
 .login-section {
   width: 100%;
   max-width: 500px; /* A more standard card width */
+  padding: 2rem; /* Add padding to the section */
   opacity: 0;
   transform: translateY(50px); /* Animate from bottom */
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -436,7 +424,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .container {
+  .login-section {
     padding: 1rem;
   }
 

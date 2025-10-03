@@ -46,110 +46,107 @@ function App() {
         ))}
       </div>
 
-      <div className="container">
-        {/* Centered Login Card */}
-        <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
-          <div className="login-card">
-            <div className="tab-switcher">
-              <button
-                className={`tab-button ${isLoginView ? 'active' : ''}`}
-                onClick={() => switchView(true)}
-              >
-                Login
-              </button>
-              <button
-                className={`tab-button ${!isLoginView ? 'active' : ''}`}
-                onClick={() => switchView(false)}
-              >
-                Sign Up
-              </button>
-            </div>
+      {/* Centered Login Card */}
+      <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
+        <div className="login-card">
+          <div className="tab-switcher">
+            <button
+              className={`tab-button ${isLoginView ? 'active' : ''}`}
+              onClick={() => switchView(true)}
+            >
+              Login
+            </button>
+            <button
+              className={`tab-button ${!isLoginView ? 'active' : ''}`}
+              onClick={() => switchView(false)}
+            >
+              Sign Up
+            </button>
+          </div>
 
-            <div className="card-header">
-              <h1 className="welcome-title">{isLoginView ? 'Welcome Back' : 'Create Account'}</h1>
-              <p className="subtitle">Turning Denials Into Approvals</p>
-            </div>
+          <div className="card-header">
+            <h1 className="welcome-title">{isLoginView ? 'Welcome Back' : 'Create Account'}</h1>
+            <p className="subtitle">Turning Denials Into Approvals</p>
+          </div>
 
-            <form onSubmit={handleSubmit} className="login-form">
-              <div className="form-group">
-                <label htmlFor="email" className="form-label">Email</label>
-                <div className="input-wrapper">
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="form-input"
-                    required
-                  />
-                  {email.length > 0 && (
-                    <div className={`email-validation-icon ${isEmailValid ? 'verified' : 'unverified'}`}>
-                      <svg className="verified-icon-svg" viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <svg className="unverified-icon-svg" viewBox="0 0 24 24">
-                        <line x1="18" y1="6" x2="6" y2="18" strokeWidth="2.5" />
-                        <line x1="6" y1="6" x2="18" y2="18" strokeWidth="2.5" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">Email</label>
+              <div className="input-wrapper">
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="name@example.com"
+                  className="form-input"
+                  required
+                />
+                {email.length > 0 && (
+                  <div className={`email-validation-icon ${isEmailValid ? 'verified' : 'unverified'}`}>
+                    <svg className="verified-icon-svg" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <svg className="unverified-icon-svg" viewBox="0 0 24 24">
+                      <line x1="18" y1="6" x2="6" y2="18" strokeWidth="2.5" />
+                      <line x1="6" y1="6" x2="18" y2="18" strokeWidth="2.5" />
+                    </svg>
+                  </div>
+                )}
               </div>
+            </div>
 
+            <div className="form-group">
+              <div className="password-header">
+                <label htmlFor="password" className="form-label">Password</label>
+                {isLoginView && <a href="#" className="forgot-link">Forgot password?</a>}
+              </div>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••••"
+                className="form-input"
+                required
+              />
+            </div>
+
+            {!isLoginView && (
               <div className="form-group">
-                <div className="password-header">
-                  <label htmlFor="password" className="form-label">Password</label>
-                  {isLoginView && <a href="#" className="forgot-link">Forgot password?</a>}
-                </div>
+                <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                 <input
                   type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••••"
                   className="form-input"
                   required
                 />
               </div>
+            )}
 
-              {!isLoginView && (
-                <div className="form-group">
-                  <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="••••••••••"
-                    className="form-input"
-                    required
-                  />
-                </div>
+            <button
+              type="submit"
+              className={`login-button ${isLoading ? 'loading' : ''}`}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <div className="loading-spinner"></div>
+              ) : (
+                isLoginView ? 'Login' : 'Sign Up'
               )}
+            </button>
 
-              <button 
-                type="submit" 
-                className={`login-button ${isLoading ? 'loading' : ''}`}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <div className="loading-spinner"></div>
-                ) : (
-                  isLoginView ? 'Login' : 'Sign Up'
-                )}
-              </button>
-
-              <p className="signup-text">
-                {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
-                <a href="#" className="signup-link" onClick={(e) => { e.preventDefault(); switchView(!isLoginView); }}>
-                  {isLoginView ? 'Sign Up' : 'Login'}
-                </a>
-              </p>
-            </form>
-          </div>
+            <p className="signup-text">
+              {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
+              <a href="#" className="signup-link" onClick={(e) => { e.preventDefault(); switchView(!isLoginView); }}>
+                {isLoginView ? 'Sign Up' : 'Login'}
+              </a>
+            </p>
+          </form>
         </div>
-
       </div>
 
       {/* Footer */}
