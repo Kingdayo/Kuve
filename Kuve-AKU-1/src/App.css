@@ -17,8 +17,7 @@ body {
   justify-content: center;
   overflow-y: auto; /* Enable vertical scrolling */
   padding: 2rem 0 80px; /* Add vertical padding and space for footer */
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  animation: gradientShift 8s ease-in-out infinite;
+  background-color: white;
 }
 
 /* Animated Background */
@@ -90,6 +89,7 @@ body {
   width: 100%;
   max-width: 1200px;
   padding: 2rem;
+  background-color: rgb(195, 207, 226);
 }
 
 .login-section {
@@ -111,7 +111,7 @@ body {
 }
 
 .logo-section img {
-  max-width: 100%;
+  max-width: 350px;
   height: auto;
 }
 
