@@ -88,20 +88,20 @@ body {
   align-items: center;
   justify-content: center;
   height: calc(100vh - 60px); /* Account for footer */
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   padding: 2rem;
   gap: 4rem;
 }
 
-/* Login Section - Centered */
+/* Login Section - Wider and Centered */
 .login-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
-  max-width: 500px;
+  flex: 2; /* Allocate more space to the login section */
+  max-width: 550px; /* Increased width */
   opacity: 0;
   transform: translateX(-50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -116,7 +116,7 @@ body {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 3rem;
+  padding: 2.5rem; /* Adjusted padding */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
   animation: cardFloat 6s ease-in-out infinite;
@@ -128,9 +128,38 @@ body {
   50% { transform: translateY(-5px); }
 }
 
+/* Tab Switcher */
+.tab-switcher {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  background: rgba(225, 232, 237, 0.5);
+  border-radius: 12px;
+  padding: 0.25rem;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #7f8c8d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.tab-button.active {
+  background: white;
+  color: #2E5BBA;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .card-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .welcome-title {
@@ -216,6 +245,7 @@ body {
   font-size: 1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.8);
+  color: #2c3e50; /* Darker text color */
 }
 
 .form-input:focus {
@@ -227,7 +257,7 @@ body {
 }
 
 .form-input::placeholder {
-  color: #bdc3c7;
+  color: #95a5a6; /* Slightly darker placeholder */
 }
 
 .email-verified {
@@ -256,24 +286,6 @@ body {
   50% { transform: scale(1.1); }
 }
 
-.back-button {
-  padding: 1rem 2rem;
-  border: 2px solid #e1e8ed;
-  border-radius: 12px;
-  background: transparent;
-  color: #7f8c8d;
-  font-weight: 500;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: slideInRight 0.6s ease-out 0.6s both;
-}
-
-.back-button:hover {
-  border-color: #bdc3c7;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
 
 .login-button {
   padding: 1rem 2rem;
@@ -328,8 +340,10 @@ body {
 .signup-link {
   color: #4A90E2;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600; /* Bolder link */
   transition: all 0.3s ease;
+  margin-left: 0.5rem; /* Space between text and link */
+  cursor: pointer;
 }
 
 .signup-link:hover {
@@ -347,13 +361,13 @@ body {
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* Logo Section - Centered */
+/* Logo Section - Positioned to the right */
 .logo-section {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Align logo to the left of its container */
   flex: 1;
-  max-width: 400px;
+  max-width: 450px; /* Adjusted max-width */
   opacity: 0;
   transform: translateX(50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
@@ -500,15 +514,22 @@ body {
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
-    gap: 2rem;
-    height: calc(100vh - 60px);
     justify-content: center;
+    gap: 2rem;
+    height: auto;
+    padding: 2rem 1rem;
   }
   
-  .login-section,
+  .login-section {
+    max-width: 550px;
+    width: 100%;
+    order: 2; /* Login card appears below logo on smaller screens */
+  }
+
   .logo-section {
     max-width: 100%;
-    flex: none;
+    justify-content: center;
+    order: 1;
   }
   
   .logo-icon {
@@ -527,16 +548,16 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 1rem;
-    gap: 1rem;
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
   }
   
   .login-card {
-    padding: 1.5rem;
+    padding: 2rem;
   }
   
   .welcome-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   
   .footer-content {
@@ -551,26 +572,28 @@ body {
   }
   
   .brand-name {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 480px) {
   .login-card {
-    padding: 1rem;
+    padding: 1.5rem;
   }
-  
+
   .form-input,
-  .back-button,
   .login-button {
-    padding: 0.75rem 1rem;
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
   }
   
   .container {
-    height: calc(100vh - 80px);
+    padding: 1rem;
+    height: auto;
   }
   
   .footer {
-    height: 80px;
+    height: auto;
+    padding: 1rem;
   }
 }
