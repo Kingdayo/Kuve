@@ -1,38 +1,15 @@
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import sync_playwright
 
 def run(playwright):
-    browser = playwright.chromium.launch(headless=True)
-    context = browser.new_context()
-    page = context.new_page()
+    browser = playwright.chromium.launch()
+    page = browser.new_page()
+    page.goto("http://localhost:5173/")
 
-    # Inject CSS to disable animations
-    page.add_init_script("""
-        const style = document.createElement('style');
-        style.innerHTML = `
-            *, *::before, *::after {
-                animation-duration: 0s !important;
-                transition-duration: 0s !important;
-            }
-        `;
-        document.head.appendChild(style);
-    """)
+    # Wait for a fixed time to allow animations to complete
+    page.wait_for_timeout(2000)
 
-    try:
-        page.goto("http://localhost:5173", timeout=60000)
-
-        # Wait for the splash screen to be visible
-        expect(page.locator(".splash-container")).to_be_visible(timeout=30000)
-
-        # Take a screenshot
-        page.screenshot(path="jules-scratch/verification/verification.png")
-
-        print("Screenshot taken successfully.")
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-    finally:
-        browser.close()
+    page.screenshot(path="jules-scratch/verification/splash_screen.png")
+    browser.close()
 
 with sync_playwright() as playwright:
     run(playwright)
