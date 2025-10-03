@@ -8,6 +8,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
 
+  // Check if email contains @ symbol for verification icon
+  const isEmailValid = email.includes('@')
+
   useEffect(() => {
     // Trigger form animation after component mounts
     setTimeout(() => setShowForm(true), 300)
@@ -33,7 +36,7 @@ function App() {
       </div>
 
       <div className="container">
-        {/* Left side - Signup Form */}
+        {/* Centered Login Card */}
         <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
           <div className="login-card">
             <div className="card-header">
@@ -44,17 +47,21 @@ function App() {
             <form onSubmit={handleSignup} className="login-form">
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Mulbrahimuiz@akuvera.com"
-                  className="form-input"
-                  required
-                />
-                <div className="email-verified">
-                  <span className="verified-icon">✓</span>
+                <div className="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Mulbrahimuiz@akuvera.com"
+                    className="form-input"
+                    required
+                  />
+                  {isEmailValid && (
+                    <div className="email-verified">
+                      <span className="verified-icon">✓</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
