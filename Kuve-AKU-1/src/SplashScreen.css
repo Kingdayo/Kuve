@@ -93,13 +93,18 @@
   background-color: #003399;
 }
 
-.splash-footer {
-  display: flex;
-  justify-content: flex-start; /* Align version to the left */
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
   font-size: 12px;
-  color: #888;
-  padding-top: 2rem;
+  color: #5a6e7e;
+  z-index: 10;
 }
 
 .version {
@@ -108,15 +113,4 @@
 
 .copyright {
   font-weight: 500;
-}
-
-.main-footer {
-  position: absolute;
-  bottom: 2rem;
-  width: 100%;
-  text-align: right; /* Align copyright to the right */
-  color: #5a6e7e;
-  font-size: 12px;
-  padding-right: 2rem;
-  box-sizing: border-box;
 }
