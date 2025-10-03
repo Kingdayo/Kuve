@@ -1,32 +1,42 @@
-import React, { useState, useEffect } from 'react'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import SplashScreen from './SplashScreen';
+import './App.css';
 
 function App() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [showForm, setShowForm] = useState(false)
-  const [isLoginView, setIsLoginView] = useState(true)
+  const [showSplash, setShowSplash] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [isLoginView, setIsLoginView] = useState(true);
 
-  // Check if email contains @ symbol for verification icon
-  const isEmailValid = email.includes('@')
+  const isEmailValid = email.includes('@');
 
   useEffect(() => {
-    // Trigger form animation after component mounts
-    setTimeout(() => setShowForm(true), 300)
-  }, [])
+    if (!showSplash) {
+      setTimeout(() => setShowForm(true), 100);
+    }
+  }, [showSplash]);
+
+  const handleLogin = () => {
+    setShowSplash(false);
+    setIsLoginView(true);
+  };
+
+  const handleGetStarted = () => {
+    setShowSplash(false);
+    setIsLoginView(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    // Simulate API call
-    setTimeout(() => setIsLoading(false), 2000)
-  }
+    e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 2000);
+  };
 
   const switchView = (newView: boolean) => {
-    // Only clear state and switch if the view is actually changing
     if (isLoginView !== newView) {
       setIsLoginView(newView);
       setEmail('');
@@ -36,19 +46,18 @@ function App() {
     }
   };
 
+  if (showSplash) {
+    return <SplashScreen onLogin={handleLogin} onGetStarted={handleGetStarted} />;
+  }
+
   return (
     <div className="app">
-      {/* Background with animated gradient */}
       <div className="background-gradient"></div>
-      
-      {/* Animated particles */}
       <div className="particles">
         {[...Array(20)].map((_, i) => (
           <div key={i} className={`particle particle-${i}`}></div>
         ))}
       </div>
-
-      {/* Centered Login Card */}
       <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
         <div className="login-card">
           <div className="tab-switcher">
@@ -65,7 +74,6 @@ function App() {
               Sign Up
             </button>
           </div>
-
           <div className="card-header">
             <h1 className="welcome-title">{isLoginView ? 'Welcome Back' : 'Create Account'}</h1>
             <p className="subtitle">Turning Denials Into Approvals</p>

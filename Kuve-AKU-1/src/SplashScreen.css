@@ -1,0 +1,109 @@
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.splash-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.splash-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1c2b36;
+  margin: 0;
+}
+
+.splash-subtitle {
+  font-size: 16px;
+  color: #5a6e7e;
+  margin-top: 8px;
+  margin-bottom: 80px;
+}
+
+.splash-logo {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 200px;
+}
+
+.splash-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.splash-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.splash-login-btn,
+.splash-start-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #d0d5dd;
+}
+
+.splash-login-btn {
+  background-color: white;
+  color: #344054;
+}
+
+.splash-login-btn:hover {
+  background-color: #f9fafb;
+}
+
+.splash-start-btn {
+  background-color: #0044cc;
+  color: white;
+  border-color: #0044cc;
+}
+
+.splash-start-btn:hover {
+  background-color: #003399;
+}
+
+.splash-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #888;
+}
+
+.version {
+  font-weight: 500;
+}
+
+.copyright {
+  font-weight: 500;
+}
