@@ -24,17 +24,15 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onLogin, onGetStarted }) =>
             </button>
           </div>
         </div>
-        <div className="splash-footer">
-          <span className="version">v1.0.0</span>
-        </div>
       </div>
       <div className="main-content">
         <div className="splash-logo">
           <img src="/akuvera-logo.png" alt="Akuvera Logo" />
         </div>
-        <div className="main-footer">
-          <span className="copyright">© 2025 Akuvera. All rights reserved.</span>
-        </div>
+      </div>
+      <div className="page-footer">
+        <span className="version">v1.0.0</span>
+        <span className="copyright">© 2025 Akuvera. All rights reserved.</span>
       </div>
     </div>
   );
