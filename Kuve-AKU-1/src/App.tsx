@@ -98,6 +98,21 @@ function App() {
               </div>
             </div>
 
+            {!isLoginView && (
+              <div className="form-group">
+                <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  placeholder="(123) 456-7890"
+                  className="form-input"
+                  required
+                />
+              </div>
+            )}
+
             <div className="form-group">
               <div className="password-header">
                 <label htmlFor="password" className="form-label">Password</label>
@@ -115,32 +130,18 @@ function App() {
             </div>
 
             {!isLoginView && (
-              <>
-                <div className="form-group">
-                  <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phoneNumber"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    placeholder="(123) 456-7890"
-                    className="form-input"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="••••••••••"
-                    className="form-input"
-                    required
-                  />
-                </div>
-              </>
+              <div className="form-group">
+                <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="••••••••••"
+                  className="form-input"
+                  required
+                />
+              </div>
             )}
 
             <button
