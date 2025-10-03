@@ -15,7 +15,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 2rem 0; /* Add vertical padding */
 }
 
 /* Animated Background */
@@ -424,6 +425,10 @@ body {
 }
 
 @media (max-width: 480px) {
+  .app {
+    align-items: flex-start; /* Align card to the top on mobile */
+  }
+
   .login-section {
     padding: 1rem;
   }
@@ -442,5 +447,42 @@ body {
     height: auto;
     padding: 1rem;
     position: relative; /* Allow it to take up space in the flow on mobile */
+  }
+}
+
+/* Add media query for short screens to prevent scrolling on sign-up */
+@media (max-height: 700px), (max-width: 400px) {
+  .login-card {
+    padding: 1rem;
+  }
+
+  .login-form {
+    gap: 0.75rem;
+  }
+
+  .card-header {
+    margin-bottom: 1rem;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .form-input, .login-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tab-switcher {
+    margin-bottom: 1rem;
   }
 }
