@@ -11,7 +11,7 @@ export default defineConfig({
     }
   },
   server: {
-    // @ts-ignore
+    // @ts-expect-error TEMPO is a temporary environment variable
     allowedHosts: process.env.TEMPO === "true" ? true : undefined
   }
 })
