@@ -77,9 +77,13 @@ function App() {
                     className="form-input"
                     required
                   />
-                  {isEmailValid && (
-                    <div className="email-verified">
-                      <span className="verified-icon">✓</span>
+                  {email.length > 0 && (
+                    <div className="email-validation-icon">
+                      {isEmailValid ? (
+                        <span className="verified-icon">✓</span>
+                      ) : (
+                        <span className="unverified-icon">✕</span>
+                      )}
                     </div>
                   )}
                 </div>

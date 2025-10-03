@@ -84,24 +84,24 @@ body {
 /* Main Container - Centered Layout */
 .container {
   flex: 1;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
   height: calc(100vh - 60px); /* Account for footer */
-  max-width: 1200px;
+  max-width: 1400px; /* Wider container for the new layout */
   margin: 0 auto;
   width: 100%;
   padding: 2rem;
-  gap: 4rem;
+  gap: 2rem; /* Reduced gap */
 }
 
 /* Login Section - Wider and Centered */
 .login-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 2; /* Allocate more space to the login section */
-  max-width: 550px; /* Increased width */
+  grid-column: 1;
+  justify-self: end;
+  width: 100%;
+  max-width: 650px; /* Significantly wider */
   opacity: 0;
   transform: translateX(-50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -116,7 +116,7 @@ body {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 2.5rem; /* Adjusted padding */
+  padding: 2rem; /* Reduced padding to decrease height */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
   animation: cardFloat 6s ease-in-out infinite;
@@ -190,7 +190,7 @@ body {
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem; /* Reduced gap to decrease height */
 }
 
 .form-group {
@@ -260,25 +260,29 @@ body {
   color: #95a5a6; /* Slightly darker placeholder */
 }
 
-.email-verified {
+.email-validation-icon {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.verified-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 20px;
   height: 20px;
-  background: #4CAF50;
-  color: white;
   border-radius: 50%;
   font-size: 12px;
   font-weight: bold;
+  color: white;
+}
+
+.verified-icon {
+  background: #4CAF50;
   animation: verifiedPulse 2s ease-in-out infinite;
+}
+
+.unverified-icon {
+  background: #f44336; /* Red for unverified */
 }
 
 @keyframes verifiedPulse {
@@ -363,11 +367,10 @@ body {
 
 /* Logo Section - Positioned to the right */
 .logo-section {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Align logo to the left of its container */
-  flex: 1;
-  max-width: 450px; /* Adjusted max-width */
+  grid-column: 2;
+  justify-self: start;
+  width: 100%;
+  max-width: 450px;
   opacity: 0;
   transform: translateX(50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
@@ -513,22 +516,25 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .container {
-    flex-direction: column;
-    justify-content: center;
+    grid-template-columns: 1fr; /* Stack elements in a single column */
+    justify-items: center;
     gap: 2rem;
     height: auto;
     padding: 2rem 1rem;
   }
   
   .login-section {
-    max-width: 550px;
+    grid-column: 1;
+    justify-self: center; /* Center in the column */
+    max-width: 650px;
     width: 100%;
-    order: 2; /* Login card appears below logo on smaller screens */
+    order: 2;
   }
 
   .logo-section {
+    grid-column: 1;
+    justify-self: center; /* Center in the column */
     max-width: 100%;
-    justify-content: center;
     order: 1;
   }
   
