@@ -86,8 +86,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw; /* Full viewport width - edge to edge */
+  min-height: calc(100vh - 4rem); /* Ensure full height for proper centering */
   padding: 2rem;
+  margin: 0; /* Remove any default margins */
+  position: relative; /* Ensure proper positioning */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* Compensate for 100vw width */
+  margin-right: -50vw; /* Compensate for 100vw width */
 }
 
 /* Login Section - Wider and Centered */
