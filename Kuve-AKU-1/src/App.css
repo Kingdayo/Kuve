@@ -82,17 +82,37 @@ body {
   50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
 }
 
-/* Main Container - Centered Layout */
-/* The .container class has been removed from the JSX. */
-
-/* Login Section - Wider and Centered */
-.login-section {
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
   width: 100%;
-  max-width: 500px; /* A more standard card width */
-  padding: 2rem; /* Add padding to the section */
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+.login-section {
+  flex: 1;
+  max-width: 500px;
   opacity: 0;
-  transform: translateY(50px); /* Animate from bottom */
+  transform: translateY(50px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.logo-section img {
+  max-width: 100%;
+  height: auto;
 }
 
 .login-section.animate-in {
@@ -425,6 +445,16 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .logo-section {
+    display: none; /* Hide logo on smaller screens to save space */
+  }
+}
+
 @media (max-width: 768px) {
   .login-card {
     padding: 2rem;

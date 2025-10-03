@@ -58,10 +58,11 @@ function App() {
           <div key={i} className={`particle particle-${i}`}></div>
         ))}
       </div>
-      <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
-        <div className="login-card">
-          <div className="tab-switcher">
-            <button
+      <div className="main-content">
+        <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
+          <div className="login-card">
+            <div className="tab-switcher">
+              <button
               className={`tab-button ${isLoginView ? 'active' : ''}`}
               onClick={() => switchView(true)}
             >
@@ -172,9 +173,11 @@ function App() {
             </p>
           </form>
         </div>
+        </div>
+        <div className="logo-section">
+          <img src="/akuvera-logo.png" alt="Akuvera Logo" />
+        </div>
       </div>
-
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <span className="version">v1.0.0</span>
