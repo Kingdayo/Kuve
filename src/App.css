@@ -260,9 +260,6 @@ body {
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -286,9 +283,12 @@ body {
 
 .verified-icon-svg,
 .unverified-icon-svg {
-  position: absolute; /* Stack them on top of each other */
+  position: absolute;
   width: 14px;
   height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   stroke: white;
   fill: none;
   stroke-width: 2.5;
