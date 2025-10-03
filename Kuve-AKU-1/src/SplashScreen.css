@@ -30,9 +30,24 @@
 
 .splash-content {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.splash-left {
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  position: relative;
+  justify-content: space-between;
+  width: 55%;
+  height: 250px; /* Adjust height as needed */
+}
+
+.splash-right {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .splash-title {
@@ -46,15 +61,10 @@
   font-size: 16px;
   color: #5a6e7e;
   margin-top: 8px;
-  margin-bottom: 80px;
 }
 
 .splash-logo {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 200px;
+  width: 220px; /* Adjust as needed */
 }
 
 .splash-logo img {
@@ -64,8 +74,9 @@
 
 .splash-buttons {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  margin-top: auto;
+  width: 200px; /* Or adjust as needed */
 }
 
 .splash-login-btn,

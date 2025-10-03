@@ -17,18 +17,22 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onLogin, onGetStarted }) =>
     <div className="splash-container">
       <div className={`splash-card ${showCard ? 'animate-in' : ''}`}>
         <div className="splash-content">
-          <h1 className="splash-title">Welcome to akuvera</h1>
-          <p className="splash-subtitle">Turning Denials Into Approvals</p>
-          <div className="splash-logo">
-            <img src="/akuvera-logo.png" alt="Akuvera Logo" />
+          <div className="splash-left">
+            <h1 className="splash-title">Welcome to akuvera</h1>
+            <p className="splash-subtitle">Turning Denials Into Approvals</p>
+            <div className="splash-buttons">
+              <button className="splash-login-btn" onClick={onLogin}>
+                Login
+              </button>
+              <button className="splash-start-btn" onClick={onGetStarted}>
+                Get Started
+              </button>
+            </div>
           </div>
-          <div className="splash-buttons">
-            <button className="splash-login-btn" onClick={onLogin}>
-              Login
-            </button>
-            <button className="splash-start-btn" onClick={onGetStarted}>
-              Get Started
-            </button>
+          <div className="splash-right">
+            <div className="splash-logo">
+              <img src="/akuvera-logo.png" alt="Akuvera Logo" />
+            </div>
           </div>
         </div>
       </div>
