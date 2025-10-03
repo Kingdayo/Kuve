@@ -314,6 +314,53 @@ body {
   100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
 }
 
+/* Password Strength Indicator */
+.password-strength-indicator {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 0.25rem 0.25rem;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+}
+
+.criterion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.criterion-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #e1e8ed;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.criterion.verified {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.criterion.verified .criterion-icon {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.criterion.verified .criterion-icon::after {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 3px;
+  height: 6px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
 
 .form-actions {
   display: flex;

@@ -11,8 +11,23 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
+  const [passwordCriteria, setPasswordCriteria] = useState({
+    uppercase: false,
+    lowercase: false,
+    digit: false,
+    specialChar: false,
+  });
 
   const isEmailValid = email.includes('@');
+
+  const validatePassword = (password: string) => {
+    setPasswordCriteria({
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      digit: /\d/.test(password),
+      specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    });
+  };
 
   useEffect(() => {
     if (!showSplash) {
@@ -136,11 +151,30 @@ function App() {
                 type="password"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  validatePassword(e.target.value);
+                }}
                 placeholder="••••••••••"
                 className="form-input"
                 required
               />
+               {!isLoginView && password.length > 0 && (
+                <div className="password-strength-indicator">
+                  <div className={`criterion ${passwordCriteria.uppercase ? 'verified' : ''}`}>
+                    <span className="criterion-icon"></span> Upper Case
+                  </div>
+                  <div className={`criterion ${passwordCriteria.lowercase ? 'verified' : ''}`}>
+                    <span className="criterion-icon"></span> Lower Case
+                  </div>
+                  <div className={`criterion ${passwordCriteria.digit ? 'verified' : ''}`}>
+                    <span className="criterion-icon"></span> Digit
+                  </div>
+                  <div className={`criterion ${passwordCriteria.specialChar ? 'verified' : ''}`}>
+                    <span className="criterion-icon"></span> Special Character
+                  </div>
+                </div>
+              )}
             </div>
 
             {!isLoginView && (
