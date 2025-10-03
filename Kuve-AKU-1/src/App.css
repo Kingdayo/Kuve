@@ -16,7 +16,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow-y: auto; /* Enable vertical scrolling */
-  padding: 2rem 0; /* Add vertical padding */
+  padding: 2rem 0 80px; /* Add vertical padding and space for footer */
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   animation: gradientShift 8s ease-in-out infinite;
 }
@@ -402,9 +402,10 @@ body {
   align-items: center;
   animation: footerSlideUp 1s ease-out 2s both;
   background: transparent; /* Ensure footer blends with background */
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 10;
 }
 
 @keyframes footerSlideUp {
@@ -462,7 +463,6 @@ body {
   .footer {
     height: auto;
     padding: 1rem;
-    position: relative; /* Allow it to take up space in the flow on mobile */
   }
 }
 
