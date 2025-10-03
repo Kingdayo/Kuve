@@ -7,6 +7,7 @@ function App() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
+  const [isLoginView, setIsLoginView] = useState(true)
 
   // Check if email contains @ symbol for verification icon
   const isEmailValid = email.includes('@')
@@ -16,11 +17,15 @@ function App() {
     setTimeout(() => setShowForm(true), 300)
   }, [])
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate signup process
+    // Simulate API call
     setTimeout(() => setIsLoading(false), 2000)
+  }
+
+  const toggleView = () => {
+    setIsLoginView(!isLoginView)
   }
 
   return (
@@ -39,12 +44,27 @@ function App() {
         {/* Centered Login Card */}
         <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
           <div className="login-card">
+            <div className="tab-switcher">
+              <button
+                className={`tab-button ${isLoginView ? 'active' : ''}`}
+                onClick={() => setIsLoginView(true)}
+              >
+                Login
+              </button>
+              <button
+                className={`tab-button ${!isLoginView ? 'active' : ''}`}
+                onClick={() => setIsLoginView(false)}
+              >
+                Sign Up
+              </button>
+            </div>
+
             <div className="card-header">
-              <h1 className="welcome-title">Welcome Back</h1>
+              <h1 className="welcome-title">{isLoginView ? 'Welcome Back' : 'Create Account'}</h1>
               <p className="subtitle">Turning Denials Into Approvals</p>
             </div>
 
-            <form onSubmit={handleSignup} className="login-form">
+            <form onSubmit={handleSubmit} className="login-form">
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email</label>
                 <div className="input-wrapper">
@@ -53,7 +73,7 @@ function App() {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Mulbrahimuiz@akuvera.com"
+                    placeholder="name@example.com"
                     className="form-input"
                     required
                   />
@@ -68,7 +88,7 @@ function App() {
               <div className="form-group">
                 <div className="password-header">
                   <label htmlFor="password" className="form-label">Password</label>
-                  <a href="#" className="forgot-link">Forgot password?</a>
+                  {isLoginView && <a href="#" className="forgot-link">Forgot password?</a>}
                 </div>
                 <input
                   type="password"
@@ -81,9 +101,20 @@ function App() {
                 />
               </div>
 
-              <button type="button" className="back-button">
-                Back
-              </button>
+              {!isLoginView && (
+                <div className="form-group">
+                  <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="••••••••••"
+                    className="form-input"
+                    required
+                  />
+                </div>
+              )}
 
               <button 
                 type="submit" 
@@ -93,12 +124,15 @@ function App() {
                 {isLoading ? (
                   <div className="loading-spinner"></div>
                 ) : (
-                  'Login'
+                  isLoginView ? 'Login' : 'Sign Up'
                 )}
               </button>
 
               <p className="signup-text">
-                Don't have an account yet? <a href="#" className="signup-link">Sign Up</a>
+                {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
+                <a href="#" className="signup-link" onClick={toggleView}>
+                  {isLoginView ? 'Sign Up' : 'Login'}
+                </a>
               </p>
             </form>
           </div>
