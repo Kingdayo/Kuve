@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SplashScreen.css';
 
 interface SplashScreenProps {
@@ -7,9 +7,15 @@ interface SplashScreenProps {
 }
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onLogin, onGetStarted }) => {
+  const [showCard, setShowCard] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setShowCard(true), 100);
+  }, []);
+
   return (
     <div className="splash-container">
-      <div className="splash-card">
+      <div className={`splash-card ${showCard ? 'animate-in' : ''}`}>
         <div className="splash-content">
           <h1 className="splash-title">Welcome to akuvera</h1>
           <p className="splash-subtitle">Turning Denials Into Approvals</p>
