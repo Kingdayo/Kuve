@@ -26,7 +26,13 @@
   flex-grow: 1; /* Takes remaining space */
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; /* Removed for alternative centering */
+}
+
+.splash-logo {
+  width: 250px;
+  text-align: center;
+  margin: 0 auto; /* Added for robust horizontal centering */
 }
 
 .splash-title {
