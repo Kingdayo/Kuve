@@ -4,6 +4,7 @@ import './App.css'
 function App() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
 
@@ -12,10 +13,10 @@ function App() {
     setTimeout(() => setShowForm(true), 300)
   }, [])
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate login process
+    // Simulate signup process
     setTimeout(() => setIsLoading(false), 2000)
   }
 
@@ -32,7 +33,7 @@ function App() {
       </div>
 
       <div className="container">
-        {/* Left side - Login Form */}
+        {/* Left side - Signup Form */}
         <div className={`login-section ${showForm ? 'animate-in' : ''}`}>
           <div className="login-card">
             <div className="card-header">
@@ -40,7 +41,7 @@ function App() {
               <p className="subtitle">Turning Denials Into Approvals</p>
             </div>
 
-            <form onSubmit={handleLogin} className="login-form">
+            <form onSubmit={handleSignup} className="login-form">
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email</label>
                 <input
@@ -48,10 +49,13 @@ function App() {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="yourmail@gmail.com"
+                  placeholder="Mulbrahimuiz@akuvera.com"
                   className="form-input"
                   required
                 />
+                <div className="email-verified">
+                  <span className="verified-icon">✓</span>
+                </div>
               </div>
 
               <div className="form-group">
@@ -64,7 +68,7 @@ function App() {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="••••••••••"
                   className="form-input"
                   required
                 />
@@ -82,7 +86,7 @@ function App() {
                 {isLoading ? (
                   <div className="loading-spinner"></div>
                 ) : (
-                  'Log In'
+                  'Login'
                 )}
               </button>
 
