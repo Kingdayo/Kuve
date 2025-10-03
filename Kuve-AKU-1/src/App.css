@@ -266,7 +266,7 @@ body {
 
 .email-validation-icon.verified {
   background-color: #4CAF50; /* Green for verified */
-  animation: verifiedPulse 2s ease-in-out infinite;
+  /* animation: verifiedPulse 2s ease-in-out infinite; */ /* Animation removed for style consistency */
 }
 
 .email-validation-icon.unverified {
