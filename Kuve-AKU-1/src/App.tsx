@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SplashScreen from './SplashScreen';
+import Dashboard from './Dashboard';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
   const [passwordCriteria, setPasswordCriteria] = useState({
     uppercase: false,
@@ -68,7 +70,17 @@ function App() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 2000);
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      if (isLoginView) {
+        setIsLoggedIn(true);
+      } else {
+        // For sign-up, you might want to automatically log the user in
+        // or redirect to the login page. For now, we'll just log them in.
+        setIsLoggedIn(true);
+      }
+    }, 2000);
   };
 
   const switchView = (newView: boolean) => {
@@ -80,6 +92,10 @@ function App() {
       setPhoneNumber('');
     }
   };
+
+  if (isLoggedIn) {
+    return <Dashboard />;
+  }
 
   if (showSplash) {
     return <SplashScreen onLogin={handleLogin} onGetStarted={handleGetStarted} />;
