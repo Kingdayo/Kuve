@@ -17,11 +17,26 @@ function App() {
     digit: false,
     specialChar: false,
   });
+  const [confirmPasswordCriteria, setConfirmPasswordCriteria] = useState({
+    uppercase: false,
+    lowercase: false,
+    digit: false,
+    specialChar: false,
+  });
 
   const isEmailValid = email.includes('@');
 
   const validatePassword = (password: string) => {
     setPasswordCriteria({
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      digit: /\d/.test(password),
+      specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    });
+  };
+
+  const validateConfirmPassword = (password: string) => {
+    setConfirmPasswordCriteria({
       uppercase: /[A-Z]/.test(password),
       lowercase: /[a-z]/.test(password),
       digit: /\d/.test(password),
@@ -159,7 +174,7 @@ function App() {
                 className="form-input"
                 required
               />
-               {!isLoginView && password.length > 0 && (
+               {password.length > 0 && (
                 <div className="password-strength-indicator">
                   <div className={`criterion ${passwordCriteria.uppercase ? 'verified' : ''}`}>
                     <span className="criterion-icon"></span> Upper Case
@@ -184,11 +199,30 @@ function App() {
                   type="password"
                   id="confirmPassword"
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                    validateConfirmPassword(e.target.value);
+                  }}
                   placeholder="••••••••••"
                   className="form-input"
                   required
                 />
+                {confirmPassword.length > 0 && (
+                  <div className="password-strength-indicator">
+                    <div className={`criterion ${confirmPasswordCriteria.uppercase ? 'verified' : ''}`}>
+                      <span className="criterion-icon"></span> Upper Case
+                    </div>
+                    <div className={`criterion ${confirmPasswordCriteria.lowercase ? 'verified' : ''}`}>
+                      <span className="criterion-icon"></span> Lower Case
+                    </div>
+                    <div className={`criterion ${confirmPasswordCriteria.digit ? 'verified' : ''}`}>
+                      <span className="criterion-icon"></span> Digit
+                    </div>
+                    <div className={`criterion ${confirmPasswordCriteria.specialChar ? 'verified' : ''}`}>
+                      <span className="criterion-icon"></span> Special Character
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
