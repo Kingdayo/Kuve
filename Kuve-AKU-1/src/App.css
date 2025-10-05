@@ -85,7 +85,14 @@ body, html {
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  /* Removed animation properties to fix visibility issue */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.splash-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Left & Right Columns (from SplashScreen.css) */
@@ -149,6 +156,10 @@ body, html {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 10px;
+}
+
+.tab-button:not(.active):hover {
+  background-color: #e9ecef;
 }
 
 .tab-button.active {
@@ -233,16 +244,17 @@ body, html {
   position: absolute;
   right: 12px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0);
   width: 20px;
   height: 20px;
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .form-input:not(:placeholder-shown) + .email-validation-icon {
   opacity: 1;
+  transform: translateY(-50%) scale(1);
 }
 
 .email-validation-icon.verified { background-color: #28a745; }
@@ -338,14 +350,22 @@ body, html {
   border: 1px solid #D0D0D0;
   color: #333;
 }
-.back-button:hover { background-color: #f8f9fa; }
+.back-button:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
 
 .login-button {
   background-color: #0056B3;
   color: #fff;
   border: 1px solid #0056B3;
 }
-.login-button:hover { background-color: #004494; }
+.login-button:hover {
+  background-color: #004494;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 .login-button.loading { pointer-events: none; }
 .loading-spinner {
   width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3);
