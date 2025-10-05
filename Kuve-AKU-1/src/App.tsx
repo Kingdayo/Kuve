@@ -113,7 +113,7 @@ function App() {
 
       {/* New Card-based Layout */}
       <div className="splash-container">
-        <div className={`splash-card ${showForm ? 'animate-in' : ''}`}>
+        <div className={`splash-card ${showForm ? 'animate-in' : ''} ${!isLoginView ? 'signup-view' : ''}`}>
           {/* Left Column for the Form */}
           <div className="splash-left-column">
             <div className="login-card">
