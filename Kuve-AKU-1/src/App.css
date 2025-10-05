@@ -326,6 +326,7 @@ body, html {
   text-align: center;
   margin-top: 1.5rem;
   font-size: 0.9rem;
+  color: #555; /* Set a visible color for the text */
 }
 
 .signup-link {
