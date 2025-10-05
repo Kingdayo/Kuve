@@ -215,12 +215,17 @@ body, html {
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.2s ease;
+  background-color: #FFFFFF;
 }
 
 .form-input:focus {
   outline: none;
   border-color: #0056B3;
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+}
+
+.form-input::placeholder {
+  color: #888;
 }
 
 .email-validation-icon {
