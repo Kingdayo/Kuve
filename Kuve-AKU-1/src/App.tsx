@@ -182,7 +182,7 @@ function App() {
                     className="form-input"
                     required
                   />
-                  {password.length > 0 && !isLoginView && (
+                  {password.length > 0 && (
                     <div className="password-strength-indicator">
                       <div className={`criterion ${passwordCriteria.uppercase ? 'verified' : ''}`}><span className="criterion-icon"></span> Upper Case</div>
                       <div className={`criterion ${passwordCriteria.lowercase ? 'verified' : ''}`}><span className="criterion-icon"></span> Lower Case</div>
