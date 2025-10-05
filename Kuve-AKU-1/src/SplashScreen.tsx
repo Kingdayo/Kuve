@@ -13,7 +13,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onLogin, onGetStarted }) =>
         <h1 className="splash-title">Welcome to akuvera</h1>
         <p className="splash-subtitle">Turning Denials Into Approvals</p>
         <div className="splash-logo">
-          {/* <img src="/akuvera-logo.png" alt="Akuvera Logo" /> */}
+          <img src="/akuvera-logo.png" alt="Akuvera Logo" />
           <p className="splash-tagline">Delivers clarity and truth in denial logic</p>
         </div>
         <div className="splash-buttons">
