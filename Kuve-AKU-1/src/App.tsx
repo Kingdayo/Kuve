@@ -222,14 +222,14 @@ function App() {
                     {isLoading ? <div className="loading-spinner"></div> : (isLoginView ? 'Login' : 'Sign Up')}
                   </button>
                 </div>
-              </form>
 
-              <p className="signup-text">
-                {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
-                <a href="#" className="signup-link" onClick={(e) => { e.preventDefault(); switchView(!isLoginView); }}>
-                  {isLoginView ? 'Sign Up' : 'Login'}
-                </a>
-              </p>
+                <p className="signup-text">
+                  {isLoginView ? "Don't have an account yet?" : "Already have an account?"}
+                  <a href="#" className="signup-link" onClick={(e) => { e.preventDefault(); switchView(!isLoginView); }}>
+                    {isLoginView ? 'Sign Up' : 'Login'}
+                  </a>
+                </p>
+              </form>
             </div>
           </div>
 
