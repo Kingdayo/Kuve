@@ -88,10 +88,6 @@ body, html {
   transition: max-width 0.4s ease, min-height 0.4s ease; /* Smooth transition */
 }
 
-.splash-card.signup-view {
-  max-width: 1100px; /* Increased */
-  min-height: 550px; /* Drastically Reduced */
-}
 
 /* Left & Right Columns (from SplashScreen.css) */
 .splash-left-column {
