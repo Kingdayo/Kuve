@@ -85,14 +85,6 @@ body, html {
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.splash-card.animate-in {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Left & Right Columns (from SplashScreen.css) */
