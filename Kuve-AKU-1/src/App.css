@@ -265,10 +265,13 @@ body, html {
 
 /* Password Strength */
 .password-strength-indicator {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  padding-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  margin-top: 0.75rem;
   font-size: 0.8rem;
 }
 
@@ -276,19 +279,39 @@ body, html {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: #6c757d;
+  transition: color 0.3s ease;
 }
-.criterion.verified { color: #000; }
+
+.criterion.verified {
+  color: #212529;
+  font-weight: 500;
+}
+
 .criterion-icon {
-  width: 12px; height: 12px; border-radius: 50%;
-  border: 1.5px solid #ccc;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #ced4da;
   position: relative;
+  transition: all 0.3s ease;
 }
-.criterion.verified .criterion-icon { background-color: #28a745; border-color: #28a745; }
+
+.criterion.verified .criterion-icon {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
 .criterion.verified .criterion-icon::after {
-  content: ''; position: absolute; top: 45%; left: 50%;
-  width: 3px; height: 6px; border: solid white;
-  border-width: 0 1.5px 1.5px 0;
-  transform: translate(-50%, -50%) rotate(45deg);
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 /* Form Actions */
