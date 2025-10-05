@@ -277,26 +277,34 @@ body, html {
   align-items: center;
   gap: 0.4rem;
   color: #888;
+  transition: color 0.3s ease; /* Smooth text color transition */
 }
 
 .criterion.verified {
   color: #000;
 }
 
+/* Base style for the icon - prepared for animation */
 .criterion-icon {
-  display: none; /* Hide icon by default */
-}
-
-.criterion.verified .criterion-icon {
-  display: inline-block; /* Show icon only when verified */
-  width: 12px;
+  width: 0;
   height: 12px;
   border-radius: 50%;
-  background-color: #28a745;
-  border: 1.5px solid #28a745;
   position: relative;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Pop-in animation */
 }
 
+/* Style for the icon when the criterion is verified */
+.criterion.verified .criterion-icon {
+  width: 12px;
+  opacity: 1;
+  transform: scale(1);
+  background-color: #28a745;
+  border: 1.5px solid #28a745;
+}
+
+/* The checkmark inside the icon */
 .criterion.verified .criterion-icon::after {
   content: '';
   position: absolute;
