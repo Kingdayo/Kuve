@@ -402,6 +402,10 @@ body, html {
 .signup-link:hover { text-decoration: underline; }
 
 /* Compact styles for Sign Up view to prevent overflow */
+.signup-view .splash-left-column {
+  overflow-y: hidden;
+}
+
 .signup-view .card-header {
   margin-bottom: 1rem;
 }
