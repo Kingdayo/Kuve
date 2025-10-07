@@ -94,7 +94,7 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 /* Custom Scrollbar for WebKit browsers */
@@ -186,22 +186,22 @@ body, html {
 }
 
 .welcome-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #000;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .subtitle {
+  font-size: 0.9rem;
   color: #555;
-  font-size: 1rem;
 }
 
 /* Form Styles */
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.6rem;
 }
 
 .form-group {
@@ -210,9 +210,10 @@ body, html {
 
 .form-label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   color: #333;
   font-weight: 500;
+  font-size: 0.85rem;
 }
 
 .password-header {
@@ -233,10 +234,10 @@ body, html {
 
 .form-input {
   width: 100%;
-  padding: 0.875rem 1rem;
+  padding: 0.6rem 1rem;
   border: 1px solid #D0D0D0;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
   background-color: #FFFFFF;
   color: #333;
@@ -291,9 +292,9 @@ body, html {
 .password-strength-indicator {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
+  gap: 0.2rem 0.6rem;
+  margin-top: 0.4rem;
+  font-size: 0.65rem;
 }
 
 .criterion {
@@ -344,14 +345,14 @@ body, html {
 /* Form Actions */
 .form-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
 }
 
 .back-button, .login-button {
   flex: 1;
-  padding: 0.875rem;
-  font-size: 1rem;
+  padding: 0.6rem;
+  font-size: 0.9rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
@@ -388,8 +389,8 @@ body, html {
 
 .signup-text {
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
   color: #555; /* Set a visible color for the text */
 }
 
@@ -402,58 +403,7 @@ body, html {
 .signup-link:hover { text-decoration: underline; }
 
 /* Compact styles for Sign Up view to prevent overflow */
-.signup-view .splash-left-column {
-  overflow-y: hidden;
-}
-
-.signup-view .card-header {
-  margin-bottom: 1rem;
-}
-
-.signup-view .welcome-title {
-  font-size: 1.8rem;
-  margin-bottom: 0.25rem;
-}
-
-.signup-view .subtitle {
-  font-size: 0.9rem;
-}
-
-.signup-view .login-form {
-  gap: 0.6rem;
-}
-
-.signup-view .form-label {
-  margin-bottom: 0.25rem;
-  font-size: 0.85rem;
-}
-
-.signup-view .form-input {
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-}
-
-.signup-view .password-strength-indicator {
-  margin-top: 0.4rem;
-  gap: 0.2rem 0.6rem;
-  font-size: 0.65rem;
-}
-
-.signup-view .form-actions {
-  margin-top: 0.8rem;
-  gap: 0.8rem;
-}
-
-.signup-view .back-button,
-.signup-view .login-button {
-  padding: 0.6rem;
-  font-size: 0.9rem;
-}
-
-.signup-view .signup-text {
-  margin-top: 0.8rem;
-  font-size: 0.8rem;
-}
+/* No longer needed as styles are now applied globally */
 
 
 /* Footer */
