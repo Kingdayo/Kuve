@@ -128,63 +128,73 @@ const Dashboard = () => {
 
         <div className="dashboard-grid">
             <div className="grid-card alert-panel">
-                <div className="alert-section">
-                    <div className="alert-section-header">
-                        <h3 className="alert-section-title">Claims Need Review</h3>
-                        <span className="alert-count-badge">3</span>
+                <div className="alert-panel-header">
+                    <div className="alert-panel-icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2a6 6 0 00-6 6v3.586l-1.707 1.707A1 1 0 003 15h14a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                        </svg>
                     </div>
-                    <div className="review-claim-list">
-                        <div className="review-claim-item">
-                            <div>
-                                <p className="claim-id">AKU-2025-027</p>
-                                <p className="claim-details">Ibrahim Joseph - $5,200</p>
+                    <h3 className="alert-panel-main-title">Alert</h3>
+                </div>
+                <div className="alert-sub-panels">
+                    <div className="alert-section">
+                        <div className="alert-section-header">
+                            <h3 className="alert-section-title">Claims Need Review</h3>
+                            <span className="alert-count-badge">3</span>
+                        </div>
+                        <div className="review-claim-list">
+                            <div className="review-claim-item">
+                                <div>
+                                    <p className="claim-id">AKU-2025-027</p>
+                                    <p className="claim-details">Ibrahim Joseph - $5,200</p>
+                                </div>
+                                <div className="claim-confidence">
+                                    <span>88% confidence</span>
+                                    <button className="review-btn">Review</button>
+                                </div>
                             </div>
-                            <div className="claim-confidence">
-                                <span>88% confidence</span>
-                                <button className="review-btn">Review</button>
+                            <div className="review-claim-item">
+                                <div>
+                                    <p className="claim-id">AKU-2025-314</p>
+                                    <p className="claim-details">Dave Trump - $2,770</p>
+                                </div>
+                                <div className="claim-confidence">
+                                    <span>73% confidence</span>
+                                    <button className="review-btn">Review</button>
+                                </div>
+                            </div>
+                            <div className="review-claim-item">
+                                <div>
+                                    <p className="claim-id">AKU-2025-091</p>
+                                    <p className="claim-details">Abu Hudailah - $1,871</p>
+                                </div>
+                                <div className="claim-confidence">
+                                    <span>85% confidence</span>
+                                    <button className="review-btn">Review</button>
+                                </div>
                             </div>
                         </div>
-                        <div className="review-claim-item">
-                            <div>
-                                <p className="claim-id">AKU-2025-314</p>
-                                <p className="claim-details">Dave Trump - $2,770</p>
-                            </div>
-                            <div className="claim-confidence">
-                                <span>73% confidence</span>
-                                <button className="review-btn">Review</button>
-                            </div>
+                        <button className="review-all-claims-btn">Review all Claims →</button>
+                    </div>
+                    <div className="alert-section">
+                        <div className="alert-section-header">
+                            <h3 className="alert-section-title">High Priority Claim</h3>
+                            <span className="alert-count-badge">1</span>
                         </div>
-                        <div className="review-claim-item">
-                            <div>
-                                <p className="claim-id">AKU-2025-091</p>
-                                <p className="claim-details">Abu Hudailah - $1,871</p>
-                            </div>
-                            <div className="claim-confidence">
-                                <span>85% confidence</span>
-                                <button className="review-btn">Review</button>
+                        <div className="review-claim-list">
+                           <div className="review-claim-item">
+                              <div>
+                                <p className="claim-id">AKU-2025-771</p>
+                                <p className="claim-details">Sarah Johnson - $9,300</p>
+                              </div>
+                              <div className="claim-confidence">
+                                <span>50% confidence</span>
+                                <button className="view-claim-btn">View Claim</button>
+                              </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="alert-section">
-                    <div className="alert-section-header">
-                        <h3 className="alert-section-title">High Priority Claim</h3>
-                        <span className="alert-count-badge">1</span>
-                    </div>
-                    <div className="review-claim-list">
-                       <div className="review-claim-item">
-                          <div>
-                            <p className="claim-id">AKU-2025-771</p>
-                            <p className="claim-details">Sarah Johnson - $9,300</p>
-                          </div>
-                          <div className="claim-confidence">
-                            <span>50% confidence</span>
-                            <button className="view-claim-btn">View Claim</button>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <button className="review-all-claims-btn">Review all Claims →</button>
             </div>
 
             <div className="charts-section">
