@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SplashScreen from './SplashScreen';
-import Dashboard from './Dashboard';
+import Dashboard from './components/Dashboard';
 import './App.css';
 
 function App() {
@@ -93,6 +93,9 @@ function App() {
     }
   };
 
+  return <Dashboard />;
+
+  /*
   if (isLoggedIn) {
     return <Dashboard />;
   }
@@ -103,7 +106,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* Background elements remain the same */}
       <div className="background-gradient"></div>
       <div className="particles">
         {[...Array(20)].map((_, i) => (
@@ -111,10 +113,8 @@ function App() {
         ))}
       </div>
 
-      {/* New Card-based Layout */}
       <div className="splash-container">
         <div className={`splash-card ${showForm ? 'animate-in' : ''} ${!isLoginView ? 'signup-view' : ''}`}>
-          {/* Left Column for the Form */}
           <div className="splash-left-column">
             <div className="login-card">
               <div className="tab-switcher">
@@ -138,7 +138,6 @@ function App() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="login-form">
-                  {/* Email */}
                   <div className="form-group">
                     <label htmlFor="email" className="form-label">Email</label>
                     <div className="input-wrapper">
@@ -160,7 +159,6 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Phone Number (Sign Up only) */}
                   {!isLoginView && (
                     <div className="form-group">
                       <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
@@ -168,7 +166,6 @@ function App() {
                     </div>
                   )}
 
-                  {/* Password */}
                   <div className="form-group">
                     <div className="password-header">
                       <label htmlFor="password" className="form-label">Password</label>
@@ -193,7 +190,6 @@ function App() {
                     )}
                   </div>
 
-                  {/* Confirm Password (Sign Up only) */}
                   {!isLoginView && (
                     <div className="form-group">
                       <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
@@ -235,7 +231,6 @@ function App() {
             </div>
           </div>
 
-          {/* Right Column for the Logo */}
           <div className="splash-right-column">
             <div className="splash-logo">
               <img src="/akuvera-logo.png" alt="Akuvera Logo" />
@@ -253,6 +248,7 @@ function App() {
       </footer>
     </div>
   );
+  */
 }
 
 export default App
