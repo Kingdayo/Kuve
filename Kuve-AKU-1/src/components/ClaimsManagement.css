@@ -142,6 +142,7 @@
 .claims-table-header {
   display: flex;
   align-items: center;
+  gap: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #E5E7EB;
 }
@@ -149,6 +150,15 @@
 .tabs {
   display: flex;
   gap: 0.5rem;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-button {
@@ -178,6 +188,7 @@
   align-items: center;
   gap: 1rem;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .search-bar {
@@ -299,12 +310,11 @@
   }
   .tabs {
     width: 100%;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
     padding-bottom: 8px; /* space for scrollbar */
+    scrollbar-width: thin;
   }
   .tabs::-webkit-scrollbar {
+      display: block;
       height: 4px;
       background-color: transparent;
   }
