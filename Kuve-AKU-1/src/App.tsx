@@ -93,9 +93,6 @@ function App() {
     }
   };
 
-  return <Dashboard />;
-
-  /*
   if (isLoggedIn) {
     return <Dashboard />;
   }
@@ -248,7 +245,6 @@ function App() {
       </footer>
     </div>
   );
-  */
 }
 
 export default App
