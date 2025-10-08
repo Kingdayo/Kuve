@@ -50,6 +50,10 @@
 .close-button:hover {
     color: #6b7280;
 }
+.close-button:disabled {
+    cursor: not-allowed;
+    color: #d1d5db;
+}
 
 .modal-body {
   padding: 1.5rem;
@@ -243,4 +247,135 @@
 
 .footer-button.upload.disabled:hover {
     background-color: #9ca3af;
+}
+
+
+/* --- Processing and Success States --- */
+.modal-body.processing, .modal-body.success {
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.modal-body h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 1rem 0 0.5rem;
+}
+
+.modal-body p {
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Processing State */
+.processing-icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.processing-icon {
+    width: 2rem;
+    height: 2rem;
+    color: #3b82f6;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.progress-bar-container {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+.progress-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #374151;
+}
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: #2E5BBA;
+    border-radius: 4px;
+    transition: width 0.2s linear;
+}
+.file-name-progress {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* Success State */
+.success-icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: #f0fdf4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.success-icon {
+    width: 2rem;
+    height: 2rem;
+    color: #22c55e;
+}
+.summary-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+.summary-card {
+    display: flex;
+    flex-direction: column;
+}
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.summary-value.valid { color: #16a34a; }
+.summary-value.warning { color: #f97316; }
+.summary-value.error { color: #ef4444; }
+
+.summary-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.info-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background-color: #f9fafb;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+.info-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6b7280;
+    flex-shrink: 0;
+}
+.info-banner span {
+    font-size: 0.875rem;
+    color: #6b7280;
 }
