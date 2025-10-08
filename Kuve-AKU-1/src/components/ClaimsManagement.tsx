@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import UploadClaimsModal from './UploadClaimsModal';
 import './ClaimsManagement.css';
 
 const ClaimsManagement = () => {
-  return (
-    <div className="claims-management">
-      <header className="header">
-        <div>
-          <h1 className="header-title">Claims Management</h1>
-          <p className="header-subtitle">View and manage all denial claims in detail</p>
-        </div>
-        <div className="header-actions">
-          <button className="header-button">
-            <svg xmlns="http://www.w3.org/2000/svg" className="header-button-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>
-            Search from Provider
-          </button>
-          <button className="header-button primary">
-            <svg xmlns="http://www.w3.org/2000/svg" className="header-button-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-            Upload Claims
-          </button>
-        </div>
-      </header>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-      <div className="claims-stat-cards">
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  return (
+    <>
+      <div className="claims-management">
+        <header className="header">
+          <div>
+            <h1 className="header-title">Claims Management</h1>
+            <p className="header-subtitle">View and manage all denial claims in detail</p>
+          </div>
+          <div className="header-actions">
+            <button className="header-button">
+              <svg xmlns="http://www.w3.org/2000/svg" className="header-button-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>
+              Search from Provider
+            </button>
+            <button className="header-button primary" onClick={handleOpenModal}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="header-button-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
+              Upload Claims
+            </button>
+          </div>
+        </header>
+
+        <div className="claims-stat-cards">
         <div className="stat-card claims">
           <div className="card-content">
             <div className="card-icon">
@@ -96,46 +103,46 @@ const ClaimsManagement = () => {
         </div>
       </div>
 
-      <div className="claims-table-container">
-        <div className="claims-table-header">
-          <div className="tabs">
-            <button className="tab-button active">All Claims</button>
-            <button className="tab-button">In Process</button>
-            <button className="tab-button">Needs Review</button>
-            <button className="tab-button">Sent</button>
-            <button className="tab-button">Resubmission</button>
-            <button className="tab-button">Appeal</button>
-          </div>
-          <div className="table-actions">
-            <div className="search-bar">
-              <svg xmlns="http://www.w3.org/2000/svg" className="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>
-              <input type="text" placeholder="Type to search..." />
+        <div className="claims-table-container">
+          <div className="claims-table-header">
+            <div className="tabs">
+              <button className="tab-button active">All Claims</button>
+              <button className="tab-button">In Process</button>
+              <button className="tab-button">Needs Review</button>
+              <button className="tab-button">Sent</button>
+              <button className="tab-button">Resubmission</button>
+              <button className="tab-button">Appeal</button>
             </div>
-            <button className="filter-button">
-              <svg xmlns="http://www.w3.org/2000/svg" className="filter-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 12.414V17a1 1 0 01-1.447.894l-2-1A1 1 0 018 16v-3.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" /></svg>
-              Filter
-            </button>
-            <button className="export-button">
-              <svg xmlns="http://www.w3.org/2000/svg" className="export-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" /></svg>
-              Export
-            </button>
+            <div className="table-actions">
+              <div className="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" className="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>
+                <input type="text" placeholder="Type to search..." />
+              </div>
+              <button className="filter-button">
+                <svg xmlns="http://www.w3.org/2000/svg" className="filter-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 12.414V17a1 1 0 01-1.447.894l-2-1A1 1 0 018 16v-3.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" /></svg>
+                Filter
+              </button>
+              <button className="export-button">
+                <svg xmlns="http://www.w3.org/2000/svg" className="export-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" /></svg>
+                Export
+              </button>
+            </div>
           </div>
-        </div>
-      <div className="claims-table-wrapper">
-        <table className="claims-table">
-          <thead>
-            <tr>
-              <th>Claim ID</th>
-              <th>Customer</th>
-              <th>Provider</th>
-              <th>Payer</th>
-              <th>Date Issued</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="claims-table-wrapper">
+          <table className="claims-table">
+            <thead>
+              <tr>
+                <th>Claim ID</th>
+                <th>Customer</th>
+                <th>Provider</th>
+                <th>Payer</th>
+                <th>Date Issued</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
             <tr>
               <td>AKU-2025-627</td>
               <td>Raul Sampson</td>
@@ -227,10 +234,12 @@ const ClaimsManagement = () => {
               <td className="action-dots">...</td>
             </tr>
           </tbody>
-        </table>
+          </table>
+        </div>
+        </div>
       </div>
-      </div>
-    </div>
+      <UploadClaimsModal isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
   );
 };
 
