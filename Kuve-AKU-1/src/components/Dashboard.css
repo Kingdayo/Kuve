@@ -96,6 +96,12 @@
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 .user-name {
   font-weight: 600;
   color: #1F2937;
