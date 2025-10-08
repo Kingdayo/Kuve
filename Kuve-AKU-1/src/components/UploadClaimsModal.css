@@ -81,7 +81,7 @@
   border-radius: 6px;
   background-color: white;
   font-size: 1rem;
-  appearance: none; /* Remove default arrow */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -95,6 +95,24 @@
   transform: translateY(-50%);
   pointer-events: none;
   color: #6b7280;
+}
+
+.provider-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.provider-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6b7280;
 }
 
 .file-upload-area {
@@ -142,6 +160,22 @@
     background-color: #e5e7eb;
 }
 
+.file-display {
+    text-align: center;
+}
+
+.file-name {
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 0.25rem;
+}
+
+.file-size {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
 .expected-format {
   background-color: #f9fafb;
   border-radius: 6px;
@@ -177,6 +211,7 @@
   font-weight: 500;
   cursor: pointer;
   border: 1px solid transparent;
+  transition: background-color 0.2s;
 }
 
 .footer-button.cancel {
@@ -189,10 +224,19 @@
 }
 
 .footer-button.upload {
-  background-color: #4b5563; /* Medium gray */
+  background-color: #2E5BBA;
   color: white;
 }
 
 .footer-button.upload:hover {
-    background-color: #374151;
+    background-color: #254a9c;
+}
+
+.footer-button.upload.disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.footer-button.upload.disabled:hover {
+    background-color: #9ca3af;
 }
