@@ -121,6 +121,7 @@ const ClaimsManagement = () => {
             </button>
           </div>
         </div>
+      <div className="claims-table-wrapper">
         <table className="claims-table">
           <thead>
             <tr>
@@ -227,6 +228,7 @@ const ClaimsManagement = () => {
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   );
