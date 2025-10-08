@@ -86,6 +86,10 @@
   -moz-appearance: none;
 }
 
+.select-wrapper select option {
+  color: black;
+}
+
 .select-wrapper::after {
   content: '▼';
   font-size: 0.8rem;
