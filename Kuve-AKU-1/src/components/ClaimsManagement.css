@@ -253,7 +253,29 @@
   gap: 4px;
   flex-shrink: 1;
   overflow-x: auto;
-  padding-bottom: 4px; /* Space for scrollbar */
+  padding-bottom: 8px; /* Space for a more substantial scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-border-active) var(--light-gray-bg);
+}
+
+/* Themed Scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+.tabs::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tabs::-webkit-scrollbar-track {
+  background-color: var(--light-gray-bg);
+  border-radius: 4px;
+}
+
+.tabs::-webkit-scrollbar-thumb {
+  background-color: var(--blue-border-active);
+  border-radius: 4px;
+  border: 2px solid var(--light-gray-bg); /* Creates a padding effect */
+}
+
+.tabs::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue);
 }
 
 .table-actions {
