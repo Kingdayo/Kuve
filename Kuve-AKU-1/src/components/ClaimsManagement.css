@@ -251,6 +251,13 @@
 .tabs {
   display: flex;
   gap: 4px;
+  flex-shrink: 1;
+  overflow-x: auto;
+  padding-bottom: 4px; /* Space for scrollbar */
+}
+
+.table-actions {
+  flex-shrink: 0;
 }
 
 .tab-button {
