@@ -172,12 +172,41 @@
   margin: 0;
 }
 
-.stat-card-main-number.claims { color: var(--purple); }
-.stat-card-main-number.in-process { color: var(--blue); }
-.stat-card-main-number.needs-review { color: var(--orange); }
-.stat-card-main-number.approved-sent { color: var(--green); }
-.stat-card-main-number.resubmission { color: var(--green); }
-.stat-card-main-number.appeal { color: var(--red); }
+.stat-card-main-number.claims,
+.stat-card.claims .stat-card-label,
+.stat-card.claims .stat-card-subtext {
+  color: var(--purple);
+}
+
+.stat-card-main-number.in-process,
+.stat-card.in-process .stat-card-label,
+.stat-card.in-process .stat-card-subtext {
+  color: var(--blue);
+}
+
+.stat-card-main-number.needs-review,
+.stat-card.needs-review .stat-card-label,
+.stat-card.needs-review .stat-card-subtext {
+  color: var(--orange);
+}
+
+.stat-card-main-number.approved-sent,
+.stat-card.approved-sent .stat-card-label,
+.stat-card.approved-sent .stat-card-subtext {
+  color: var(--green);
+}
+
+.stat-card-main-number.resubmission,
+.stat-card.resubmission .stat-card-label,
+.stat-card.resubmission .stat-card-subtext {
+  color: var(--green);
+}
+
+.stat-card-main-number.appeal,
+.stat-card.appeal .stat-card-label,
+.stat-card.appeal .stat-card-subtext {
+  color: var(--red);
+}
 
 .stat-card-label {
   font-size: 14px;
