@@ -294,7 +294,7 @@
 }
 
 .table-search-bar .search-icon {
-  color: var(--tertiary-text);
+  color: var(--blue);
   width: 16px;
   height: 16px;
   margin-right: 8px;
@@ -413,7 +413,7 @@
 
 .amount {
   font-weight: 700; /* Bold */
-  color: var(--green);
+  color: #10B981 !important;
 }
 
 .status-badge {
