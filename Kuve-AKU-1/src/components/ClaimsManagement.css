@@ -439,7 +439,7 @@
 /* Amount & Status Optimization */
 .amount {
   font-weight: 700; /* Bold */
-  color: #10B981;
+  color: #10B981; /* Explicitly set to green as per user request */
   font-size: 14px; /* Keep font size for emphasis */
 }
 
