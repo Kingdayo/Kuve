@@ -94,7 +94,17 @@ function App() {
   };
 
   if (isLoggedIn) {
-    return <Dashboard />;
+    return (
+      <div className="app dashboard-view">
+        <Dashboard />
+        <footer className="footer">
+          <div className="footer-content">
+            <span className="version">v1.0.0</span>
+            <span className="copyright">© 2025 Akuvera. All rights reserved.</span>
+          </div>
+        </footer>
+      </div>
+    );
   }
 
   if (showSplash) {
