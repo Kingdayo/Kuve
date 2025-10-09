@@ -339,7 +339,7 @@
 }
 
 .claims-table-wrapper {
-  overflow-x: auto;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
   flex-grow: 1;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -348,29 +348,49 @@
 .claims-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed; /* Allow fixed column widths */
 }
 
+/* Typography and Padding Adjustments */
 .claims-table th,
 .claims-table td {
-  padding: 12px 16px;
+  padding: 6px 8px; /* Reduced padding */
   text-align: left;
   vertical-align: middle;
+  font-size: 13px; /* Reduced font size */
+  line-height: 18px; /* Reduced line height */
   white-space: nowrap;
 }
+
+.claims-table th {
+  font-weight: 500; /* Medium weight */
+  color: var(--secondary-text);
+  background-color: var(--light-gray-bg);
+}
+
+/* Column Widths */
+.th-claim-id { width: 140px; }
+.th-customer { width: 160px; }
+.th-provider { width: 120px; }
+.th-payer { width: 120px; }
+.th-date-issued { width: 150px; }
+.th-amount { width: 100px; }
+.th-status { width: 130px; }
+.th-actions { width: 80px; }
+
+/* Alignment */
+.claims-table th.th-amount, .claims-table td.amount { text-align: right; }
+.claims-table th.th-status, .claims-table td .status-badge-wrapper { text-align: center; }
+.claims-table th.th-actions, .claims-table td.actions-cell { text-align: center; }
+
 
 .claims-table thead tr {
   border-bottom: 1px solid var(--border);
 }
 
-.claims-table th {
-  background-color: var(--light-gray-bg);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--secondary-text);
-}
-
 .claims-table tbody tr {
   border-bottom: 1px solid var(--border);
+  min-height: 56px;
 }
 .claims-table tbody tr:last-child {
   border-bottom: none;
@@ -382,53 +402,65 @@
 
 .claims-table td {
   color: var(--primary-text);
-  font-size: 14px;
+  white-space: normal; /* Allow text to wrap */
+  word-wrap: break-word;
 }
 
 .claim-id {
   font-family: monospace;
 }
 
+/* Pill Badge Optimization */
 .pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 8px;
+  padding: 4px 6px; /* Reduced padding */
   border: 1px solid #D1D5DB;
   border-radius: 6px;
   background-color: #F3F4F6;
   font-size: 12px;
   color: #4B5563;
+  line-height: 1.4; /* Allow soft wrap */
+  white-space: normal;
+  max-width: 100%;
 }
 
 .pill-badge .pill-icon {
-  width: 14px;
-  height: 14px;
-  color: var(--secondary-text);
+  width: 12px;
+  height: 12px;
+  color: #9CA3AF;
+  flex-shrink: 0;
 }
 
 .date-issued {
   color: var(--secondary-text);
 }
 
+/* Amount & Status Optimization */
 .amount {
   font-weight: 700; /* Bold */
   color: #10B981;
+  font-size: 14px; /* Keep font size for emphasis */
 }
 
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 8px;
+  padding: 4px 6px; /* Reduced padding */
   border-radius: 6px;
   font-size: 12px;
   font-weight: 500;
+  white-space: normal; /* Allow soft wrap */
+  line-height: 1.4;
+  max-width: 100%;
 }
 
 .status-badge .status-icon {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 
 .status-badge.in-process {
@@ -458,13 +490,14 @@
   color: var(--green);
 }
 
+/* Actions Column Optimization */
 .actions-cell {
-  text-align: center;
+  padding: 8px; /* Reduced padding */
 }
 .actions-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--secondary-text);
+  width: 16px;
+  height: 16px;
+  color: #6B7280;
   cursor: pointer;
 }
 
