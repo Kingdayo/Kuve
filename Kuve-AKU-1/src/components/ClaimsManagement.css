@@ -437,9 +437,9 @@
 }
 
 /* Amount & Status Optimization */
-.amount {
+.claims-table .amount {
   font-weight: 700; /* Bold */
-  color: #10B981; /* Explicitly set to green as per user request */
+  color: var(--green); /* Use variable for consistency */
   font-size: 14px; /* Keep font size for emphasis */
 }
 
