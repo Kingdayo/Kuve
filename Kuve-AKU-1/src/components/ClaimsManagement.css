@@ -117,26 +117,44 @@
 .claims-stat-cards {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 16px; /* 16px margin */
+  gap: 16px;
   margin-bottom: 2rem;
 }
 
 .stat-card {
-  background-color: var(--background);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* Vertically centered */
-  position: relative;
+  align-items: center;
+}
+
+.stat-card.claims { background-color: #F5F3FF; }
+.stat-card.in-process { background-color: #EFF6FF; }
+.stat-card.needs-review { background-color: #FFFBEB; }
+.stat-card.approved-sent { background-color: #F0FDF4; }
+.stat-card.resubmission { background-color: #F0FDF4; }
+.stat-card.appeal { background-color: #FEF2F2; }
+
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-card-icon-container {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .stat-card-icon {
-  position: absolute;
-  top: 8px;
-  left: 8px;
   width: 20px;
   height: 20px;
 }
@@ -145,14 +163,13 @@
 .stat-card-icon.in-process { color: var(--blue); }
 .stat-card-icon.needs-review { color: var(--orange); }
 .stat-card-icon.approved-sent { color: var(--green); }
-.stat-card-icon.resubmission { color: var(--green); } /* Light green is just green */
+.stat-card-icon.resubmission { color: var(--green); }
 .stat-card-icon.appeal { color: var(--red); }
 
 .stat-card-main-number {
   font-size: 24px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   margin: 0;
-  padding-top: 24px; /* Space for the icon */
 }
 
 .stat-card-main-number.claims { color: var(--purple); }
