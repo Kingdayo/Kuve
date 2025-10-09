@@ -339,7 +339,7 @@
 }
 
 .claims-table-wrapper {
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-x: hidden; /* Per instructions, to prevent scrollbar. We must ensure content fits. */
   flex-grow: 1;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -348,41 +348,41 @@
 .claims-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* Allow fixed column widths */
+  table-layout: fixed; /* Critical for fixed column widths */
 }
 
-/* Typography and Padding Adjustments */
+/* Typography and Padding Adjustments per spec */
 .claims-table th,
 .claims-table td {
-  padding: 6px 8px; /* Reduced padding */
+  padding: 6px 8px; /* 6px vertical, 8px horizontal */
   text-align: left;
   vertical-align: middle;
-  font-size: 13px; /* Reduced font size */
-  line-height: 18px; /* Reduced line height */
-  white-space: nowrap;
+  font-size: 13px;
+  line-height: 18px;
+  word-wrap: break-word; /* Allow content to wrap */
 }
 
 .claims-table th {
-  font-weight: 500; /* Medium weight */
+  font-weight: 500;
   color: var(--secondary-text);
   background-color: var(--light-gray-bg);
+  white-space: nowrap; /* Prevent headers from wrapping */
 }
 
-/* Column Widths */
-.th-claim-id { width: 140px; }
-.th-customer { width: 160px; }
-.th-provider { width: 120px; }
-.th-payer { width: 120px; }
-.th-date-issued { width: 150px; }
-.th-amount { width: 100px; }
-.th-status { width: 130px; }
-.th-actions { width: 80px; }
+/* --- CRITICAL: Column Widths (Adjusted proportionally to fit container) --- */
+.th-claim-id { width: 119px; }
+.th-customer { width: 136px; }
+.th-provider { width: 102px; }
+.th-payer { width: 102px; }
+.th-date-issued { width: 128px; }
+.th-amount { width: 85px; }
+.th-status { width: 111px; }
+.th-actions { width: 68px; }
 
-/* Alignment */
+/* Alignment per spec */
 .claims-table th.th-amount, .claims-table td.amount { text-align: right; }
-.claims-table th.th-status, .claims-table td .status-badge-wrapper { text-align: center; }
+.claims-table th.th-status, .claims-table td.status-cell { text-align: center; }
 .claims-table th.th-actions, .claims-table td.actions-cell { text-align: center; }
-
 
 .claims-table thead tr {
   border-bottom: 1px solid var(--border);
@@ -402,26 +402,25 @@
 
 .claims-table td {
   color: var(--primary-text);
-  white-space: normal; /* Allow text to wrap */
-  word-wrap: break-word;
+  white-space: normal; /* Allow text to wrap in cells */
 }
 
 .claim-id {
   font-family: monospace;
 }
 
-/* Pill Badge Optimization */
+/* Pill Badge Optimization per spec */
 .pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 6px; /* Reduced padding */
+  padding: 4px 6px;
   border: 1px solid #D1D5DB;
   border-radius: 6px;
   background-color: #F3F4F6;
   font-size: 12px;
   color: #4B5563;
-  line-height: 1.4; /* Allow soft wrap */
+  line-height: 1.4;
   white-space: normal;
   max-width: 100%;
 }
@@ -490,14 +489,14 @@
   color: var(--green);
 }
 
-/* Actions Column Optimization */
+/* Actions Column Optimization per spec */
 .actions-cell {
-  padding: 8px; /* Reduced padding */
+  padding: 8px; /* Padding for the cell */
 }
 .actions-icon {
   width: 16px;
   height: 16px;
-  color: #6B7280;
+  color: #6B7280; /* Gray color for the icon */
   cursor: pointer;
 }
 
