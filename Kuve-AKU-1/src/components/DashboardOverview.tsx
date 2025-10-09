@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip, PieChart, Pie, Cell, Sector } from 'recharts';
+import React from 'react';
+import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
 import './DashboardOverview.css';
 
 const successRateData = [
@@ -20,46 +20,32 @@ const denialData = [
   { name: 'Coverage Issues', value: 8, color: '#F5F5F5' },
 ];
 
-const renderActiveShape = (props: any) => {
-    const RADIAN = Math.PI / 180;
-    const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent } = props;
-    const sin = Math.sin(-RADIAN * midAngle);
-    const cos = Math.cos(-RADIAN * midAngle);
-    const sx = cx + (outerRadius + 10) * cos;
-    const sy = cy + (outerRadius + 10) * sin;
-    const mx = cx + (outerRadius + 30) * cos;
-    const my = cy + (outerRadius + 30) * sin;
-    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-    const ey = my;
-    const textAnchor = cos >= 0 ? 'start' : 'end';
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name }: any) => {
+    const radius = outerRadius + 25;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    const lineStartX = cx + (outerRadius + 5) * Math.cos(-midAngle * RADIAN);
+    const lineStartY = cy + (outerRadius + 5) * Math.sin(-midAngle * RADIAN);
+    const lineEndX = cx + (outerRadius + 20) * Math.cos(-midAngle * RADIAN);
+    const lineEndY = cy + (outerRadius + 20) * Math.sin(-midAngle * RADIAN);
 
     return (
       <g>
-        <Sector
-          cx={cx}
-          cy={cy}
-          innerRadius={innerRadius}
-          outerRadius={outerRadius}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          fill={fill}
-        />
-        <Sector
-          cx={cx}
-          cy={cy}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          innerRadius={outerRadius + 6}
-          outerRadius={outerRadius + 10}
-          fill={fill}
-        />
-        <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
-        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${payload.name} (${(percent * 100).toFixed(0)}%)`}</text>
+        <path d={`M${lineStartX},${lineStartY}L${lineEndX},${lineEndY}`} stroke="#9CA3AF" fill="none" />
+        <text
+            x={x}
+            y={y}
+            fill="#6B7280"
+            textAnchor={x > cx ? 'start' : 'end'}
+            dominantBaseline="central"
+            fontSize={11}
+        >
+            {`${name} ${(percent * 100).toFixed(0)}%`}
+        </text>
       </g>
     );
 };
-
 
 const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -73,12 +59,6 @@ const CustomTooltip = ({ active, payload }: any) => {
 };
 
 const DashboardOverview = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    const onPieEnter = (_: any, index: number) => {
-        setActiveIndex(index);
-    };
-
   return (
     <>
       <header className="header">
@@ -95,7 +75,6 @@ const DashboardOverview = () => {
       </header>
 
       <div className="stat-cards">
-        {/* Avg Processing Time */}
         <div className="stat-card">
           <div className="stat-card-icon-container">
             <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -111,8 +90,6 @@ const DashboardOverview = () => {
             -40% vs manual
           </p>
         </div>
-
-        {/* Avg Success Rate */}
         <div className="stat-card success">
           <div className="stat-card-icon-container">
             <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -123,8 +100,6 @@ const DashboardOverview = () => {
           <p className="stat-card-value">93%</p>
           <p className="stat-card-subtext">+2 percent vs last month</p>
         </div>
-
-        {/* Patterns Learned */}
         <div className="stat-card patterns">
           <div className="stat-card-icon-container">
             <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -135,8 +110,6 @@ const DashboardOverview = () => {
           <p className="stat-card-value">2,847</p>
           <p className="stat-card-subtext">Growing daily</p>
         </div>
-
-        {/* Revenue Generated */}
         <div className="stat-card revenue">
           <div className="stat-card-icon-container">
             <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -155,8 +128,8 @@ const DashboardOverview = () => {
             <p className="card-subtitle">Track AI performance trends</p>
             <div className="chart-placeholder">
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={successRateData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                        <XAxis dataKey="name" tick={{ fill: '#9CA3AF', fontSize: 12 }} axisLine={false} tickLine={false} />
+                    <LineChart data={successRateData} margin={{ top: 5, right: 30, left: -20, bottom: 20 }}>
+                        <XAxis dataKey="name" tick={{ fill: '#9CA3AF', fontSize: 11 }} axisLine={false} tickLine={false} />
                         <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#2563EB', strokeWidth: 1, strokeDasharray: '3 3' }} />
                         <Line type="monotone" dataKey="rate" stroke="#2563EB" strokeWidth={2.5} dot={{ r: 4, fill: 'white', stroke: '#2563EB', strokeWidth: 2 }} activeDot={{ r: 6 }} />
                     </LineChart>
@@ -169,23 +142,22 @@ const DashboardOverview = () => {
             <div className="chart-placeholder pie-chart-container">
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
-                        <Pie
-                            activeIndex={activeIndex}
-                            activeShape={renderActiveShape}
+                         <Pie
                             data={denialData}
                             cx="50%"
-                            cy="50%"
-                            innerRadius={60}
-                            outerRadius={80}
-                            fill="#8884d8"
+                            cy="45%"
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={65}
+                            innerRadius={50}
                             dataKey="value"
-                            onMouseEnter={onPieEnter}
                             isAnimationActive={true}
-                        >
+                         >
                             {denialData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.color} />
                             ))}
                         </Pie>
+                        <Tooltip />
                     </PieChart>
                 </ResponsiveContainer>
             </div>
