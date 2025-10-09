@@ -1,7 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip, PieChart, Pie, Cell, Sector } from 'recharts';
 import './DashboardOverview.css';
 
+const successRateData = [
+    { name: 'Jan', rate: 60 },
+    { name: 'Feb', rate: 75 },
+    { name: 'Mar', rate: 70 },
+    { name: 'Apr', rate: 85 },
+    { name: 'May', rate: 95 },
+    { name: 'Jun', rate: 90 },
+    { name: 'Jul', rate: 88 },
+];
+
+const denialData = [
+  { name: 'Prior Authorization', value: 35, color: '#93C5FD' },
+  { name: 'Coding Errors', value: 25, color: '#6EE7B7' },
+  { name: 'Missing Documents', value: 20, color: '#A78BFA' },
+  { name: 'Duplicate Claims', value: 12, color: '#C4B5FD' },
+  { name: 'Coverage Issues', value: 8, color: '#F5F5F5' },
+];
+
+const renderActiveShape = (props: any) => {
+    const RADIAN = Math.PI / 180;
+    const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent } = props;
+    const sin = Math.sin(-RADIAN * midAngle);
+    const cos = Math.cos(-RADIAN * midAngle);
+    const sx = cx + (outerRadius + 10) * cos;
+    const sy = cy + (outerRadius + 10) * sin;
+    const mx = cx + (outerRadius + 30) * cos;
+    const my = cy + (outerRadius + 30) * sin;
+    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+    const ey = my;
+    const textAnchor = cos >= 0 ? 'start' : 'end';
+
+    return (
+      <g>
+        <Sector
+          cx={cx}
+          cy={cy}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          fill={fill}
+        />
+        <Sector
+          cx={cx}
+          cy={cy}
+          startAngle={startAngle}
+          endAngle={endAngle}
+          innerRadius={outerRadius + 6}
+          outerRadius={outerRadius + 10}
+          fill={fill}
+        />
+        <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${payload.name} (${(percent * 100).toFixed(0)}%)`}</text>
+      </g>
+    );
+};
+
+
+const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`Success Rate: ${payload[0].value}%`}</p>
+        </div>
+      );
+    }
+    return null;
+};
+
 const DashboardOverview = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const onPieEnter = (_: any, index: number) => {
+        setActiveIndex(index);
+    };
+
   return (
     <>
       <header className="header">
@@ -73,61 +150,48 @@ const DashboardOverview = () => {
       </div>
 
       <div className="charts-section">
-          <div className="grid-card chart-card">
+        <div className="grid-card chart-card">
             <h3 className="card-title">AI Success Rate Over Time</h3>
             <p className="card-subtitle">Track AI performance trends</p>
             <div className="chart-placeholder">
-              <svg width="100%" height="100%" viewBox="0 0 500 250" preserveAspectRatio="none">
-                <g transform="translate(20, 20)">
-                  {/* X-axis labels */}
-                  {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'].map((label, i) => (
-                    <text key={label} x={i * (460/6)} y="220" fill="#9CA3AF" fontSize="12" textAnchor="middle">{label}</text>
-                  ))}
-                  {/* Data path */}
-                  <path d="M 0 180 Q 76.67 80, 153.33 100 T 306.67 50 T 460 80" fill="none" stroke="#2563EB" strokeWidth="2.5" />
-                  {/* Data points */}
-                  <circle cx="0" cy="180" r="4" fill="white" stroke="#2563EB" strokeWidth="2" />
-                  <circle cx="153.33" cy="100" r="4" fill="white" stroke="#2563EB" strokeWidth="2" />
-                  <circle cx="306.67" cy="50" r="4" fill="white" stroke="#2563EB" strokeWidth="2" />
-                  <circle cx="460" cy="80" r="4" fill="white" stroke="#2563EB" strokeWidth="2" />
-                </g>
-              </svg>
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={successRateData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                        <XAxis dataKey="name" tick={{ fill: '#9CA3AF', fontSize: 12 }} axisLine={false} tickLine={false} />
+                        <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#2563EB', strokeWidth: 1, strokeDasharray: '3 3' }} />
+                        <Line type="monotone" dataKey="rate" stroke="#2563EB" strokeWidth={2.5} dot={{ r: 4, fill: 'white', stroke: '#2563EB', strokeWidth: 2 }} activeDot={{ r: 6 }} />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
-          </div>
-          <div className="grid-card chart-card">
+        </div>
+        <div className="grid-card chart-card">
             <h3 className="card-title">Denial Types Distribution</h3>
             <p className="card-subtitle">Most common denial reasons</p>
             <div className="chart-placeholder pie-chart-container">
-            <svg width="100%" height="100%" viewBox="0 0 360 250" preserveAspectRatio="xMidYMid meet">
-                <g transform="translate(180, 125)">
-                  {/* Slices */}
-                  <path d="M 0,-90 A 90 90 0 0 1 85.59,27.81 Z" fill="#93C5FD"></path>
-                  <path d="M 85.59,27.81 A 90 90 0 0 1 -52.89,72.82 Z" fill="#6EE7B7"></path>
-                  <path d="M -52.89,72.82 A 90 90 0 0 1 -85.59,-27.81 Z" fill="#A78BFA"></path>
-                  <path d="M -85.59,-27.81 A 90 90 0 0 1 -52.89,-72.82 Z" fill="#C4B5FD"></path>
-                  <path d="M -52.89,-72.82 A 90 90 0 0 1 0,-90 Z" fill="#F5F5F5"></path>
-                </g>
-                <g className="pie-labels" fontSize="12" fill="#111827">
-                  {/* Prior Authorization */}
-                  <line x1="228" y1="91" x2="248" y2="81" stroke="#6B7280" strokeWidth="1"/>
-                  <text x="253" y="81" dy=".35em" textAnchor="start">Prior Authorization 35%</text>
-                  {/* Coding Errors */}
-                  <line x1="151" y1="193" x2="141" y2="213" stroke="#6B7280" strokeWidth="1"/>
-                  <text x="136" y="213" dy=".35em" textAnchor="end">Coding Errors 25%</text>
-                  {/* Missing Documents */}
-                  <line x1="100" y1="153" x2="70" y2="153" stroke="#6B7280" strokeWidth="1"/>
-                  <text x="65" y="153" dy=".35em" textAnchor="end">Missing Documents 20%</text>
-                  {/* Duplicate Claims */}
-                  <line x1="106" y1="62" x2="86" y2="42" stroke="#6B7280" strokeWidth="1"/>
-                  <text x="81" y="42" dy=".35em" textAnchor="end">Duplicate Claims 12%</text>
-                  {/* Coverage Issues */}
-                  <line x1="142" y1="42" x2="162" y2="22" stroke="#6B7280" strokeWidth="1"/>
-                  <text x="167" y="22" dy=".35em" textAnchor="start">Coverage Issues 8%</text>
-                </g>
-              </svg>
+                <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                        <Pie
+                            activeIndex={activeIndex}
+                            activeShape={renderActiveShape}
+                            data={denialData}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={60}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            onMouseEnter={onPieEnter}
+                            isAnimationActive={true}
+                        >
+                            {denialData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={entry.color} />
+                            ))}
+                        </Pie>
+                    </PieChart>
+                </ResponsiveContainer>
             </div>
-          </div>
-      </div>
+        </div>
+    </div>
+
 
       <div className="bottom-section">
         <div className="grid-card activity-card">
