@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Dashboard.css';
 import DashboardOverview from './DashboardOverview';
 import ClaimsManagement from './ClaimsManagement';
