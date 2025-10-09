@@ -144,14 +144,14 @@ const ClaimsManagement = () => {
           <table className="claims-table">
             <thead>
               <tr>
-                <th>Claim ID</th>
-                <th>Customer</th>
-                <th>Provider</th>
-                <th>Payer</th>
-                <th>Date Issued</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th className="th-claim-id">Claim ID</th>
+                <th className="th-customer">Customer</th>
+                <th className="th-provider">Provider</th>
+                <th className="th-payer">Payer</th>
+                <th className="th-date-issued">Date Issued</th>
+                <th className="th-amount">Amount</th>
+                <th className="th-status">Status</th>
+                <th className="th-actions">Actions</th>
               </tr>
             </thead>
             <tbody>
