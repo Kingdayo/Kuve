@@ -339,7 +339,7 @@
 }
 
 .claims-table-wrapper {
-  overflow-x: hidden; /* Per instructions, to prevent scrollbar. We must ensure content fits. */
+  overflow-x: hidden; /* Per instructions, to prevent scrollbar. */
   flex-grow: 1;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -357,27 +357,28 @@
   padding: 6px 8px; /* 6px vertical, 8px horizontal */
   text-align: left;
   vertical-align: middle;
-  font-size: 13px;
-  line-height: 18px;
-  word-wrap: break-word; /* Allow content to wrap */
+  font-size: 13px; /* Reduced from 14px */
+  line-height: 18px; /* Reduced from 20px */
+  word-wrap: break-word;
 }
 
 .claims-table th {
-  font-weight: 500;
+  font-weight: 500; /* Medium */
   color: var(--secondary-text);
   background-color: var(--light-gray-bg);
-  white-space: nowrap; /* Prevent headers from wrapping */
+  white-space: nowrap;
+  font-size: 13px; /* Matching cell font size */
 }
 
-/* --- CRITICAL: Column Widths (Restored to original generous values) --- */
-.th-claim-id { width: 140px; }
-.th-customer { width: 160px; }
+/* --- CRITICAL: Column Widths (Adjusted for fit) --- */
+.th-claim-id { width: 120px; }
+.th-customer { width: 140px; }
 .th-provider { width: 120px; }
-.th-payer { width: 120px; }
-.th-date-issued { width: 150px; }
-.th-amount { width: 100px; }
-.th-status { width: 130px; }
-.th-actions { width: 80px; }
+.th-payer { width: 110px; }
+.th-date-issued { width: 140px; }
+.th-amount { width: 90px; }
+.th-status { width: 120px; }
+.th-actions { width: 60px; }
 
 /* Alignment per spec */
 .claims-table th.th-amount, .claims-table td.amount { text-align: right; }
@@ -390,7 +391,7 @@
 
 .claims-table tbody tr {
   border-bottom: 1px solid var(--border);
-  min-height: 56px;
+  min-height: 56px; /* Maintain minimum row height */
 }
 .claims-table tbody tr:last-child {
   border-bottom: none;
@@ -402,7 +403,7 @@
 
 .claims-table td {
   color: var(--primary-text);
-  white-space: normal; /* Allow text to wrap in cells */
+  white-space: normal;
 }
 
 .claim-id {
@@ -421,8 +422,9 @@
   font-size: 12px;
   color: #4B5563;
   line-height: 1.4;
-  white-space: normal;
+  white-space: normal; /* Allow soft wrapping */
   max-width: 100%;
+  word-break: break-word; /* Allow long text to wrap */
 }
 
 .pill-badge .pill-icon {
@@ -439,8 +441,9 @@
 /* Amount & Status Optimization */
 .claims-table .amount {
   font-weight: 700; /* Bold */
-  color: var(--green); /* Use variable for consistency */
+  color: var(--green);
   font-size: 14px; /* Keep font size for emphasis */
+  font-family: monospace; /* For alignment */
 }
 
 .status-badge {
@@ -491,12 +494,12 @@
 
 /* Actions Column Optimization per spec */
 .actions-cell {
-  padding: 8px; /* Padding for the cell */
+  padding: 8px; /* Reduced padding */
 }
 .actions-icon {
   width: 16px;
   height: 16px;
-  color: #6B7280; /* Gray color for the icon */
+  color: #6B7280;
   cursor: pointer;
 }
 
