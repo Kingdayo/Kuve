@@ -25,6 +25,8 @@
   background-color: var(--light-gray-bg);
   height: 100%;
   font-family: 'Inter', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Header Section */
@@ -369,15 +371,15 @@
   white-space: nowrap; /* Prevent headers from wrapping */
 }
 
-/* --- CRITICAL: Column Widths (Adjusted proportionally to fit container) --- */
-.th-claim-id { width: 119px; }
-.th-customer { width: 136px; }
-.th-provider { width: 102px; }
-.th-payer { width: 102px; }
-.th-date-issued { width: 128px; }
-.th-amount { width: 85px; }
-.th-status { width: 111px; }
-.th-actions { width: 68px; }
+/* --- CRITICAL: Column Widths (Restored to original generous values) --- */
+.th-claim-id { width: 140px; }
+.th-customer { width: 160px; }
+.th-provider { width: 120px; }
+.th-payer { width: 120px; }
+.th-date-issued { width: 150px; }
+.th-amount { width: 100px; }
+.th-status { width: 130px; }
+.th-actions { width: 80px; }
 
 /* Alignment per spec */
 .claims-table th.th-amount, .claims-table td.amount { text-align: right; }
