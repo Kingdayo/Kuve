@@ -36,46 +36,82 @@ const ClaimsManagement = () => {
 
         <div className="claims-stat-cards">
           {/* Claims Card */}
-          <div className="stat-card">
-            <svg className="stat-card-icon claims" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-            <p className="stat-card-main-number claims">105</p>
-            <p className="stat-card-label">Claims</p>
-            <p className="stat-card-subtext"><span className="arrow">↑</span> 5 Received Today</p>
+          <div className="stat-card claims">
+            <div className="card-content">
+              <div className="stat-card-icon-container">
+                <svg className="stat-card-icon claims" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              </div>
+              <div className="card-info">
+                <p className="stat-card-main-number claims">105</p>
+                <p className="stat-card-label">Claims</p>
+                <p className="stat-card-subtext"><span className="arrow">↑</span> 5 Received Today</p>
+              </div>
+            </div>
           </div>
           {/* In Process Card */}
-          <div className="stat-card">
-            <svg className="stat-card-icon in-process" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <p className="stat-card-main-number in-process">2</p>
-            <p className="stat-card-label">In Process</p>
-            <p className="stat-card-subtext">Avg 14 min</p>
+          <div className="stat-card in-process">
+            <div className="card-content">
+              <div className="stat-card-icon-container">
+                <svg className="stat-card-icon in-process" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div className="card-info">
+                <p className="stat-card-main-number in-process">2</p>
+                <p className="stat-card-label">In Process</p>
+                <p className="stat-card-subtext">Avg 14 min</p>
+              </div>
+            </div>
           </div>
           {/* Needs Review Card */}
-          <div className="stat-card">
-            <svg className="stat-card-icon needs-review" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
-            <p className="stat-card-main-number needs-review">3</p>
-            <p className="stat-card-label">Needs Review</p>
-            <p className="stat-card-subtext">Awaiting your approval</p>
+          <div className="stat-card needs-review">
+            <div className="card-content">
+              <div className="stat-card-icon-container">
+                <svg className="stat-card-icon needs-review" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
+              </div>
+              <div className="card-info">
+                <p className="stat-card-main-number needs-review">3</p>
+                <p className="stat-card-label">Needs Review</p>
+                <p className="stat-card-subtext">Awaiting your approval</p>
+              </div>
+            </div>
           </div>
           {/* Approved & Sent Card */}
-          <div className="stat-card">
-            <svg className="stat-card-icon approved-sent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <p className="stat-card-main-number approved-sent">93</p>
-            <p className="stat-card-label">Approved & Sent</p>
-            <p className="stat-card-subtext">Sent to insurers</p>
+          <div className="stat-card approved-sent">
+            <div className="card-content">
+              <div className="stat-card-icon-container">
+                <svg className="stat-card-icon approved-sent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div className="card-info">
+                <p className="stat-card-main-number approved-sent">93</p>
+                <p className="stat-card-label">Approved & Sent</p>
+                <p className="stat-card-subtext">Sent to insurers</p>
+              </div>
+            </div>
           </div>
           {/* Resubmission Card */}
-          <div className="stat-card">
-            <svg className="stat-card-icon resubmission" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16" /></svg>
-            <p className="stat-card-main-number resubmission">2</p>
-            <p className="stat-card-label">Resubmission</p>
-            <p className="stat-card-subtext">Pending corrections</p>
+          <div className="stat-card resubmission">
+            <div className="card-content">
+              <div className="stat-card-icon-container">
+                <svg className="stat-card-icon resubmission" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h5M20 20v-5h-5M4 4l16 16" /></svg>
+              </div>
+              <div className="card-info">
+                <p className="stat-card-main-number resubmission">2</p>
+                <p className="stat-card-label">Resubmission</p>
+                <p className="stat-card-subtext">Pending corrections</p>
+              </div>
+            </div>
           </div>
           {/* Appeal Card */}
-          <div className="stat-card">
-            <svg className="stat-card-icon appeal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
-            <p className="stat-card-main-number appeal">5</p>
-            <p className="stat-card-label">Appeal</p>
-            <p className="stat-card-subtext">Challenging denials</p>
+          <div className="stat-card appeal">
+            <div className="card-content">
+              <div className="stat-card-icon-container">
+                <svg className="stat-card-icon appeal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
+              </div>
+              <div className="card-info">
+                <p className="stat-card-main-number appeal">5</p>
+                <p className="stat-card-label">Appeal</p>
+                <p className="stat-card-subtext">Challenging denials</p>
+              </div>
+            </div>
           </div>
         </div>
 
