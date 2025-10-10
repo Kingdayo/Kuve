@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Dashboard.css';
 import DashboardOverview from './DashboardOverview';
 import ClaimsManagement from './ClaimsManagement';
+import AlertPanel from './AlertPanel';
 // import akuveraLogo from '../assets/akuvera-logo.svg';
 
 const Dashboard = () => {
@@ -60,7 +61,16 @@ const Dashboard = () => {
         </div>
       </aside>
       <main className="main-content-dashboard">
-        {activeView === 'overview' ? <DashboardOverview /> : <ClaimsManagement />}
+        {activeView === 'overview' ? (
+          <>
+            <AlertPanel />
+            <div className="overview-content-wrapper">
+              <DashboardOverview />
+            </div>
+          </>
+        ) : (
+          <ClaimsManagement />
+        )}
       </main>
     </div>
   );
