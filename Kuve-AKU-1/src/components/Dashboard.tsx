@@ -64,7 +64,9 @@ const Dashboard = () => {
         {activeView === 'overview' ? (
           <>
             <AlertPanel />
-            <DashboardOverview />
+            <div className="overview-content-wrapper">
+              <DashboardOverview />
+            </div>
           </>
         ) : (
           <ClaimsManagement />
