@@ -137,7 +137,7 @@ const DashboardOverview = () => {
                             outerRadius={65}
                             innerRadius={50}
                             dataKey="value"
-                            isAnimationActive={false}
+                            isAnimationActive={true}
                          >
                             {denialData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.color} />
