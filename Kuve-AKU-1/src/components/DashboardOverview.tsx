@@ -1,4 +1,5 @@
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
+import { useState } from 'react';
 import './DashboardOverview.css';
 
 const successRateData = [
@@ -20,7 +21,11 @@ const denialData = [
 ];
 
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name }: any) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name, index }: any, activeSegment: number | null) => {
+    if (index !== activeSegment) {
+        return null;
+    }
+
     const radius = outerRadius + 25;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -58,8 +63,23 @@ const CustomTooltip = ({ active, payload }: any) => {
 };
 
 const DashboardOverview = () => {
+  const [activeSegment, setActiveSegment] = useState(null);
+
   return (
     <>
+      <header className="header">
+        <div>
+          <h1 className="header-title">Dashboard Overview</h1>
+          <p className="header-subtitle">Real-time akuvera AI processing and claim resolution monitoring</p>
+        </div>
+        <div className="timeframe-selector">
+          Timeframe: This Month
+          <svg xmlns="http://www.w3.org/2000/svg" className="dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </div>
+      </header>
+
       <div className="stat-cards">
         <div className="stat-card">
           <div className="stat-card-icon-container">
@@ -133,11 +153,13 @@ const DashboardOverview = () => {
                             cx="50%"
                             cy="45%"
                             labelLine={false}
-                            label={renderCustomizedLabel}
+                            label={(props) => renderCustomizedLabel(props, activeSegment)}
                             outerRadius={65}
                             innerRadius={50}
                             dataKey="value"
-                            isAnimationActive={true}
+                            isAnimationActive={false}
+                            onMouseEnter={(_, index) => setActiveSegment(index)}
+                            onMouseLeave={() => setActiveSegment(null)}
                          >
                             {denialData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.color} />
