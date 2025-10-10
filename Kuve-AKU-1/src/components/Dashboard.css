@@ -127,22 +127,13 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.dashboard-body {
-  display: flex;
-  flex-direction: row;
-  gap: 16px; /* This creates the margin between the Alert Panel and the main content */
-  align-items: flex-start;
-  flex: 1;
+  gap: 24px; /* Gap between header and body */
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px; /* Reduced from 24px */
 }
 
 .header-title {
@@ -183,13 +174,17 @@
   color: #9CA3AF;
 }
 
-.left-column, .right-column {
-  display: flex;
-  flex-direction: column;
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1fr for the left column, 2fr for the right */
+  grid-template-rows: auto auto; /* Two rows, height determined by content */
   gap: 24px;
+  grid-template-areas:
+    "alert overview"
+    "activity insights";
 }
 
-.right-column {
-  flex: 1;
-  min-width: 0; /* Prevents flexbox overflow */
-}
+.grid-item-alert { grid-area: alert; }
+.grid-item-overview { grid-area: overview; }
+.grid-item-activity { grid-area: activity; }
+.grid-item-insights { grid-area: insights; }
