@@ -3,7 +3,8 @@ import './Dashboard.css';
 import DashboardOverview from './DashboardOverview';
 import ClaimsManagement from './ClaimsManagement';
 import AlertPanel from './AlertPanel';
-// import akuveraLogo from '../assets/akuvera-logo.svg';
+import RecentActivity from './RecentActivity';
+import AiLearningInsights from './AiLearningInsights';
 
 const Dashboard = () => {
   const [activeView, setActiveView] = useState('overview'); // 'overview' or 'claims'
@@ -63,9 +64,13 @@ const Dashboard = () => {
       <main className="main-content-dashboard">
         {activeView === 'overview' ? (
           <>
-            <AlertPanel />
-            <div className="overview-content-wrapper">
+            <div className="left-column">
+              <AlertPanel />
+              <RecentActivity />
+            </div>
+            <div className="right-column">
               <DashboardOverview />
+              <AiLearningInsights />
             </div>
           </>
         ) : (
