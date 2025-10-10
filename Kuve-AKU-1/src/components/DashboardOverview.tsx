@@ -59,7 +59,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 
 const DashboardOverview = () => {
   return (
-    <>
+    <div>
       <header className="header">
         <div>
           <h1 className="header-title">Dashboard Overview</h1>
@@ -249,7 +249,7 @@ const DashboardOverview = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
