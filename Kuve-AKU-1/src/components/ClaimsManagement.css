@@ -21,7 +21,6 @@
 
 /* Global styles for the view */
 .claims-management {
-  padding: 2rem 2.5rem;
   background-color: var(--light-gray-bg);
   /* height: 100%; */ /* <-- Removed to fix top-left alignment */
   font-family: 'Inter', sans-serif;
