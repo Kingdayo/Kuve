@@ -75,16 +75,12 @@ const Dashboard = () => {
           </div>
         </header>
         {activeView === 'overview' ? (
-          <div className="dashboard-body">
-            <div className="left-column">
-              <AlertPanel />
-              <RecentActivity />
+            <div className="dashboard-grid">
+                <div className="grid-item-alert"><AlertPanel /></div>
+                <div className="grid-item-overview"><DashboardOverview /></div>
+                <div className="grid-item-activity"><RecentActivity /></div>
+                <div className="grid-item-insights"><AiLearningInsights /></div>
             </div>
-            <div className="right-column">
-              <DashboardOverview />
-              <AiLearningInsights />
-            </div>
-          </div>
         ) : (
           <ClaimsManagement />
         )}
