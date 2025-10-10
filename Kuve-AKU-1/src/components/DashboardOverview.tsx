@@ -211,7 +211,8 @@ const DashboardOverview = () => {
         <div className="grid-card insights-card">
           <h3 className="card-title icon-title">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l3.75-3.75m0 0L11.25 6l3.75 3.75M7.5 13.5v4.5m12-4.5v-4.5m-4.5 0h-3M15 12h3m-3 3h3" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.913 2.623a.75.75 0 011.174 0l1.83 2.135a.75.75 0 00.585.29V5.25a.75.75 0 01.75.75c0 .098-.019.192-.053.278l-1.558 3.635a.75.75 0 01-1.32-.567l1.558-3.635a.75.75 0 00-.586-.29V5a.75.75 0 01-.75-.75V2.623zM13.5 15.75a3 3 0 00-3-3H6.75a3 3 0 00-3 3v.75a3 3 0 003 3h3.75a3 3 0 003-3v-.75z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
             </svg>
             AI Learning Insights
           </h3>
@@ -219,7 +220,8 @@ const DashboardOverview = () => {
             <div className="insight-item">
               <div className="insight-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-2.474-1.75-1.75 2.474-.569-2.225-2.51L16.6 13.684l2.225 2.51-2.474.569 1.75 1.75-2.474.569-2.51-2.225z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
               <h4>Pattern Recognition</h4>
@@ -228,7 +230,8 @@ const DashboardOverview = () => {
             <div className="insight-item">
               <div className="insight-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662a48.678 48.678 0 007.462 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12v5.25c0 .621-.504 1.125-1.125 1.125H5.625c-.621 0-1.125-.504-1.125-1.125V12m15 0a48.667 48.667 0 00-7.5 0" />
                 </svg>
               </div>
               <h4>Auto-Resolution</h4>
@@ -237,8 +240,7 @@ const DashboardOverview = () => {
             <div className="insight-item">
               <div className="insight-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.357-.466.557-.327l5.603 3.112z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
               <h4>Processing Speed</h4>
