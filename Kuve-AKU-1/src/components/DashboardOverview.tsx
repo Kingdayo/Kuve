@@ -1,5 +1,4 @@
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
-import { useState } from 'react';
 import './DashboardOverview.css';
 
 const successRateData = [
@@ -21,11 +20,7 @@ const denialData = [
 ];
 
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name, index }: any, activeSegment: number | null) => {
-    if (index !== activeSegment) {
-        return null;
-    }
-
+const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name }: any) => {
     const radius = outerRadius + 25;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -63,8 +58,6 @@ const CustomTooltip = ({ active, payload }: any) => {
 };
 
 const DashboardOverview = () => {
-  const [activeSegment, setActiveSegment] = useState(null);
-
   return (
     <>
       <header className="header">
@@ -153,13 +146,11 @@ const DashboardOverview = () => {
                             cx="50%"
                             cy="45%"
                             labelLine={false}
-                            label={(props) => renderCustomizedLabel(props, activeSegment)}
+                            label={renderCustomizedLabel}
                             outerRadius={65}
                             innerRadius={50}
                             dataKey="value"
-                            isAnimationActive={false}
-                            onMouseEnter={(_, index) => setActiveSegment(index)}
-                            onMouseLeave={() => setActiveSegment(null)}
+                            isAnimationActive={true}
                          >
                             {denialData.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.color} />
