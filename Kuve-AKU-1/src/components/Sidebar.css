@@ -18,6 +18,10 @@
 .sidebar-header {
   padding: 0 24px;
   margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .sidebar-logo {
