@@ -175,9 +175,95 @@
   color: #9CA3AF;
 }
 
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 120px;
+}
+
+.stat-card-icon-container {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.stat-card-icon {
+  width: 24px;
+  height: 24px;
+  color: #9CA3AF; /* Default gray for the first card */
+}
+
+.stat-card-label {
+  font-size: 12px;
+  color: #6B7280;
+  margin: 0 0 4px 0;
+}
+
+.stat-card-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.stat-card-subtext {
+  font-size: 12px;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-card-subtext svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Theming for colored cards */
+.stat-card.success {
+  background-color: #FFFBEB; /* light orange/yellow */
+}
+.stat-card.success .stat-card-value,
+.stat-card.success .stat-card-subtext,
+.stat-card.success .stat-card-icon {
+  color: #F59E0B;
+}
+
+.stat-card.patterns {
+  background-color: #EFF6FF; /* light blue */
+}
+.stat-card.patterns .stat-card-value,
+.stat-card.patterns .stat-card-subtext,
+.stat-card.patterns .stat-card-icon {
+  color: #3B82F6;
+}
+
+.stat-card.revenue {
+  background-color: #F0FDF4; /* light green */
+}
+.stat-card.revenue .stat-card-value,
+.stat-card.revenue .stat-card-subtext,
+.stat-card.revenue .stat-card-icon {
+  color: #10B981;
+}
+
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 2fr;
   gap: 24px;
   align-items: start;
 }

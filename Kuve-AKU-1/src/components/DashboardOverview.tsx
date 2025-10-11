@@ -33,54 +33,6 @@ const CustomTooltip = ({ active, payload }: any) => {
 const DashboardOverview = () => {
   return (
     <>
-      <div className="stat-cards">
-        <div className="stat-card">
-          <div className="stat-card-icon-container">
-            <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <p className="stat-card-label">Avg Processing Time</p>
-          <p className="stat-card-value">12m</p>
-          <p className="stat-card-subtext" style={{ color: '#10B981' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style={{ width: '12px', height: '12px', verticalAlign: 'middle' }}>
-              <path fillRule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L6.22 8.77a.75.75 0 01-1.06-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L10.75 5.612V16.25A.75.75 0 0110 17z" clipRule="evenodd" transform="rotate(180 10 10)" />
-            </svg>
-            -40% vs manual
-          </p>
-        </div>
-        <div className="stat-card success">
-          <div className="stat-card-icon-container">
-            <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <p className="stat-card-label">Avg Success Rate</p>
-          <p className="stat-card-value">93%</p>
-          <p className="stat-card-subtext">+2 percent vs last month</p>
-        </div>
-        <div className="stat-card patterns">
-          <div className="stat-card-icon-container">
-            <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" />
-            </svg>
-          </div>
-          <p className="stat-card-label">Patterns Learned</p>
-          <p className="stat-card-value">2,847</p>
-          <p className="stat-card-subtext">Growing daily</p>
-        </div>
-        <div className="stat-card revenue">
-          <div className="stat-card-icon-container">
-            <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 11.21 12.77 10.5 12 10.5s-1.536.71-2.121 1.5c-.586.79-.586 1.804 0 2.594v.026z" />
-            </svg>
-          </div>
-          <p className="stat-card-label">Revenue Generated</p>
-          <p className="stat-card-value">$198,950</p>
-          <p className="stat-card-subtext">This month</p>
-        </div>
-      </div>
-
       <div className="charts-section">
         <div className="grid-card chart-card">
             <h3 className="card-title">AI Success Rate Over Time</h3>
