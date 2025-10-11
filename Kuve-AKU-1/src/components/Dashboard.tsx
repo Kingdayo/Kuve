@@ -83,9 +83,8 @@ const Dashboard = () => {
                 <div className="grid-item-activity"><RecentActivity /></div>
                 <div className="grid-item-insights"><AiLearningInsights /></div>
             </div>
-        ) : (
-          <ClaimsManagement />
-        )}
+        ) : null}
+        {activeView === 'claims' && <ClaimsManagement />}
       </main>
     </div>
   );
