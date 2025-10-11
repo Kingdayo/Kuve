@@ -84,7 +84,7 @@ const Dashboard = () => {
                 <div className="grid-item-insights"><AiLearningInsights /></div>
             </div>
         ) : null}
-        {activeView === 'claims' && <ClaimsManagement />}
+        {activeView === 'claims' && <div className="claims-management-view"><ClaimsManagement /></div>}
       </main>
     </div>
   );
