@@ -126,18 +126,18 @@
   overflow-y: auto;
   padding: 2rem;
   display: flex;
-  flex-direction: row;
-  gap: 16px; /* This creates the margin between the Alert Panel and the main content */
-  align-items: flex-start;
-}
-
-.left-column, .right-column {
-  display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 24px; /* Gap between header and body */
 }
 
-.right-column {
-  flex: 1;
-  min-width: 0; /* Prevents flexbox overflow */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1fr for the left column, 2fr for the right */
+  gap: 24px;
+  align-items: start;
 }
+
+.grid-item-alert { grid-column: 1 / 2; }
+.grid-item-overview { grid-column: 2 / 3; grid-row: 1 / 3; }
+.grid-item-activity { grid-column: 1 / 2; }
+.grid-item-insights { grid-column: 2 / 3; }
