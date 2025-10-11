@@ -62,18 +62,20 @@ const Dashboard = () => {
         </div>
       </aside>
       <main className="main-content-dashboard">
-        <header className="header">
-            <div>
-              <h1 className="header-title">Dashboard Overview</h1>
-              <p className="header-subtitle">Real-time akuvera AI processing and claim resolution monitoring</p>
-            </div>
-            <div className="timeframe-selector">
-              Timeframe: This Month
-              <svg xmlns="http://www.w3.org/2000/svg" className="dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </div>
-        </header>
+        {activeView === 'overview' && (
+          <header className="header">
+              <div>
+                <h1 className="header-title">Dashboard Overview</h1>
+                <p className="header-subtitle">Real-time akuvera AI processing and claim resolution monitoring</p>
+              </div>
+              <div className="timeframe-selector">
+                Timeframe: This Month
+                <svg xmlns="http://www.w3.org/2000/svg" className="dropdown-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
+          </header>
+        )}
         {activeView === 'overview' ? (
             <div className="dashboard-grid">
                 <div className="grid-item-alert"><AlertPanel /></div>
