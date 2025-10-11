@@ -88,7 +88,7 @@ const Dashboard = () => {
                     <h1 className="header-title">Claims Management</h1>
                     <p className="header-subtitle">View and manage all dental claims in detail</p>
                 </div>
-                <div className="timeframe-selector">
+                <div className="header-actions">
                     <div className="search-bar-header">
                         <svg xmlns="http://www.w3.org/2000/svg" className="search-icon" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
@@ -96,10 +96,10 @@ const Dashboard = () => {
                         <input type="text" placeholder="Search from Provider" />
                     </div>
                     <button className="upload-claims-button" onClick={handleOpenModal}>
-                        <svg className="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" >
-                            <path d="M10 12.5V3.33331" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M6.66669 6.66669L10 3.33335L13.3334 6.66669" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M16.6667 10V16.6667H3.33331V10" strokeLinecap="round" strokeLinejoin="round"/>
+                        <svg className="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" >
+                            <path d="M10 12.5V3.33331" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M6.66669 6.66669L10 3.33335L13.3334 6.66669" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M16.6667 10V16.6667H3.33331V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                         Upload Claims
                     </button>

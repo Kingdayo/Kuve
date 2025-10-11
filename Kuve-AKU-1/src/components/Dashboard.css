@@ -150,23 +150,71 @@
   margin-top: 4px;
 }
 
-.timeframe-selector {
+.header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+}
+
+.search-bar-header {
+  display: flex;
+  align-items: center;
   background-color: #FFFFFF;
-  padding: 8px 12px;
-  border-radius: 8px;
   border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: 250px;
+  transition: box-shadow 0.2s;
+}
+
+.search-bar-header:focus-within {
+  box-shadow: 0 0 0 2px #A5B4FC;
+  border-color: #6366F1;
+}
+
+.search-bar-header .search-icon {
+  color: #9CA3AF;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.search-bar-header input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: #111827;
+}
+
+.search-bar-header input::placeholder {
+  color: #9CA3AF;
+}
+
+.upload-claims-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 16px;
+  background-color: #4F46E5;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: #374151;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.timeframe-selector:hover {
-  background-color: #F3F4F6;
+.upload-claims-button:hover {
+  background-color: #4338CA;
+}
+
+.upload-claims-button .upload-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .dropdown-icon {
