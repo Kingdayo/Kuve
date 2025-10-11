@@ -12,7 +12,7 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
   const [activeView, setActiveView] = useState('claims');
   const [passwordCriteria, setPasswordCriteria] = useState({
