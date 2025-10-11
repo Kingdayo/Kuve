@@ -96,6 +96,22 @@
   margin: 0;
 }
 
+.stat-card.claims .stat-card-subtext .arrow.up {
+  color: var(--green);
+}
+
+.stat-card.needs-review .stat-card-subtext {
+  color: var(--orange);
+}
+
+.stat-card.resubmission .stat-card-subtext {
+  color: var(--orange);
+}
+
+.stat-card.appeal .stat-card-subtext {
+  color: var(--red);
+}
+
 .stat-card-main-number {
   font-size: 28px;
   font-weight: 700;
