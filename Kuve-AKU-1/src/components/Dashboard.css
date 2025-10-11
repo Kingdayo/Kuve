@@ -175,7 +175,7 @@
   color: #9CA3AF;
 }
 
-.dashboard-grid {
+.dashboard-grid, .claims-management-view {
   display: grid;
   grid-template-columns: 1fr 2fr; /* 1fr for the left column, 2fr for the right */
   gap: 24px;
@@ -186,3 +186,8 @@
 .grid-item-overview { grid-column: 2 / 3; }
 .grid-item-activity { grid-column: 1 / 2; }
 .grid-item-insights { grid-column: 2 / 3; }
+
+/* Let the claims management component take the full width of the grid */
+.claims-management-view .claims-management {
+  grid-column: 1 / -1;
+}
