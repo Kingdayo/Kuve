@@ -19,33 +19,6 @@ const denialData = [
   { name: 'Coverage Issues', value: 8, color: '#F5F5F5' },
 ];
 
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name }: any) => {
-    const radius = outerRadius + 25;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-    const lineStartX = cx + (outerRadius + 5) * Math.cos(-midAngle * RADIAN);
-    const lineStartY = cy + (outerRadius + 5) * Math.sin(-midAngle * RADIAN);
-    const lineEndX = cx + (outerRadius + 20) * Math.cos(-midAngle * RADIAN);
-    const lineEndY = cy + (outerRadius + 20) * Math.sin(-midAngle * RADIAN);
-
-    return (
-      <g>
-        <path d={`M${lineStartX},${lineStartY}L${lineEndX},${lineEndY}`} stroke="#9CA3AF" fill="none" />
-        <text
-            x={x}
-            y={y}
-            fill="#6B7280"
-            textAnchor={x > cx ? 'start' : 'end'}
-            dominantBaseline="central"
-            fontSize={11}
-        >
-            {`${name} ${(percent * 100).toFixed(0)}%`}
-        </text>
-      </g>
-    );
-};
-
 const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       return (
@@ -146,7 +119,6 @@ const DashboardOverview = () => {
                             cx="50%"
                             cy="45%"
                             labelLine={false}
-                            label={renderCustomizedLabel}
                             outerRadius={65}
                             innerRadius={50}
                             dataKey="value"
