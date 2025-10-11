@@ -138,6 +138,6 @@
 }
 
 .grid-item-alert { grid-column: 1 / 2; }
-.grid-item-overview { grid-column: 2 / 3; grid-row: 1 / 3; }
+.grid-item-overview { grid-column: 2 / 3; }
 .grid-item-activity { grid-column: 1 / 2; }
 .grid-item-insights { grid-column: 2 / 3; }
