@@ -21,94 +21,12 @@
 
 /* Global styles for the view */
 .claims-management {
+  padding: 2rem 2.5rem;
+  background-color: var(--light-gray-bg);
   /* height: 100%; */ /* <-- Removed to fix top-left alignment */
   font-family: 'Inter', sans-serif;
 }
 
-/* Header Section */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.header-title {
-  font-size: 28px;
-  font-weight: 700; /* Bold */
-  color: var(--primary-text);
-  margin: 0;
-}
-
-.header-subtitle {
-  font-size: 14px;
-  color: var(--secondary-text);
-  margin-top: 4px; /* Vertical padding */
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.search-bar-header {
-  display: flex;
-  align-items: center;
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 8px;
-}
-
-.search-bar-header .search-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--blue);
-  margin-right: 8px;
-}
-
-.search-bar-header input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  color: var(--tertiary-text);
-  font-size: 14px;
-}
-
-.search-bar-header input::placeholder {
-  color: var(--blue);
-}
-
-.upload-claims-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 700; /* Bold */
-  color: var(--blue);
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.upload-claims-button:hover {
-  background-color: var(--hover-tint);
-}
-
-.upload-claims-button .upload-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--blue);
-}
-
-.upload-claims-button .upload-icon path {
-    stroke: var(--blue);
-    stroke-width: 2;
-}
 
 
 /* --- Status Summary Cards --- */
