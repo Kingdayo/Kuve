@@ -41,29 +41,31 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--background);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
-.stat-card.claims { background-color: #F5F3FF; }
-.stat-card.in-process { background-color: #EFF6FF; }
-.stat-card.needs-review { background-color: #FFFBEB; }
-.stat-card.approved-sent { background-color: #F0FDF4; }
-.stat-card.resubmission { background-color: #F0FDF4; }
-.stat-card.appeal { background-color: #FEF2F2; }
+.stat-card.claims .stat-card-icon-container { background-color: #F5F3FF; }
+.stat-card.in-process .stat-card-icon-container { background-color: #EFF6FF; }
+.stat-card.needs-review .stat-card-icon-container { background-color: #FFFBEB; }
+.stat-card.approved-sent .stat-card-icon-container { background-color: #F0FDF4; }
+.stat-card.resubmission .stat-card-icon-container { background-color: #F0FDF4; }
+.stat-card.appeal .stat-card-icon-container { background-color: #FEF2F2; }
 
 
 .card-content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .stat-card-icon-container {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,65 +77,35 @@
   height: 20px;
 }
 
-.stat-card-icon.claims { color: var(--purple); }
-.stat-card-icon.in-process { color: var(--blue); }
-.stat-card-icon.needs-review { color: var(--orange); }
-.stat-card-icon.approved-sent { color: var(--green); }
-.stat-card-icon.resubmission { color: var(--green); }
-.stat-card-icon.appeal { color: var(--red); }
+.stat-card-icon.claims { color: #8B5CF6; }
+.stat-card-icon.in-process { color: #3B82F6; }
+.stat-card-icon.needs-review { color: #F59E0B; }
+.stat-card-icon.approved-sent { color: #10B981; }
+.stat-card-icon.resubmission { color: #10B981; }
+.stat-card-icon.appeal { color: #EF4444; }
 
-.stat-card-main-number {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.stat-card-main-number.claims,
-.stat-card.claims .stat-card-label,
-.stat-card.claims .stat-card-subtext {
-  color: var(--purple);
-}
-
-.stat-card-main-number.in-process,
-.stat-card.in-process .stat-card-label,
-.stat-card.in-process .stat-card-subtext {
-  color: var(--blue);
-}
-
-.stat-card-main-number.needs-review,
-.stat-card.needs-review .stat-card-label,
-.stat-card.needs-review .stat-card-subtext {
-  color: var(--orange);
-}
-
-.stat-card-main-number.approved-sent,
-.stat-card.approved-sent .stat-card-label,
-.stat-card.approved-sent .stat-card-subtext {
-  color: var(--green);
-}
-
-.stat-card-main-number.resubmission,
-.stat-card.resubmission .stat-card-label,
-.stat-card.resubmission .stat-card-subtext {
-  color: var(--green);
-}
-
-.stat-card-main-number.appeal,
-.stat-card.appeal .stat-card-label,
-.stat-card.appeal .stat-card-subtext {
-  color: var(--red);
+.card-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .stat-card-label {
   font-size: 14px;
-  font-weight: 500; /* Medium */
+  font-weight: 500;
   color: var(--secondary-text);
+  margin: 0;
+}
+
+.stat-card-main-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-text);
   margin: 4px 0;
 }
 
 .stat-card-subtext {
   font-size: 12px;
-  color: var(--tertiary-text);
+  color: var(--secondary-text);
   margin: 0;
 }
 
@@ -157,85 +129,52 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border);
   background-color: var(--background);
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
 }
 
 .tabs {
   display: flex;
-  gap: 4px;
-  flex-shrink: 1;
-  overflow-x: auto;
-  padding-bottom: 8px; /* Space for a more substantial scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: var(--blue-border-active) var(--light-gray-bg);
-}
-
-/* Themed Scrollbar for Webkit browsers (Chrome, Safari, etc.) */
-.tabs::-webkit-scrollbar {
-  height: 8px;
-}
-
-.tabs::-webkit-scrollbar-track {
-  background-color: var(--light-gray-bg);
-  border-radius: 4px;
-}
-
-.tabs::-webkit-scrollbar-thumb {
-  background-color: var(--blue-border-active);
-  border-radius: 4px;
-  border: 2px solid var(--light-gray-bg); /* Creates a padding effect */
-}
-
-.tabs::-webkit-scrollbar-thumb:hover {
-  background-color: var(--blue);
+  gap: 8px;
 }
 
 .table-actions {
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .tab-button {
-  padding: 8px 16px;
+  padding: 8px 12px;
   font-size: 14px;
-  font-weight: 500; /* Medium */
-  border: 1px solid transparent;
+  font-weight: 500;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   background-color: transparent;
   color: var(--secondary-text);
   transition: all 0.2s ease-in-out;
+  border-bottom: 2px solid transparent;
 }
 
 .tab-button.active {
-  background-color: var(--light-blue-active-tab);
-  border: 1px solid var(--blue-border-active);
-  color: var(--blue-text-active);
+  color: var(--blue);
+  border-bottom: 2px solid var(--blue);
 }
 
 .tab-button:not(.active):hover {
   background-color: var(--hover-tint);
 }
 
-.table-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .table-search-bar {
   display: flex;
   align-items: center;
-  background-color: var(--background);
+  background-color: var(--light-gray-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 8px; /* 6px vertical + 1px border = ~8px */
-  width: 200px;
-  height: 36px;
-  margin-left: 16px;
+  padding: 8px 12px;
+  width: 220px;
 }
 
 .table-search-bar .search-icon {
@@ -293,42 +232,22 @@
 .claims-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* Critical for fixed column widths */
 }
 
-/* Typography and Padding Adjustments per spec */
 .claims-table th,
 .claims-table td {
-  padding: 6px 8px; /* 6px vertical, 8px horizontal */
+  padding: 12px 16px;
   text-align: left;
   vertical-align: middle;
-  font-size: 13px; /* Reduced from 14px */
-  line-height: 18px; /* Reduced from 20px */
-  word-wrap: break-word;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .claims-table th {
-  font-weight: 500; /* Medium */
+  font-weight: 500;
   color: var(--secondary-text);
   background-color: var(--light-gray-bg);
-  white-space: nowrap;
-  font-size: 13px; /* Matching cell font size */
 }
-
-/* --- CRITICAL: Column Widths (Adjusted for fit) --- */
-.th-claim-id { width: 120px; }
-.th-customer { width: 140px; }
-.th-provider { width: 120px; }
-.th-payer { width: 110px; }
-.th-date-issued { width: 140px; }
-.th-amount { width: 90px; }
-.th-status { width: 120px; }
-.th-actions { width: 60px; }
-
-/* Alignment per spec */
-.claims-table th.th-amount, .claims-table td.amount { text-align: right; }
-.claims-table th.th-status, .claims-table td.status-cell { text-align: center; }
-.claims-table th.th-actions, .claims-table td.actions-cell { text-align: center; }
 
 .claims-table thead tr {
   border-bottom: 1px solid var(--border);
@@ -336,72 +255,70 @@
 
 .claims-table tbody tr {
   border-bottom: 1px solid var(--border);
-  min-height: 56px; /* Maintain minimum row height */
 }
+
 .claims-table tbody tr:last-child {
   border-bottom: none;
 }
 
 .claims-table tbody tr:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+.claims-table tbody tr:nth-child(odd) {
   background-color: var(--light-gray-bg);
 }
 
 .claims-table td {
   color: var(--primary-text);
-  white-space: normal;
 }
 
 .claim-id {
   font-family: monospace;
 }
 
-/* Pill Badge Optimization per spec */
 .pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 6px;
-  border: 1px solid #D1D5DB;
-  border-radius: 6px;
-  background-color: #F3F4F6;
+  padding: 4px 10px;
+  border-radius: 16px;
   font-size: 12px;
-  color: #4B5563;
-  line-height: 1.4;
-  white-space: normal; /* Allow soft wrapping */
-  max-width: 100%;
-  word-break: break-word; /* Allow long text to wrap */
+  font-weight: 500;
+}
+
+.pill-badge.provider {
+  background-color: #E0E7FF;
+  color: #4338CA;
+}
+
+.pill-badge.payer {
+  background-color: #DBEAFE;
+  color: #1E40AF;
 }
 
 .pill-badge .pill-icon {
-  width: 12px;
-  height: 12px;
-  color: #9CA3AF;
-  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 
 .date-issued {
   color: var(--secondary-text);
 }
 
-/* Amount & Status Optimization */
-.claims-table .amount {
-  font-weight: 700; /* Bold */
+.amount {
+  font-weight: 500;
   color: var(--green);
-  font-size: 14px; /* Keep font size for emphasis */
-  font-family: monospace; /* For alignment */
 }
 
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 6px; /* Reduced padding */
-  border-radius: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
   font-size: 12px;
   font-weight: 500;
-  white-space: normal; /* Allow soft wrap */
-  line-height: 1.4;
-  max-width: 100%;
 }
 
 .status-badge .status-icon {
