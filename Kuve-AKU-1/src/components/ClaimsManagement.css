@@ -1,88 +1,98 @@
-:root {
-  --primary-text: #111827;
-  --secondary-text: #6B7280;
-  --tertiary-text: #9CA3AF;
-  --background: #FFFFFF;
-  --light-gray-bg: #F9FAFB;
-  --border: #E5E7EB;
-  --purple: #8B5CF6;
-  --blue: #3B82F6;
-  --orange: #F59E0B;
-  --green: #10B981;
-  --red: #EF4444;
-  --light-blue-active-tab: #DBEAFE;
-  --light-yellow-needs-review: #FEF3C7;
-  --light-green-approved: #DCFCE7;
-  --dark-blue-text: #1F2937;
-  --hover-tint: #F3F4F6;
-  --blue-text-active: #2563EB;
-  --blue-border-active: #93C5FD;
+.claims-management-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-/* Global styles for the view */
-.claims-management {
-  padding: 2rem 2.5rem;
-  background-color: var(--light-gray-bg);
-  /* height: 100%; */ /* <-- Removed to fix top-left alignment */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  color: #666666;
+  margin-top: 8px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid #D0D0D0;
+  background-color: #FFFFFF;
   font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
+.action-button:hover {
+  background-color: #F5F5F5;
+}
 
+.action-icon {
+  width: 16px;
+  height: 16px;
+}
 
 /* --- Status Summary Cards --- */
 .claims-stat-cards {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 16px;
-  margin-bottom: 2rem;
 }
 
 .stat-card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
   padding: 16px;
-  background-color: var(--background);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: relative;
 }
-
-.stat-card.claims .stat-card-icon-container { background-color: #F5F3FF; }
-.stat-card.in-process .stat-card-icon-container { background-color: #EFF6FF; }
-.stat-card.needs-review .stat-card-icon-container { background-color: #FFFBEB; }
-.stat-card.approved-sent .stat-card-icon-container { background-color: #F0FDF4; }
-.stat-card.resubmission .stat-card-icon-container { background-color: #F0FDF4; }
-.stat-card.appeal .stat-card-icon-container { background-color: #FEF2F2; }
-
 
 .card-content {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
 }
 
 .stat-card-icon-container {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
 }
 
 .stat-card-icon {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
 }
 
-.stat-card-icon.claims { color: #8B5CF6; }
-.stat-card-icon.in-process { color: #3B82F6; }
-.stat-card-icon.needs-review { color: #F59E0B; }
-.stat-card-icon.approved-sent { color: #10B981; }
-.stat-card-icon.resubmission { color: #10B981; }
-.stat-card-icon.appeal { color: #EF4444; }
+.claims .stat-card-icon { color: #7C4DFF; }
+.in-process .stat-card-icon { color: #1976D2; }
+.needs-review .stat-card-icon { color: #FF9800; }
+.approved-sent .stat-card-icon { color: #4CAF50; }
+.resubmission .stat-card-icon { color: #8BC34A; }
+.appeal .stat-card-icon { color: #F44336; }
+
 
 .card-info {
   display: flex;
@@ -92,62 +102,52 @@
 .stat-card-label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--secondary-text);
+  color: #666666;
   margin: 0;
-}
-
-.stat-card.claims .stat-card-subtext .arrow.up {
-  color: var(--green);
-}
-
-.stat-card.needs-review .stat-card-subtext {
-  color: var(--orange);
-}
-
-.stat-card.resubmission .stat-card-subtext {
-  color: var(--orange);
-}
-
-.stat-card.appeal .stat-card-subtext {
-  color: var(--red);
 }
 
 .stat-card-main-number {
   font-size: 28px;
   font-weight: 700;
-  color: var(--primary-text);
-  margin: 4px 0;
+  margin: 8px 0;
 }
+
+.claims .stat-card-main-number { color: #7C4DFF; }
+.in-process .stat-card-main-number { color: #1976D2; }
+.needs-review .stat-card-main-number { color: #FF9800; }
+.approved-sent .stat-card-main-number { color: #4CAF50; }
+.resubmission .stat-card-main-number { color: #8BC34A; }
+.appeal .stat-card-main-number { color: #F44336; }
+
 
 .stat-card-subtext {
   font-size: 12px;
-  color: var(--secondary-text);
+  color: #666666;
   margin: 0;
 }
 
-.stat-card-subtext .arrow {
-  color: var(--green);
-  font-weight: bold;
-}
+.claims .stat-card-subtext { color: #4CAF50; }
+.needs-review .stat-card-subtext { color: #FF9800; }
+.resubmission .stat-card-subtext { color: #8BC34A; }
+.appeal .stat-card-subtext { color: #F44336; }
+
 
 /* --- Tab Navigation Bar & Table Container --- */
 .claims-table-container {
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 12px; /* Rounded corners for the whole container */
-  box-shadow: none;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Ensures child corners are clipped */
+  overflow: hidden;
 }
 
 .claims-table-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border);
-  background-color: var(--background);
+  padding: 0 16px;
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .tabs {
@@ -155,46 +155,47 @@
   gap: 8px;
 }
 
-.table-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .tab-button {
-  padding: 8px 12px;
+  padding: 12px 16px;
   font-size: 14px;
   font-weight: 500;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   background-color: transparent;
-  color: var(--secondary-text);
+  color: #333333;
   transition: all 0.2s ease-in-out;
   border-bottom: 2px solid transparent;
 }
 
 .tab-button.active {
-  color: var(--blue);
-  border-bottom: 2px solid var(--blue);
+  color: #0066CC;
+  border-bottom: 2px solid #0066CC;
+  background-color: #E6F2FF;
 }
 
 .tab-button:not(.active):hover {
-  background-color: var(--hover-tint);
+  background-color: #F0F7FF;
+}
+
+.table-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
 }
 
 .table-search-bar {
   display: flex;
   align-items: center;
-  background-color: var(--light-gray-bg);
-  border: 1px solid var(--border);
+  background-color: #FFFFFF;
+  border: 1px solid #D0D0D0;
   border-radius: 8px;
   padding: 8px 12px;
-  width: 220px;
+  width: 250px;
 }
 
 .table-search-bar .search-icon {
-  color: var(--tertiary-text);
+  color: #666666;
   width: 16px;
   height: 16px;
   margin-right: 8px;
@@ -206,43 +207,39 @@
   background-color: transparent;
   width: 100%;
   font-size: 14px;
-  color: var(--primary-text);
+  color: #333333;
 }
 .table-search-bar input::placeholder {
-  color: var(--tertiary-text);
+  color: #999999;
 }
 
 .table-action-button {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
-  height: 36px;
-  background-color: var(--background);
-  border: 1px solid var(--border);
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #D0D0D0;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--secondary-text);
+  color: #333333;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .table-action-button:hover {
-  background-color: var(--hover-tint);
+  background-color: #F5F5F5;
 }
 
 .table-action-button .action-icon {
   width: 16px;
   height: 16px;
-  color: var(--secondary-text);
+  color: #666666;
 }
 
 .claims-table-wrapper {
-  overflow-x: hidden; /* Per instructions, to prevent scrollbar. */
-  flex-grow: 1;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  overflow-x: auto;
 }
 
 .claims-table {
@@ -261,36 +258,33 @@
 
 .claims-table th {
   font-weight: 500;
-  color: var(--secondary-text);
-  background-color: var(--light-gray-bg);
-}
-
-.claims-table thead tr {
-  border-bottom: 1px solid var(--border);
+  color: #333333;
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .claims-table tbody tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #E5E5E5;
 }
 
 .claims-table tbody tr:last-child {
   border-bottom: none;
 }
 
-.claims-table tbody tr:nth-child(even) {
-  background-color: #FFFFFF;
+.claims-table tbody tr:nth-child(odd) {
+  background-color: #FAFAFA;
 }
 
-.claims-table tbody tr:nth-child(odd) {
-  background-color: var(--light-gray-bg);
+.claims-table tbody tr:hover {
+  background-color: #F5F5F5;
 }
 
 .claims-table td {
-  color: var(--primary-text);
+  color: #333333;
 }
 
 .claim-id {
-  font-family: monospace;
+  font-family: 'Inter', sans-serif;
 }
 
 .pill-badge {
@@ -301,30 +295,18 @@
   border-radius: 16px;
   font-size: 12px;
   font-weight: 500;
-}
-
-.pill-badge.provider {
-  background-color: #E0E7FF;
-  color: #4338CA;
-}
-
-.pill-badge.payer {
-  background-color: #DBEAFE;
-  color: #1E40AF;
-}
-
-.pill-badge .pill-icon {
-  width: 14px;
-  height: 14px;
+  background-color: #E6F2FF;
+  border: 1px solid #B3D9FF;
+  color: #0066CC;
 }
 
 .date-issued {
-  color: var(--secondary-text);
+  color: #666666;
 }
 
 .amount {
-  font-weight: 500;
-  color: var(--green);
+  font-weight: 700;
+  color: #2E7D32;
 }
 
 .status-badge {
@@ -344,40 +326,27 @@
 }
 
 .status-badge.in-process {
-  background-color: var(--light-blue-active-tab);
-  color: var(--blue-text-active);
-  border: 1px solid var(--blue-border-active);
-}
-.status-badge.in-process .status-icon {
-  color: var(--blue-text-active);
+  background-color: #E6F2FF;
+  color: #0066CC;
 }
 
 .status-badge.needs-review {
-  background-color: var(--light-yellow-needs-review);
-  color: #F59E0B;
-  border: 1px solid #FBBF24;
-}
-.status-badge.needs-review .status-icon {
-  color: #F59E0B;
+  background-color: #FFFBEB;
+  color: #FF9800;
 }
 
 .status-badge.approved-sent {
-  background-color: var(--light-green-approved);
-  color: var(--green);
-  border: 1px solid #34D399;
-}
-.status-badge.approved-sent .status-icon {
-  color: var(--green);
+  background-color: #F0FDF4;
+  color: #4CAF50;
 }
 
-/* Actions Column Optimization per spec */
 .actions-cell {
-  padding: 8px; /* Reduced padding */
+  text-align: center;
 }
 .actions-icon {
   width: 16px;
   height: 16px;
-  color: #6B7280;
+  color: #666666;
   cursor: pointer;
 }
 
@@ -391,7 +360,7 @@
 }
 
 @media (max-width: 992px) {
-  .claims-management {
+  .claims-management-page {
     padding: 1.5rem;
   }
   .claims-table-header {
@@ -401,6 +370,7 @@
   }
   .tabs {
     width: 100%;
+    overflow-x: auto;
     padding-bottom: 8px; /* space for scrollbar */
     scrollbar-width: thin;
   }
@@ -413,30 +383,29 @@
       background-color: #d1d5db;
       border-radius: 2px;
   }
-  .table-actions {
-    margin-left: 0;
+  .table-controls {
     width: 100%;
     justify-content: flex-start;
   }
-  .search-bar {
+  .table-search-bar {
     flex-grow: 1;
   }
-  .search-bar input {
+  .table-search-bar input {
       width: 100%;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .claims-management .header {
+  .header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  .claims-management .header-actions {
+  .header-actions {
       width: 100%;
   }
-  .claims-management .header-button {
+  .action-button {
       flex-grow: 1;
       justify-content: center;
   }
@@ -459,11 +428,11 @@
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
     }
-    .table-actions {
+    .table-controls {
         flex-direction: column;
         align-items: stretch;
     }
-    .filter-button, .export-button {
+    .table-action-button {
         justify-content: center;
     }
 }

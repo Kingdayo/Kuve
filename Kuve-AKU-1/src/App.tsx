@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SplashScreen from './SplashScreen';
 import Dashboard from './components/Dashboard';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoginView, setIsLoginView] = useState(true);
+  const [activeView, setActiveView] = useState('claims');
   const [passwordCriteria, setPasswordCriteria] = useState({
     uppercase: false,
     lowercase: false,
@@ -96,13 +98,10 @@ function App() {
   if (isLoggedIn) {
     return (
       <div className="app dashboard-view">
-        <Dashboard />
-        <footer className="footer">
-          <div className="footer-content">
-            <span className="version">v1.0.0</span>
-            <span className="copyright">© 2025 Akuvera. All rights reserved.</span>
-          </div>
-        </footer>
+        <Sidebar activeView={activeView} setActiveView={setActiveView} />
+        <div className="main-content">
+          <Dashboard activeView={activeView} />
+        </div>
       </div>
     );
   }

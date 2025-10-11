@@ -1,0 +1,120 @@
+.sidebar {
+  width: 240px;
+  background-color: #F5F9FC;
+  border-right: 1px solid #E5E5E5;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sidebar-header {
+  padding: 0 24px;
+  margin-bottom: 24px;
+}
+
+.sidebar-logo {
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.sidebar-tagline {
+  font-size: 12px;
+  color: #666666;
+  margin: 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav .nav-item {
+  padding: 0 24px;
+}
+
+.sidebar-nav .nav-item a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333333;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s, color 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-nav .nav-item:hover a {
+  background-color: #F0F7FF;
+}
+
+.sidebar-nav .nav-item.active a {
+  background-color: #E6F2FF;
+  color: #0066CC;
+  border-left-color: #0066CC;
+}
+
+.sidebar-nav .nav-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 16px;
+  color: #666666;
+}
+
+.sidebar-nav .nav-item.active .nav-icon {
+  color: #0066CC;
+}
+
+.sidebar-footer {
+  padding: 0 24px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #0066CC;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #333333;
+  font-size: 14px;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #666666;
+}
+
+.settings-icon {
+  width: 20px;
+  height: 20px;
+  color: #666666;
+  margin-left: auto;
+  cursor: pointer;
+}

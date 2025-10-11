@@ -418,20 +418,18 @@ body, html {
 
 /* Dashboard Layout Overrides */
 .dashboard-view {
-  justify-content: flex-start; /* Align content to the top */
-  align-items: stretch; /* Stretch items to fill width */
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.dashboard-view .footer {
-  position: static; /* Let footer be part of the document flow */
-  background-color: #FFFFFF; /* Give it a background */
-  border-top: 1px solid #E5E7EB; /* Add a border */
-  padding: 1rem 2.5rem; /* Match dashboard padding */
-}
-
-.dashboard-view .footer-content {
-  max-width: none; /* Allow footer content to be full width */
-  padding: 0;
+.main-content {
+  flex: 1;
+  margin-left: 240px; /* Same as sidebar width */
+  overflow-y: auto;
+  padding: 24px;
+  background-color: #FFFFFF;
 }
 
 /* Footer */
