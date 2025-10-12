@@ -3,6 +3,7 @@ import './ReviewIssues.css';
 
 interface ReviewIssuesProps {
   onClose: () => void;
+  onSendToProvider: () => void;
 }
 
 const issuesData = [
@@ -26,7 +27,7 @@ const issuesData = [
   },
 ];
 
-const ReviewIssues: React.FC<ReviewIssuesProps> = ({ onClose }) => {
+const ReviewIssues: React.FC<ReviewIssuesProps> = ({ onClose, onSendToProvider }) => {
   const [checkedState, setCheckedState] = useState(
     new Array(issuesData.length).fill(false)
   );
@@ -78,7 +79,7 @@ const ReviewIssues: React.FC<ReviewIssuesProps> = ({ onClose }) => {
       </div>
       <div className="modal-footer">
         <button className="back-button" onClick={onClose}>Back</button>
-        <button className={`send-button ${isAnyCheckboxChecked ? 'active' : ''}`}>Send to Provider</button>
+        <button className={`send-button ${isAnyCheckboxChecked ? 'active' : ''}`} onClick={onSendToProvider} disabled={!isAnyCheckboxChecked}>Send to Provider</button>
       </div>
     </>
   );

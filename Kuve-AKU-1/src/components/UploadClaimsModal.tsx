@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './UploadClaimsModal.css';
 import ReviewIssues from './ReviewIssues';
+import ProviderCommunication from './ProviderCommunication';
+import UploadComplete from './UploadComplete';
 
-type UploadStage = 'idle' | 'processing' | 'success' | 'review';
+type UploadStage = 'idle' | 'processing' | 'success' | 'review' | 'communication' | 'uploadComplete';
 
 interface UploadClaimsModalProps {
   isOpen: boolean;
@@ -186,7 +188,9 @@ const UploadClaimsModal: React.FC<UploadClaimsModalProps> = ({ isOpen, onClose }
         {uploadStage === 'idle' && renderIdleState()}
         {uploadStage === 'processing' && renderProcessingState()}
         {uploadStage === 'success' && renderSuccessState()}
-        {uploadStage === 'review' && <ReviewIssues onClose={handleClose} />}
+        {uploadStage === 'review' && <ReviewIssues onClose={handleClose} onSendToProvider={() => setUploadStage('communication')} />}
+        {uploadStage === 'communication' && <ProviderCommunication onBack={() => setUploadStage('review')} onSend={() => setUploadStage('uploadComplete')} />}
+        {uploadStage === 'uploadComplete' && <UploadComplete onClose={handleClose} />}
       </div>
     </div>
   );

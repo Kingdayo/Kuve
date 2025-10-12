@@ -1,0 +1,142 @@
+.provider-communication-body {
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.provider-communication-body h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1F2937;
+}
+
+.provider-communication-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: #4B5563;
+}
+
+.communication-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    background-color: #F9FAFB;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+}
+
+.detail-item .detail-label {
+    display: block;
+    font-size: 12px;
+    color: #6B7280;
+    margin-bottom: 4px;
+}
+
+.detail-item .detail-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+}
+
+.claims-correction-list .claim-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.claims-correction-list .claim-item:last-child {
+    border-bottom: none;
+}
+
+.claim-patient {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+}
+
+.claim-meta {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.fax-preview {
+    margin-top: 24px;
+}
+
+.fax-content {
+    background-color: #F9FAFB;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.5;
+}
+
+.fax-content p {
+    margin: 0 0 12px 0;
+}
+
+.fax-content p:last-child {
+    margin-bottom: 0;
+}
+
+.next-steps-banner {
+    margin-top: 24px;
+    background-color: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.next-steps-banner h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #1E40AF;
+}
+
+.next-steps-banner ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin: 0;
+    color: #1E40AF;
+    font-size: 14px;
+}
+
+.next-steps-banner li {
+    position: relative;
+    padding-left: 4px;
+    margin-bottom: 4px;
+}
+
+.next-steps-banner li::before {
+    content: '•';
+    position: absolute;
+    left: -16px;
+    color: #3B82F6;
+    font-size: 14px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    border-top: 1px solid #E5E7EB;
+    background-color: #F9FAFB;
+}
+
+.modal-footer .back-button {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    color: #374151;
+}
+
+.modal-footer .send-button.active {
+    background-color: #2563EB;
+    color: white;
+}
