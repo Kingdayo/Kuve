@@ -9,7 +9,7 @@ def run(playwright):
     # Give the server a moment to start
     time.sleep(10)
 
-    page.goto("http://localhost:5176/")
+    page.goto("http://localhost:5173/")
 
     # Wait for the splash screen to be visible
     page.wait_for_selector('.splash-card', state='visible')

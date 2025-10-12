@@ -1,8 +1,4 @@
-Port 5173 is in use, trying another one...
-Port 5174 is in use, trying another one...
-Port 5175 is in use, trying another one...
 
-  VITE v5.4.20  ready in 283 ms
+> vite-react-app@0.0.0 dev
+> vite
 
-  ➜  Local:   http://localhost:5176/
-  ➜  Network: use --host to expose
