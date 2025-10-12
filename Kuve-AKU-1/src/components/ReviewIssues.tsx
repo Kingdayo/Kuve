@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ReviewIssues.css';
 
 interface ReviewIssuesProps {
@@ -27,6 +27,20 @@ const issuesData = [
 ];
 
 const ReviewIssues: React.FC<ReviewIssuesProps> = ({ onClose }) => {
+  const [checkedState, setCheckedState] = useState(
+    new Array(issuesData.length).fill(false)
+  );
+
+  const handleOnChange = (position: number) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
+  };
+
+  const isAnyCheckboxChecked = checkedState.some(state => state);
+
   return (
     <>
       <div className="review-issues-header">
@@ -45,7 +59,11 @@ const ReviewIssues: React.FC<ReviewIssuesProps> = ({ onClose }) => {
         {issuesData.map((item, index) => (
           <div key={index} className="table-row">
             <div className="cell patient">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={checkedState[index]}
+                onChange={() => handleOnChange(index)}
+              />
               <div>
                 <p className="patient-name">{item.patient}</p>
                 <p className="claim-id">{item.claimId}</p>
@@ -60,7 +78,7 @@ const ReviewIssues: React.FC<ReviewIssuesProps> = ({ onClose }) => {
       </div>
       <div className="modal-footer">
         <button className="back-button" onClick={onClose}>Back</button>
-        <button className="send-button">Send to Provider</button>
+        <button className={`send-button ${isAnyCheckboxChecked ? 'active' : ''}`}>Send to Provider</button>
       </div>
     </>
   );
