@@ -47,6 +47,15 @@
   background-color: #F5F5F5;
 }
 
+.action-button.search-button,
+.action-button.upload-button {
+  color: #1976D2;
+}
+
+.action-button.search-button .action-icon {
+  color: #1976D2;
+}
+
 .action-icon {
   width: 16px;
   height: 16px;
