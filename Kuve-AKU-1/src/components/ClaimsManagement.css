@@ -38,7 +38,7 @@
   background-color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: var(--blue);
+  color: #333333;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -66,24 +66,6 @@
   background-color: #FFFFFF;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   position: relative;
-}
-.stat-card.claims {
-  background-color: #F5F3FF;
-}
-.stat-card.in-process {
-  background-color: #EFF6FF;
-}
-.stat-card.needs-review {
-  background-color: #FFFBEB;
-}
-.stat-card.approved-sent {
-  background-color: #F0FDF4;
-}
-.stat-card.resubmission {
-  background-color: #F0FDF4;
-}
-.stat-card.appeal {
-  background-color: #FEF2F2;
 }
 
 .card-content {
@@ -208,7 +190,6 @@
   border-radius: 8px;
   padding: 8px 12px;
   width: 250px;
-  color: var(--blue);
 }
 
 .table-search-bar .search-icon {
@@ -346,21 +327,15 @@
   background-color: #E6F2FF;
   color: #0066CC;
 }
+
 .status-badge.needs-review {
   background-color: #FFFBEB;
   color: #FF9800;
 }
+
 .status-badge.approved-sent {
   background-color: #F0FDF4;
   color: #4CAF50;
-}
-.status-badge.resubmission {
-    background-color: #F0FDF4;
-    color: #8BC34A;
-}
-.status-badge.appeal {
-    background-color: #FEF2F2;
-    color: #F44336;
 }
 
 .actions-cell {
