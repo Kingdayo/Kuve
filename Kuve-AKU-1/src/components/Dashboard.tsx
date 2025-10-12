@@ -4,12 +4,13 @@ import ClaimsManagement from './ClaimsManagement';
 
 interface DashboardProps {
   activeView: string;
+  onUploadClaims: () => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ activeView }) => {
+const Dashboard: React.FC<DashboardProps> = ({ activeView, onUploadClaims }) => {
   return (
     <div className="dashboard-content">
-      {activeView === 'overview' ? <DashboardOverview /> : <ClaimsManagement />}
+      {activeView === 'overview' ? <DashboardOverview /> : <ClaimsManagement onUploadClaims={onUploadClaims} />}
     </div>
   );
 };

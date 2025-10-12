@@ -1,7 +1,11 @@
 import React from 'react';
 import './ClaimsManagement.css';
 
-const ClaimsManagement = () => {
+interface ClaimsManagementProps {
+  onUploadClaims: () => void;
+}
+
+const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims }) => {
   return (
     <div className="claims-management-page">
       <div className="claims-stat-cards">
