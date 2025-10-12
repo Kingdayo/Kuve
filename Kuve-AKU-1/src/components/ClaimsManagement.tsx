@@ -90,9 +90,10 @@ const initialClaimsData = [
 
 interface ClaimsManagementProps {
   onUploadClaims: () => void;
+  onOpenReviewModal: (claim: any) => void;
 }
 
-const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims }) => {
+const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onOpenReviewModal }) => {
   const [claimsData, setClaimsData] = useState(initialClaimsData);
   const [activeTab, setActiveTab] = useState('All Claims');
   const [searchQuery, setSearchQuery] = useState('');
@@ -237,21 +238,21 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims }) =
             </button>
           </div>
         </div>
-        <div className="claims-table-wrapper">
-          <table className="claims-table">
-            <thead>
-              <tr>
-                <th className="th-claim-id">Claim ID</th>
-                <th className="th-customer">Customer</th>
-                <th className="th-provider">Provider</th>
-                <th className="th-payer">Payer</th>
-                <th className="th-date-issued">Date Issued</th>
-                <th className="th-amount">Amount</th>
-                <th className="th-status">Status</th>
-                <th className="th-actions">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+      <div className="claims-table-wrapper">
+        <table className="claims-table">
+          <thead>
+            <tr>
+              <th className="th-claim-id">Claim ID</th>
+              <th className="th-customer">Customer</th>
+              <th className="th-provider">Provider</th>
+              <th className="th-payer">Payer</th>
+              <th className="th-date-issued">Date Issued</th>
+              <th className="th-amount">Amount</th>
+              <th className="th-status">Status</th>
+              <th className="th-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
             {filteredClaims.map((claim, index) => (
               <tr key={index}>
                 <td className="claim-id">{claim.claimId}</td>
@@ -271,13 +272,17 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims }) =
                   </div>
                 </td>
                 <td className="actions-cell">
-                  <svg className="actions-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg>
+                  {claim.status === 'Needs Review' ? (
+                    <button className="review-button" onClick={() => onOpenReviewModal(claim)}>Review</button>
+                  ) : (
+                    <svg className="actions-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg>
+                  )}
                 </td>
               </tr>
             ))}
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   );
