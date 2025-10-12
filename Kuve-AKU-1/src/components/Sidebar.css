@@ -15,9 +15,15 @@
   flex-grow: 1;
 }
 
+.sidebar-header {
+  padding: 0 24px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
 .sidebar-logo {
   height: 40px;
-  margin: 0 auto 24px;
+  margin: 0 auto;
   display: block;
 }
 

@@ -10,7 +10,9 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
   return (
     <aside className="sidebar">
-      <img src={akuveraLogo} alt="Akuvera Logo" className="sidebar-logo" />
+      <div className="sidebar-header">
+        <img src={akuveraLogo} alt="Akuvera Logo" className="sidebar-logo" />
+      </div>
       <nav className="sidebar-nav">
         <ul>
           <li className={`nav-item ${activeView === 'overview' ? 'active' : ''}`}>
