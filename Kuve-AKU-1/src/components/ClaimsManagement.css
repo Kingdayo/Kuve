@@ -193,7 +193,7 @@
 }
 
 .table-search-bar .search-icon {
-  color: #666666;
+  color: #1976D2;
   width: 16px;
   height: 16px;
   margin-right: 8px;
@@ -208,7 +208,7 @@
   color: #333333;
 }
 .table-search-bar input::placeholder {
-  color: #999999;
+  color: #1976D2;
 }
 
 .table-action-button {
@@ -221,7 +221,7 @@
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: #333333;
+  color: #1976D2;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -233,7 +233,7 @@
 .table-action-button .action-icon {
   width: 16px;
   height: 16px;
-  color: #666666;
+  color: #1976D2;
 }
 
 .claims-table-wrapper {

@@ -18,13 +18,17 @@
 .sidebar-header {
   padding: 0 24px;
   margin-bottom: 24px;
-  text-align: center;
 }
 
 .sidebar-logo {
   height: 40px;
-  margin: 0 auto;
-  display: block;
+  margin-bottom: 8px;
+}
+
+.sidebar-tagline {
+  font-size: 12px;
+  color: #666666;
+  margin: 0;
 }
 
 .sidebar-nav ul {
