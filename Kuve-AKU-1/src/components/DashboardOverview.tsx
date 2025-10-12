@@ -35,7 +35,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 
 const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, name }) => {
   const RADIAN = Math.PI / 180;
-  const radius = outerRadius * 1.6; // Increase this value to move the labels further out
+  const radius = outerRadius * 1.2;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -90,7 +90,9 @@ const DashboardOverview = () => {
       <div className="grid-item-4 stat-card revenue">
         <div className="stat-card-header">
             <p className="stat-card-label">Revenue Generated</p>
-            <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 11.21 12.77 10.5 12 10.5s-1.536.71-2.121 1.5c-.586.79-.586 1.804 0 2.594v.026z" /></svg>
+            <svg className="stat-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V6.375c0-.621.504-1.125 1.125-1.125h.375m18 0v-1.5c0-.621-.504-1.125-1.125-1.125H3.75" />
+            </svg>
         </div>
         <p className="stat-card-value">$198,950</p>
         <p className="stat-card-subtext">This month</p>
@@ -117,10 +119,11 @@ const DashboardOverview = () => {
                      <Pie
                         data={denialData}
                         cx="50%"
-                        cy="45%"
+                        cy="50%"
                         labelLine={false}
                         label={renderCustomizedLabel}
-                        outerRadius={65}
+                        outerRadius={80}
+                        innerRadius={60}
                         dataKey="value"
                         onMouseEnter={onPieEnter}
                         onMouseLeave={onPieLeave}

@@ -1,9 +1,5 @@
-.grid-card {
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  border-radius: 12px;
-  padding: 16px;
+.activity-card {
+    padding: 24px;
 }
 
 .card-title.icon-title {
@@ -11,22 +7,21 @@
   align-items: center;
   gap: 8px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   color: #111827;
-  margin: 0 0 4px 0;
+  margin: 0 0 16px 0;
 }
 
 .card-title.icon-title svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   color: #9CA3AF;
 }
 
 .activity-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 16px;
 }
 
 .activity-item {
@@ -36,8 +31,8 @@
 }
 
 .activity-icon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -46,19 +41,19 @@
 }
 
 .activity-icon svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   color: white;
 }
 
-.activity-icon.approved { background-color: #10B981; }
-.activity-icon.processing { background-color: #9CA3AF; }
-.activity-icon.onboarded { background-color: #3B82F6; }
+.activity-icon.approved { background-color: #E0F2FE; color: #0EA5E9; }
+.activity-icon.processing { background-color: #E0F2FE; color: #0EA5E9; }
+.activity-icon.onboarded { background-color: #E0F2FE; color: #0EA5E9; }
 
 .activity-details p {
   margin: 0;
   font-size: 14px;
-  color: #111827;
+  color: #374151;
   font-weight: 500;
 }
 
