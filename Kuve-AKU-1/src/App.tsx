@@ -3,6 +3,7 @@ import SplashScreen from './SplashScreen';
 import Dashboard from './components/Dashboard';
 import Sidebar from './components/Sidebar';
 import UploadClaimsModal from './components/UploadClaimsModal';
+import ReviewIssuesModal from './components/ReviewIssuesModal';
 import './App.css';
 
 function App() {
@@ -97,12 +98,25 @@ function App() {
     }
   };
 
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [selectedClaimForReview, setSelectedClaimForReview] = useState<any>(null);
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleOpenReviewModal = (claim: any) => {
+    setSelectedClaimForReview(claim);
+    setIsReviewModalOpen(true);
+  };
+
+  const handleCloseReviewModal = () => {
+    setIsReviewModalOpen(false);
+    setSelectedClaimForReview(null);
   };
 
   if (isLoggedIn) {
@@ -153,9 +167,10 @@ function App() {
               )}
             </div>
           </header>
-          <Dashboard activeView={activeView} onUploadClaims={handleOpenModal} />
+          <Dashboard activeView={activeView} onUploadClaims={handleOpenModal} onOpenReviewModal={handleOpenReviewModal} />
         </div>
         <UploadClaimsModal isOpen={isModalOpen} onClose={handleCloseModal} />
+        <ReviewIssuesModal isOpen={isReviewModalOpen} onClose={handleCloseReviewModal} claimData={selectedClaimForReview} />
       </div>
     );
   }
