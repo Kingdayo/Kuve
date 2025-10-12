@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './UploadClaimsModal.css';
+import ReviewIssues from './ReviewIssues';
 
-type UploadStage = 'idle' | 'processing' | 'success';
+type UploadStage = 'idle' | 'processing' | 'success' | 'review';
 
 interface UploadClaimsModalProps {
   isOpen: boolean;
@@ -44,6 +45,10 @@ const UploadClaimsModal: React.FC<UploadClaimsModalProps> = ({ isOpen, onClose }
   const handleUpload = () => {
     if (!selectedProvider || !uploadedFile) return;
     setUploadStage('processing');
+  };
+
+  const handleReviewIssues = () => {
+    setUploadStage('review');
   };
 
   const handleClose = () => {
@@ -162,7 +167,7 @@ const UploadClaimsModal: React.FC<UploadClaimsModalProps> = ({ isOpen, onClose }
       </div>
       <footer className="modal-footer">
           <button className="footer-button cancel" onClick={handleClose}>Cancel</button>
-          <button className="footer-button upload">Review Issues</button>
+          <button className="footer-button upload" onClick={handleReviewIssues}>Review Issues</button>
       </footer>
     </>
   );
@@ -181,6 +186,7 @@ const UploadClaimsModal: React.FC<UploadClaimsModalProps> = ({ isOpen, onClose }
         {uploadStage === 'idle' && renderIdleState()}
         {uploadStage === 'processing' && renderProcessingState()}
         {uploadStage === 'success' && renderSuccessState()}
+        {uploadStage === 'review' && <ReviewIssues onClose={handleClose} />}
       </div>
     </div>
   );

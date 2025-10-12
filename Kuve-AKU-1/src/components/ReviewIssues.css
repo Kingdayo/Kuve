@@ -1,0 +1,135 @@
+.review-issues-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 24px;
+}
+
+.review-issues-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.issues-count {
+  background-color: #FEF3F2;
+  color: #D94B4B;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.attention-banner {
+  background-color: #F8F9FA;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 24px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.attention-banner p {
+  color: #4B5563;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.issues-table {
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 24px;
+}
+
+.table-header-row, .table-row {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.table-header-row {
+  background-color: #F9FAFB;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6B7280;
+  text-transform: uppercase;
+}
+
+.table-row {
+  border-top: 1px solid #E5E7EB;
+}
+
+.cell {
+  font-size: 14px;
+  color: #111827;
+}
+
+.cell.patient {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-name {
+  font-weight: 500;
+}
+
+.claim-id {
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.cell.issues {
+  color: #4B5563;
+}
+
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  display: inline-block;
+}
+
+.status-pill.error {
+  background-color: #FEF3F2;
+  color: #D94B4B;
+}
+
+.status-pill.warning {
+  background-color: #FFFBEB;
+  color: #F59E0B;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0 24px 24px;
+}
+
+.modal-footer button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #D1D5DB;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: white;
+  color: #374151;
+}
+
+.send-button {
+  background-color: #D1D5DB;
+  color: #9CA3AF;
+  border-color: #D1D5DB;
+}
