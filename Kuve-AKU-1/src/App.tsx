@@ -100,6 +100,49 @@ function App() {
       <div className="app dashboard-view">
         <Sidebar activeView={activeView} setActiveView={setActiveView} />
         <div className="main-content">
+          <header className="header">
+            <div>
+              <h1 className="header-title">
+                {activeView === 'overview' ? 'Dashboard Overview' : 'Claims Management'}
+              </h1>
+              <p className="header-subtitle">
+                {activeView === 'overview'
+                  ? 'Real-time akuvera AI processing and claim resolution monitoring'
+                  : 'View and manage all dental claims in detail'}
+              </p>
+            </div>
+            <div className="header-actions">
+              {activeView === 'overview' ? (
+                <div className="timeframe-selector">
+                  <select>
+                    <option>This Month</option>
+                    <option>This Quarter</option>
+                    <option>This Year</option>
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="timeframe-arrow" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              ) : (
+                <>
+                  <button className="action-button search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="action-icon" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                    </svg>
+                    Search from Provider
+                  </button>
+                  <button className="action-button upload-button">
+                    <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M10 12.5V3.33331" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M6.66669 6.66669L10 3.33335L13.3334 6.66669" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M16.6667 10V16.6667H3.33331V10" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Upload Claims
+                  </button>
+                </>
+              )}
+            </div>
+          </header>
           <Dashboard activeView={activeView} />
         </div>
       </div>
