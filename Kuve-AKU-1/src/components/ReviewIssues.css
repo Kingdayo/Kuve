@@ -74,6 +74,10 @@
   gap: 12px;
 }
 
+.cell.patient input[type="checkbox"] {
+  background-color: white;
+}
+
 .patient-name {
   font-weight: 500;
 }
