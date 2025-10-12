@@ -67,6 +67,24 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   position: relative;
 }
+.stat-card.claims {
+  background-color: #F5F3FF;
+}
+.stat-card.in-process {
+  background-color: #EFF6FF;
+}
+.stat-card.needs-review {
+  background-color: #FFFBEB;
+}
+.stat-card.approved-sent {
+  background-color: #F0FDF4;
+}
+.stat-card.resubmission {
+  background-color: #F0FDF4;
+}
+.stat-card.appeal {
+  background-color: #FEF2F2;
+}
 
 .card-content {
   display: flex;
