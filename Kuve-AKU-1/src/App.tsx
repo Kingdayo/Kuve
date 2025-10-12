@@ -14,7 +14,7 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
-  const [activeView, setActiveView] = useState('claims');
+  const [activeView, setActiveView] = useState('overview');
   const [passwordCriteria, setPasswordCriteria] = useState({
     uppercase: false,
     lowercase: false,

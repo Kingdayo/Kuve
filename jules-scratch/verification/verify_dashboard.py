@@ -9,7 +9,7 @@ def run(playwright):
     # Give the server a moment to start
     time.sleep(10)
 
-    page.goto("http://localhost:5173/")
+    page.goto("http://localhost:5176/")
 
     # Wait for the splash screen to be visible
     page.wait_for_selector('.splash-card', state='visible')
@@ -28,7 +28,7 @@ def run(playwright):
     page.click('button[type="submit"]')
 
     # Wait for the dashboard to load
-    page.wait_for_selector('.dashboard-grid', state='visible')
+    page.wait_for_selector('.dashboard-view', state='visible')
 
     # Take a screenshot of the dashboard
     page.screenshot(path="jules-scratch/verification/verification.png", full_page=True)
