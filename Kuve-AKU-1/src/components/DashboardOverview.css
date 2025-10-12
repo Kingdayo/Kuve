@@ -60,23 +60,47 @@
     gap: 4px;
 }
 
-.stat-card.success { background-color: #F0FDF4; border-color: #A7F3D0; }
-.stat-card.success .stat-card-value { color: #15803D; }
-.stat-card.success .stat-card-label { color: #16A34A; }
-.stat-card.success .stat-card-icon { color: #4ADE80; }
-.stat-card.success .stat-card-subtext { color: #16A34A; }
+.stat-card.success {
+    background-color: #FFFFFF;
+    border-color: #E5E7EB;
+}
+.stat-card.success .stat-card-value {
+    color: #10B981;
+}
+.stat-card.success .stat-card-subtext {
+    color: #10B981;
+}
+.stat-card.success .stat-card-icon {
+    color: #10B981;
+}
 
-.stat-card.patterns { background-color: #EFF6FF; border-color: #BFDBFE; }
-.stat-card.patterns .stat-card-value { color: #1E40AF; }
-.stat-card.patterns .stat-card-label { color: #3B82F6; }
-.stat-card.patterns .stat-card-icon { color: #60A5FA; }
-.stat-card.patterns .stat-card-subtext { color: #3B82F6; }
+.stat-card.patterns {
+    background-color: #EFF6FF;
+    border-color: #BFDBFE;
+}
+.stat-card.patterns .stat-card-value {
+    color: #3B82F6;
+}
+.stat-card.patterns .stat-card-subtext {
+    color: #3B82F6;
+}
+.stat-card.patterns .stat-card-icon {
+    color: #3B82F6;
+}
 
-.stat-card.revenue { background-color: #F0FDF4; border-color: #A7F3D0;}
-.stat-card.revenue .stat-card-value { color: #16A34A; }
-.stat-card.revenue .stat-card-label { color: #16A34A; }
-.stat-card.revenue .stat-card-icon { color: #4ADE80; }
-.stat-card.revenue .stat-card-subtext { color: #16A34A; }
+.stat-card.revenue {
+    background-color: #F0FDF4;
+    border-color: #A7F3D0;
+}
+.stat-card.revenue .stat-card-value {
+    color: #16A34A;
+}
+.stat-card.revenue .stat-card-subtext {
+    color: #16A34A;
+}
+.stat-card.revenue .stat-card-icon {
+    color: #16A34A;
+}
 
 .grid-card {
   background-color: #FFFFFF;
