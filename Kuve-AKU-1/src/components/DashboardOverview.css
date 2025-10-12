@@ -1,47 +1,11 @@
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     gap: 24px;
     padding: 24px;
     background-color: #F9FAFB;
     height: 100vh;
-}
-
-.dashboard-header {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dashboard-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #111827;
-  margin: 0;
-}
-
-.dashboard-subtitle {
-  font-size: 14px;
-  color: #6B7280;
-  margin: 4px 0 0 0;
-}
-
-.timeframe-selector {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #374151;
-}
-
-.timeframe-selector select {
-  margin-left: 8px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #D1D5DB;
-  background-color: white;
-  font-weight: 500;
 }
 
 .left-column {

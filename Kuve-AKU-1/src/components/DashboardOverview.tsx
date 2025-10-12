@@ -78,24 +78,9 @@ const DashboardOverview = () => {
 
   return (
     <div className="dashboard-grid">
-      <div className="dashboard-header">
-        <div>
-          <h1 className="dashboard-title">Dashboard Overview</h1>
-          <p className="dashboard-subtitle">Real-time Akuvera AI processing and claim resolution monitoring</p>
-        </div>
-        <div className="timeframe-selector">
-          <label htmlFor="timeframe">Timeframe: </label>
-          <select id="timeframe" name="timeframe" defaultValue="this-month">
-            <option value="this-month">This Month</option>
-            <option value="last-month">Last Month</option>
-            <option value="last-90-days">Last 90 Days</option>
-          </select>
-        </div>
-      </div>
-      <>
-        <div className="left-column">
-            <div className="alert-panel">
-              <div className="alert-header">
+      <div className="left-column">
+          <div className="alert-panel">
+            <div className="alert-header">
                 <AlertIcon />
                 <h3 className="alert-title">Alert</h3>
               </div>
@@ -239,7 +224,6 @@ const DashboardOverview = () => {
             <AiLearningInsights />
           </div>
         </div>
-      </>
     </div>
   );
 };
