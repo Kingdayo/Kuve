@@ -137,3 +137,14 @@
   color: #9CA3AF;
   border-color: #D1D5DB;
 }
+
+.send-button.active {
+  background-color: #2563EB;
+  color: white;
+  border-color: #2563EB;
+}
+
+.cell.patient input[type="checkbox"]:checked {
+  background-color: #2563EB;
+  border-color: #2563EB;
+}
