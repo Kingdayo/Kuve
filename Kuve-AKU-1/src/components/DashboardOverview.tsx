@@ -33,31 +33,6 @@ const CustomTooltip = ({ active, payload }: any) => {
     return null;
 };
 
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name, color }) => {
-  const RADIAN = Math.PI / 180;
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const labelRadius = outerRadius + 20;
-  const x = cx + labelRadius * Math.cos(-midAngle * RADIAN);
-  const y = cy + labelRadius * Math.sin(-midAngle * RADIAN);
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 5) * cos;
-  const sy = cy + (outerRadius + 5) * sin;
-  const mx = cx + (outerRadius + 15) * cos;
-  const my = cy + (outerRadius + 15) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 12;
-  const ey = my;
-  const textAnchor = cos >= 0 ? 'start' : 'end';
-
-  return (
-    <g>
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={color} fill="none" />
-      <circle cx={sx} cy={sy} r={2} fill={color} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333" dy={-6} style={{ fontSize: '12px', fontWeight: '500' }}>{name}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#6B7280" dy={8} style={{ fontSize: '11px' }}>{`${(percent * 100).toFixed(0)}%`}</text>
-    </g>
-  );
-};
 
 const AlertIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -199,7 +174,6 @@ const DashboardOverview = () => {
                                 cx="50%"
                                 cy="50%"
                                 labelLine={false}
-                                label={renderCustomizedLabel}
                                 outerRadius={100}
                                 innerRadius={70}
                                 dataKey="value"
