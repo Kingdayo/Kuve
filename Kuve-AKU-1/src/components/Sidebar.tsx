@@ -1,6 +1,5 @@
 import React from 'react';
 import './Sidebar.css';
-import akuveraLogo from '../assets/akuvera-logo.png';
 
 interface SidebarProps {
   activeView: string;
@@ -11,8 +10,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <img src={akuveraLogo} alt="Akuvera Logo" className="sidebar-logo" />
-        <p className="sidebar-tagline">Delivers clarity and truth in denial logic</p>
+        <img src="/akuvera-logo.png" alt="Akuvera Logo" className="sidebar-logo" />
       </div>
       <nav className="sidebar-nav">
         <ul>
