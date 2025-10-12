@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SplashScreen from './SplashScreen';
 import Dashboard from './components/Dashboard';
 import Sidebar from './components/Sidebar';
+import UploadClaimsModal from './components/UploadClaimsModal';
 import './App.css';
 
 function App() {
