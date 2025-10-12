@@ -15,6 +15,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
   const [activeView, setActiveView] = useState('overview');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [passwordCriteria, setPasswordCriteria] = useState({
     uppercase: false,
     lowercase: false,
@@ -95,6 +96,14 @@ function App() {
     }
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   if (isLoggedIn) {
     return (
       <div className="app dashboard-view">
@@ -131,7 +140,7 @@ function App() {
                     </svg>
                     Search from Provider
                   </button>
-                  <button className="action-button upload-button">
+                  <button className="action-button upload-button" onClick={handleOpenModal}>
                     <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M10 12.5V3.33331" strokeLinecap="round" strokeLinejoin="round"/>
                       <path d="M6.66669 6.66669L10 3.33335L13.3334 6.66669" strokeLinecap="round" strokeLinejoin="round"/>
@@ -143,8 +152,9 @@ function App() {
               )}
             </div>
           </header>
-          <Dashboard activeView={activeView} />
+          <Dashboard activeView={activeView} onUploadClaims={handleOpenModal} />
         </div>
+        <UploadClaimsModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     );
   }
