@@ -188,8 +188,8 @@ const UploadClaimsModal: React.FC<UploadClaimsModalProps> = ({ isOpen, onClose }
         {uploadStage === 'idle' && renderIdleState()}
         {uploadStage === 'processing' && renderProcessingState()}
         {uploadStage === 'success' && renderSuccessState()}
-        {uploadStage === 'review' && <ReviewIssues onClose={handleClose} onSendToProvider={() => setUploadStage('communication')} />}
-        {uploadStage === 'communication' && <ProviderCommunication onBack={() => setUploadStage('review')} onSend={() => setUploadStage('uploadComplete')} />}
+        {uploadStage === 'review' && <ReviewIssues onClose={handleClose} onNext={() => setUploadStage('communication')} />}
+        {uploadStage === 'communication' && <ProviderCommunication onBack={() => setUploadStage('review')} onNext={() => setUploadStage('uploadComplete')} />}
         {uploadStage === 'uploadComplete' && <UploadComplete onClose={handleClose} />}
       </div>
     </div>

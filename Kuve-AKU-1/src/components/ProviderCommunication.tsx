@@ -3,10 +3,10 @@ import './ProviderCommunication.css';
 
 interface ProviderCommunicationProps {
   onBack: () => void;
-  onSend: () => void;
+  onNext: () => void;
 }
 
-const ProviderCommunication: React.FC<ProviderCommunicationProps> = ({ onBack, onSend }) => {
+const ProviderCommunication: React.FC<ProviderCommunicationProps> = ({ onBack, onNext }) => {
   return (
     <>
       <div className="provider-communication-body">
@@ -60,7 +60,7 @@ const ProviderCommunication: React.FC<ProviderCommunicationProps> = ({ onBack, o
       </div>
       <div className="modal-footer">
         <button className="back-button" onClick={onBack}>Back</button>
-        <button className="send-button active" onClick={onSend}>Send to Provider</button>
+        <button className="send-button active" onClick={onNext}>Send to Provider</button>
       </div>
     </>
   );

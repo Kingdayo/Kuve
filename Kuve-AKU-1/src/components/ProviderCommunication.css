@@ -1,6 +1,25 @@
 .provider-communication-body {
     padding: 24px;
     font-family: 'Inter', sans-serif;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.provider-communication-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.provider-communication-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.provider-communication-body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.provider-communication-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .provider-communication-body h3 {
