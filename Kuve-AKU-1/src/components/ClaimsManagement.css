@@ -467,6 +467,60 @@
 	background-color: #1565c0;
 }
 
+.appeal-banner {
+    background-color: #EBF5FF;
+    border: 1px solid #B3D4FF;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appeal-banner-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1E40AF;
+}
+
+.appeal-banner-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #1E3A8A;
+    max-width: 600px;
+}
+
+.powered-by-button {
+    background-color: white;
+    border: 1px solid #B3D4FF;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1E40AF;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.powered-by-button .button-icon {
+    fill: #1E40AF;
+}
+
+.claims-table .th-appeal-deadline,
+.claims-table .appeal-deadline {
+    white-space: pre-wrap;
+    line-height: 1.4;
+}
+
+.claims-table .appeal-deadline {
+    font-size: 13px;
+}
+
 .resubmit-claim-icon {
 	width: 16px;
 	height: 16px;

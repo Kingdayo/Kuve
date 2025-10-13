@@ -3,6 +3,7 @@ import './ClaimsManagement.css';
 import ActionsMenu from './ActionsMenu';
 import AiBotModal from './AiBotModal';
 import BatchAiBotProgress from './BatchAiBotProgress';
+import ResubmitClaimModal from './ResubmitClaimModal';
 
 // ... (interface definitions if needed)
 
@@ -106,6 +107,7 @@ const initialClaimsData = [
     denialReason: 'N/A',
     amount: '$8,215',
     status: 'Appeal',
+    appealDeadline: '22-04-2025 10:40\n05 days left',
   },
   {
     claimId: 'AKU-2025-114',
@@ -143,9 +145,10 @@ const initialClaimsData = [
 interface ClaimsManagementProps {
   onUploadClaims: () => void;
   onOpenReviewModal: (claim: any) => void;
+  onClaimClick: (claim: any) => void;
 }
 
-const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onOpenReviewModal }) => {
+const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onOpenReviewModal, onClaimClick }) => {
   const [claimsData, setClaimsData] = useState(initialClaimsData);
   const [activeTab, setActiveTab] = useState('All Claims');
   const [activeResubmissionTab, setActiveResubmissionTab] = useState('Pending Correction');
@@ -154,6 +157,17 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [processingClaimId, setProcessingClaimId] = useState<string | null>(null);
   const [isBatchProcessing, setIsBatchProcessing] = useState(false);
+  const [isResubmitModalOpen, setIsResubmitModalOpen] = useState(false);
+
+  const handleOpenResubmitModal = () => {
+    if (selectedClaims.length > 0) {
+      setIsResubmitModalOpen(true);
+    }
+  };
+
+  const handleCloseResubmitModal = () => {
+    setIsResubmitModalOpen(false);
+  };
 
   const handleActionsClick = (claimId: string) => {
     setOpenMenuId(prev => (prev === claimId ? null : claimId));
@@ -248,9 +262,14 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
     }
 
     const statusMatch = activeTab === 'All Claims' ||
-                        (activeTab === 'Sent' ? claim.status === 'Approved & Sent' : claim.status === activeTab);
+                        (activeTab === 'Sent' ? claim.status === 'Approved & Sent' : claim.status === activeTab) ||
+                        (activeTab === 'Appeal' ? claim.status === 'Appeal' : claim.status === activeTab);
 
-    return statusMatch;
+    if (activeTab === 'Appeal') {
+        return claim.status === 'Appeal' && searchMatch;
+    }
+
+    return statusMatch && searchMatch;
   });
 
   const areAllSelected = filteredClaims.length > 0 && selectedClaims.length === filteredClaims.length;
@@ -277,8 +296,18 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
     document.body.removeChild(link);
   };
 
+  const getSelectedClaimsData = () => {
+    return claimsData.filter(claim => selectedClaims.includes(claim.claimId));
+  };
+
   return (
     <>
+    {isResubmitModalOpen && (
+      <ResubmitClaimModal
+        onClose={handleCloseResubmitModal}
+        selectedClaims={getSelectedClaimsData()}
+      />
+    )}
     <div className="claims-management-page">
       {/* Stat Cards remain the same for now */}
       <div className="claims-stat-cards">
@@ -421,7 +450,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                 </div>
               ))}
               {selectedClaims.length > 0 && (
-                <button className="resubmit-claim-button">
+                <button className="resubmit-claim-button" onClick={handleOpenResubmitModal}>
                   <svg
                     className="resubmit-claim-icon"
                     xmlns="http://www.w3.org/2000/svg"
@@ -435,6 +464,21 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
               )}
             </div>
           </div>
+        )}
+
+        {activeTab === 'Appeal' && (
+            <div className="appeal-banner">
+                <div className="appeal-banner-content">
+                    <h3>Appeals Via Availity Platform</h3>
+                    <p>Challenge payer's decisions for claims wrongly denied. Appeals dispute medical necessity determinations and require clinical documentation to prove justification.</p>
+                </div>
+                <button className="powered-by-button">
+                    <svg className="button-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11 4a.5.5 0 0 1 .5.5v1.028a.5.5 0 0 1-.354.472l-1.5 1.5a.5.5 0 0 1-.708 0l-1.5-1.5A.5.5 0 0 1 7 5.528V4.5a.5.5 0 0 1 .5-.5h3zM8.5 5.03L9.293 5.823a.5.5 0 0 1 0 .708L8.5 7.236 7.707 6.53a.5.5 0 0 1 0-.708L8.5 5.03zm.5 2.47a.5.5 0 0 1 .5.5v3.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-3.5a.5.5 0 0 1 .5-.5h1z"/>
+                    </svg>
+                    Powered by Availity Web App Solution
+                </button>
+            </div>
         )}
 
         {isBatchProcessing && (
@@ -459,17 +503,21 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
               <th className="th-customer">Customer</th>
               <th className="th-provider">Provider</th>
               <th className="th-payer">Payer</th>
-              <th className="th-date-issued">Date Issued</th>
-              <th className="th-denial-reason">Denial Reason</th>
+              {activeTab === 'Appeal' ? (
+                <th className="th-denial-reason">Denial Reason</th>
+              ) : (
+                <th className="th-date-issued">Date Issued</th>
+              )}
               <th className="th-amount">Amount</th>
+              {activeTab === 'Appeal' && <th className="th-appeal-deadline">Appeal Deadline</th>}
               <th className="th-status">Status</th>
               <th className="th-actions">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredClaims.map((claim: any, index) => (
-              <tr key={index}>
-                <td className="td-checkbox">
+              <tr key={index} onClick={() => onClaimClick(claim)} style={{ cursor: 'pointer' }}>
+                <td className="td-checkbox" onClick={(e) => e.stopPropagation()}>
                   <input
                     type="checkbox"
                     checked={selectedClaims.includes(claim.claimId)}
@@ -480,9 +528,13 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                 <td>{claim.customer}</td>
                 <td><div className="pill-badge">{claim.provider}</div></td>
                 <td><div className="pill-badge">{claim.payer}</div></td>
-                <td className="date-issued">{claim.dateIssued}</td>
-                <td className="denial-reason">{claim.denialReason}</td>
+                {activeTab === 'Appeal' ? (
+                  <td className="denial-reason">{claim.denialReason}</td>
+                ) : (
+                  <td className="date-issued">{claim.dateIssued}</td>
+                )}
                 <td className="amount">{claim.amount}</td>
+                {activeTab === 'Appeal' && <td className="appeal-deadline">{claim.appealDeadline}</td>}
                 <td>
                   <div className={`status-badge ${claim.status.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}>
                     {claim.status}
