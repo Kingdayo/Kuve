@@ -102,6 +102,15 @@ function App() {
 	const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 	const [selectedClaimForReview, setSelectedClaimForReview] =
 		useState<any>(null);
+	const [selectedClaim, setSelectedClaim] = useState<any | null>(null);
+
+	const handleClaimClick = (claim: any) => {
+		setSelectedClaim(claim);
+	};
+
+	const handleBackToClaims = () => {
+		setSelectedClaim(null);
+	};
 
 	const handleOpenModal = () => {
 		setIsModalOpen(true);
@@ -218,6 +227,9 @@ function App() {
 						activeView={activeView}
 						onUploadClaims={handleOpenModal}
 						onOpenReviewModal={handleOpenReviewModal}
+						selectedClaim={selectedClaim}
+						onClaimClick={handleClaimClick}
+						onBackToClaims={handleBackToClaims}
 					/>
 				</div>
 				<UploadClaimsModal
