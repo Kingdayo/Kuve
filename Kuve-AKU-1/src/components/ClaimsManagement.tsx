@@ -334,6 +334,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
           <BatchAiBotProgress
             claims={selectedClaims}
             onComplete={handleBatchComplete}
+            onClose={() => setIsBatchProcessing(false)}
           />
         )}
       <div className="claims-table-wrapper">
