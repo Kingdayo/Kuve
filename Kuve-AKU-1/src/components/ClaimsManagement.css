@@ -245,6 +245,41 @@
   color: #1976D2;
 }
 
+.table-actions.batch-actions {
+  justify-content: flex-end;
+}
+
+.run-ai-bot-btn {
+  background-color: #1976D2;
+  color: #FFFFFF;
+  border-color: #1976D2;
+  font-weight: 700;
+}
+
+.run-ai-bot-btn:hover {
+  background-color: #1565C0;
+}
+
+.run-ai-bot-btn .action-icon {
+  color: #FFFFFF;
+  width: 20px;
+  height: 20px;
+}
+
+.delete-btn {
+  background-color: #FFFFFF;
+  color: #EF4444;
+  border-color: #FECACA;
+}
+
+.delete-btn:hover {
+  background-color: #FEF2F2;
+}
+
+.delete-btn .action-icon {
+  color: #EF4444;
+}
+
 .claims-table-wrapper {
   overflow-x: auto;
 }
