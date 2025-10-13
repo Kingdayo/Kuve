@@ -382,6 +382,78 @@
   color: #4CAF50;
 }
 
+.status-badge.pending-correction {
+  background-color: #FEFCE8;
+  color: #F59E0B;
+  border: 1px solid #FDE68A;
+}
+
+.status-badge.awaiting-provider-response {
+  background-color: #F0F9FF;
+  color: #3B82F6;
+  border: 1px solid #BFDBFE;
+}
+
+.status-badge.ready-to-submit {
+    background-color: #ECFDF5;
+    color: #22C55E;
+    border: 1px solid #A7F3D0;
+}
+
+
+.denial-reason {
+    color: #EF4444;
+    font-weight: 500;
+}
+
+.resubmission-tabs-container {
+  padding: 0 16px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.resubmission-tabs {
+  display: flex;
+  gap: 16px;
+}
+
+.resubmission-tab-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #D0D0D0;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333333;
+  transition: all 0.2s;
+}
+
+.resubmission-tab-button:hover {
+  background-color: #F5F5F5;
+}
+
+.resubmission-tab-button.active {
+  background-color: #E0E0E0;
+  border-color: #BDBDBD;
+  font-weight: 500;
+}
+
+.resubmission-tab-count {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #BDBDBD;
+  color: #FFFFFF;
+}
+
+.resubmission-tab-button.active .resubmission-tab-count {
+    background-color: #616161;
+}
+
+
 .actions-cell {
   position: relative;
   text-align: center;

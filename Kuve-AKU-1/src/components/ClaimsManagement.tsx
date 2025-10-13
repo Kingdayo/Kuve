@@ -8,13 +8,34 @@ import BatchAiBotProgress from './BatchAiBotProgress';
 
 const initialClaimsData = [
   {
+    claimId: 'AKU-2025-112',
+    customer: 'Barrett Marks',
+    provider: 'OAUTH',
+    payer: 'AIICO',
+    dateIssued: '22-04-2025 10:40',
+    denialReason: 'CO-23',
+    amount: '$2,556',
+    status: 'Pending Correction',
+  },
+  {
+    claimId: 'AKU-2025-113',
+    customer: 'Barrett Marks',
+    provider: 'OAUTH',
+    payer: 'AIICO',
+    dateIssued: '22-04-2025 10:40',
+    denialReason: 'CO-23',
+    amount: '$2,556',
+    status: 'Pending Correction',
+  },
+  {
     claimId: 'AKU-2025-627',
     customer: 'Raul Sampson',
     provider: 'LASUTH',
     payer: 'BlueCross',
     dateIssued: '18-01-2025 06:17',
+    denialReason: 'CO-16',
     amount: '$1,280',
-    status: 'In Process',
+    status: 'Awaiting Provider Response',
   },
   {
     claimId: 'AKU-2025-526',
@@ -22,35 +43,9 @@ const initialClaimsData = [
     provider: 'UCH',
     payer: 'Tinsured',
     dateIssued: '08-03-2025 22:18',
+    denialReason: 'CO-27',
     amount: '$8,373',
-    status: 'In Process',
-  },
-    {
-    claimId: 'AKU-2025-112',
-    customer: 'Barrett Marks',
-    provider: 'OAUTH',
-    payer: 'AIICO',
-    dateIssued: '22-04-2025 10:40',
-    amount: '$2,556',
-    status: 'In Process',
-  },
-  {
-    claimId: 'AKU-2025-334',
-    customer: 'Orlando Tillman',
-    provider: 'OAUTH',
-    payer: 'AIICO',
-    dateIssued: '06-05-2025 07:49',
-    amount: '$3,625',
-    status: 'In Process',
-  },
-    {
-    claimId: 'AKU-2025-121',
-    customer: 'Sidney Ramos',
-    provider: 'OAUTH',
-    payer: 'AIICO',
-    dateIssued: '14-06-2025 19:08',
-    amount: '$7,752',
-    status: 'In Process',
+    status: 'Awaiting Provider Response',
   },
   {
     claimId: 'AKU-2025-004',
@@ -58,17 +53,39 @@ const initialClaimsData = [
     provider: 'LANDMARK',
     payer: 'AIICO',
     dateIssued: '17-07-2025 02:46',
+    denialReason: 'CO-16',
     amount: '$8,322',
+    status: 'Ready to Submit',
+  },
+  {
+    claimId: 'AKU-2025-334',
+    customer: 'Orlando Tillman',
+    provider: 'OAUTH',
+    payer: 'AIICO',
+    dateIssued: '06-05-2025 07:49',
+    denialReason: 'N/A',
+    amount: '$3,625',
     status: 'In Process',
   },
-    {
+  {
+    claimId: 'AKU-2025-121',
+    customer: 'Sidney Ramos',
+    provider: 'OAUTH',
+    payer: 'AIICO',
+    dateIssued: '14-06-2025 19:08',
+    denialReason: 'N/A',
+    amount: '$7,752',
+    status: 'In Process',
+  },
+  {
     claimId: 'AKU-2025-672',
     customer: 'Orlando Horne',
     provider: 'LANDMARK',
     payer: 'AIICO',
     dateIssued: '11-09-2025 02:46',
+    denialReason: 'N/A',
     amount: '$8,322',
-    status: 'In Process',
+    status: 'Approved & Sent',
   },
   {
     claimId: 'AKU-2025-009',
@@ -76,8 +93,9 @@ const initialClaimsData = [
     provider: 'LANDMARK',
     payer: 'AIICO',
     dateIssued: '13-09-2025 13:11',
+    denialReason: 'N/A',
     amount: '$9,027',
-    status: 'In Process',
+    status: 'Needs Review',
   },
   {
     claimId: 'AKU-2025-1431',
@@ -85,8 +103,9 @@ const initialClaimsData = [
     provider: 'UNILAGTH',
     payer: 'AXA',
     dateIssued: '18-12-2025 22:51',
+    denialReason: 'N/A',
     amount: '$8,215',
-    status: 'In Process',
+    status: 'Appeal',
   },
 ];
 
@@ -98,7 +117,8 @@ interface ClaimsManagementProps {
 
 const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onOpenReviewModal }) => {
   const [claimsData, setClaimsData] = useState(initialClaimsData);
-  const [activeTab, setActiveTab] = useState('All Claims');
+  const [activeTab, setActiveTab] = useState('Resubmission');
+  const [activeResubmissionTab, setActiveResubmissionTab] = useState('Pending Correction');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -166,15 +186,37 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
+    // Optionally reset sub-tab when changing main tabs
+    if (tab !== 'Resubmission') {
+      setActiveResubmissionTab('Pending Correction');
+    }
+  };
+
+  const handleResubmissionTabClick = (tab: string) => {
+    setActiveResubmissionTab(tab);
+  };
+
+  const resubmissionCounts = {
+    'Pending Correction': claimsData.filter(c => c.status === 'Pending Correction').length,
+    'Awaiting Provider Response': claimsData.filter(c => c.status === 'Awaiting Provider Response').length,
+    'Ready to Submit': claimsData.filter(c => c.status === 'Ready to Submit').length,
   };
 
   const filteredClaims = claimsData.filter(claim => {
-    const statusMatch = activeTab === 'All Claims' ||
-                        (activeTab === 'Sent' ? claim.status === 'Approved & Sent' : claim.status === activeTab);
     const searchMatch = claim.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
                         claim.claimId.toLowerCase().includes(searchQuery.toLowerCase()) ||
                         claim.provider.toLowerCase().includes(searchQuery.toLowerCase());
-    return statusMatch && searchMatch;
+
+    if (!searchMatch) return false;
+
+    if (activeTab === 'Resubmission') {
+      return claim.status === activeResubmissionTab;
+    }
+
+    const statusMatch = activeTab === 'All Claims' ||
+                        (activeTab === 'Sent' ? claim.status === 'Approved & Sent' : claim.status === activeTab);
+
+    return statusMatch;
   });
 
   const areAllSelected = filteredClaims.length > 0 && selectedClaims.length === filteredClaims.length;
@@ -330,6 +372,24 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
             </div>
           ) : null}
         </div>
+
+        {activeTab === 'Resubmission' && (
+          <div className="resubmission-tabs-container">
+            <div className="resubmission-tabs">
+              {['Pending Correction', 'Awaiting Provider Response', 'Ready to Submit'].map(tab => (
+                <button
+                  key={tab}
+                  className={`resubmission-tab-button ${activeResubmissionTab === tab ? 'active' : ''}`}
+                  onClick={() => handleResubmissionTabClick(tab)}
+                >
+                  <span className="resubmission-tab-count">{resubmissionCounts[tab as keyof typeof resubmissionCounts]}</span>
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {isBatchProcessing && (
           <BatchAiBotProgress
             claims={selectedClaims}
@@ -353,13 +413,14 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
               <th className="th-provider">Provider</th>
               <th className="th-payer">Payer</th>
               <th className="th-date-issued">Date Issued</th>
+              <th className="th-denial-reason">Denial Reason</th>
               <th className="th-amount">Amount</th>
               <th className="th-status">Status</th>
               <th className="th-actions">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {filteredClaims.map((claim, index) => (
+            {filteredClaims.map((claim: any, index) => (
               <tr key={index}>
                 <td className="td-checkbox">
                   <input
@@ -373,14 +434,10 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                 <td><div className="pill-badge">{claim.provider}</div></td>
                 <td><div className="pill-badge">{claim.payer}</div></td>
                 <td className="date-issued">{claim.dateIssued}</td>
+                <td className="denial-reason">{claim.denialReason}</td>
                 <td className="amount">{claim.amount}</td>
                 <td>
-                  <div className={`status-badge ${claim.status.toLowerCase().replace(' & ', '-').replace(' ', '-')}`}>
-                    <svg className="status-icon" fill="currentColor" viewBox="0 0 20 20">
-                      {claim.status === 'In Process' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 10.586V6z" clipRule="evenodd" />}
-                      {claim.status === 'Needs Review' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 10.586V6z" clipRule="evenodd" />}
-                      {claim.status === 'Approved & Sent' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />}
-                    </svg>
+                  <div className={`status-badge ${claim.status.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}>
                     {claim.status}
                   </div>
                 </td>
