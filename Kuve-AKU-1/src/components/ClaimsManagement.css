@@ -263,6 +263,12 @@
   white-space: nowrap;
 }
 
+.th-checkbox, .td-checkbox {
+  width: 1%;
+  padding-right: 0;
+  text-align: center;
+}
+
 .claims-table th {
   font-weight: 500;
   color: #333333;
