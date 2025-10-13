@@ -11,18 +11,20 @@ const AiBotModal: React.FC<AiBotModalProps> = ({ claimId, onComplete }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress(prevProgress => {
-        if (prevProgress >= 100) {
-          clearInterval(interval);
-          onComplete();
-          return 100;
-        }
-        return prevProgress + 1;
-      });
+      setProgress(prevProgress => (prevProgress >= 100 ? 100 : prevProgress + 1));
     }, 30);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, []);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      const timer = setTimeout(() => {
+        onComplete();
+      }, 500); // Short delay to allow the progress bar to show 100%
+      return () => clearTimeout(timer);
+    }
+  }, [progress, onComplete]);
 
   return (
     <div className="ai-bot-modal-overlay">
