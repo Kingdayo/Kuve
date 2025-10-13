@@ -178,7 +178,7 @@ function App() {
 												clipRule="evenodd"
 											/>
 										</svg>
-										Request from Provider
+										Search from Provider
 									</button>
 									<button
 										className="action-button upload-button"
