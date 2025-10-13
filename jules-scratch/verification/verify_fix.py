@@ -23,9 +23,10 @@ def run_tests(page: Page):
     # 2. Verify that clicking a claim and going back does not cause an error
     page.get_by_text("AKU-2025-627").first.click()
     expect(page.get_by_text("AKU-2025-627")).to_be_visible()
+    page.screenshot(path="jules-scratch/verification/01_claim_details_page.png")
     page.get_by_role("button", name="Back").click()
     expect(page.get_by_role("heading", name="Claims Management")).to_be_visible()
-    page.screenshot(path="jules-scratch/verification/01_claims_page_after_back.png")
+    page.screenshot(path="jules-scratch/verification/02_claims_page_after_back.png")
 
 
 def main():
