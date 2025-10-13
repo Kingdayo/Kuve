@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ClaimsManagement.css';
 import ActionsMenu from './ActionsMenu';
+import AiBotModal from './AiBotModal';
 
 // ... (interface definitions if needed)
 
@@ -100,6 +101,8 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const [isAiBotModalOpen, setIsAiBotModalOpen] = useState(false);
+  const [processingClaimId, setProcessingClaimId] = useState<string | null>(null);
 
   const handleActionsClick = (claimId: string) => {
     setOpenMenuId(prev => (prev === claimId ? null : claimId));
@@ -107,6 +110,17 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
 
   const handleCloseMenu = () => {
     setOpenMenuId(null);
+  };
+
+  const handleRunAiBot = (claimId: string) => {
+    setProcessingClaimId(claimId);
+    setIsAiBotModalOpen(true);
+    setOpenMenuId(null); // Close the actions menu
+
+    setTimeout(() => {
+      setIsAiBotModalOpen(false);
+      setProcessingClaimId(null);
+    }, 3000); // Simulate a 3-second process
   };
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -163,6 +177,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   };
 
   return (
+    <>
     <div className="claims-management-page">
       {/* Stat Cards remain the same for now */}
       <div className="claims-stat-cards">
@@ -327,7 +342,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                     {openMenuId === claim.claimId && (
-                      <ActionsMenu onClose={handleCloseMenu} />
+                      <ActionsMenu onClose={handleCloseMenu} onRunAiBot={() => handleRunAiBot(claim.claimId)} />
                     )}
                   </div>
                 </td>
@@ -337,7 +352,11 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
         </table>
       </div>
       </div>
+      {isAiBotModalOpen && processingClaimId && (
+        <AiBotModal claimId={processingClaimId} />
+      )}
     </div>
+    </>
   );
 };
 
