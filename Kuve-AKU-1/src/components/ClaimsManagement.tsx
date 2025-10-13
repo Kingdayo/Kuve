@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './ClaimsManagement.css';
 import ActionsMenu from './ActionsMenu';
 import AiBotModal from './AiBotModal';
+import BatchAiBotProgress from './BatchAiBotProgress';
 
 // ... (interface definitions if needed)
 
@@ -102,6 +103,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [processingClaimId, setProcessingClaimId] = useState<string | null>(null);
+  const [isBatchProcessing, setIsBatchProcessing] = useState(false);
 
   const handleActionsClick = (claimId: string) => {
     setOpenMenuId(prev => (prev === claimId ? null : claimId));
@@ -117,8 +119,9 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   };
 
   const handleRunBatchAiBot = () => {
-    // Functionality not in scope for this task.
-    console.log(`Batch AI bot run for ${selectedClaims.length} claims.`);
+    if (selectedClaims.length > 0) {
+      setIsBatchProcessing(true);
+    }
   };
 
   const handleAiBotComplete = (claimId: string) => {
@@ -129,6 +132,20 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
       )
     );
     setProcessingClaimId(null);
+  };
+
+  const handleBatchComplete = () => {
+    setClaimsData(prevClaims =>
+      prevClaims.map(claim => {
+        if (selectedClaims.includes(claim.claimId)) {
+          const newStatus = Math.random() < 0.5 ? 'Needs Review' : 'Approved & Sent';
+          return { ...claim, status: newStatus };
+        }
+        return claim;
+      })
+    );
+    setSelectedClaims([]);
+    setIsBatchProcessing(false);
   };
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -276,7 +293,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
               </button>
             ))}
           </div>
-          {selectedClaims.length > 1 ? (
+          {selectedClaims.length > 1 && !isBatchProcessing ? (
             <div className="table-actions batch-actions">
               <button className="table-action-button delete-btn">
                 <svg className="action-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -291,7 +308,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                 Run AI Bot ({selectedClaims.length} Claims)
               </button>
             </div>
-          ) : (
+          ) : !isBatchProcessing ? (
             <div className="table-actions">
               <div className="table-search-bar">
                 <svg xmlns="http://www.w3.org/2000/svg" className="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>
@@ -311,8 +328,14 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                 Export
               </button>
             </div>
-          )}
+          ) : null}
         </div>
+        {isBatchProcessing && (
+          <BatchAiBotProgress
+            claims={selectedClaims}
+            onComplete={handleBatchComplete}
+          />
+        )}
       <div className="claims-table-wrapper">
         <table className="claims-table">
           <thead>
