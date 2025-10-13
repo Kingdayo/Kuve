@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './ClaimsManagement.css';
 import ActionsMenu from './ActionsMenu';
 
@@ -98,11 +98,14 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const [claimsData, setClaimsData] = useState(initialClaimsData);
   const [activeTab, setActiveTab] = useState('All Claims');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
+  const handleActionsClick = (claimId: string) => {
+    setOpenMenuId(prev => (prev === claimId ? null : claimId));
+  };
+
+  const handleCloseMenu = () => {
+    setOpenMenuId(null);
   };
 
   const filteredClaims = claimsData.filter(claim => {
@@ -113,32 +116,6 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                         claim.provider.toLowerCase().includes(searchQuery.toLowerCase());
     return statusMatch && searchMatch;
   });
-
-  const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedClaims(filteredClaims.map(claim => claim.claimId));
-    } else {
-      setSelectedClaims([]);
-    }
-  };
-
-  const handleSelectClaim = (claimId: string) => {
-    setSelectedClaims(prev =>
-      prev.includes(claimId)
-        ? prev.filter(id => id !== claimId)
-        : [...prev, claimId]
-    );
-  };
-
-  const areAllSelected = filteredClaims.length > 0 && selectedClaims.length === filteredClaims.length;
-
-  const handleActionsClick = (claimId: string) => {
-    setOpenMenuId(prev => (prev === claimId ? null : claimId));
-  };
-
-  const handleCloseMenu = () => {
-    setOpenMenuId(null);
-  };
 
   const exportToCsv = () => {
     const headers = ['Claim ID', 'Customer', 'Provider', 'Payer', 'Date Issued', 'Amount', 'Status'];
@@ -271,13 +248,6 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
         <table className="claims-table">
           <thead>
             <tr>
-              <th className="th-checkbox">
-                <input
-                  type="checkbox"
-                  checked={areAllSelected}
-                  onChange={handleSelectAll}
-                />
-              </th>
               <th className="th-claim-id">Claim ID</th>
               <th className="th-customer">Customer</th>
               <th className="th-provider">Provider</th>
@@ -291,13 +261,6 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
           <tbody>
             {filteredClaims.map((claim, index) => (
               <tr key={index}>
-                <td className="td-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={selectedClaims.includes(claim.claimId)}
-                    onChange={() => handleSelectClaim(claim.claimId)}
-                  />
-                </td>
                 <td className="claim-id">{claim.claimId}</td>
                 <td>{claim.customer}</td>
                 <td><div className="pill-badge">{claim.provider}</div></td>
@@ -327,11 +290,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                     {openMenuId === claim.claimId && (
-                      <ActionsMenu
-                        onClose={handleCloseMenu}
-                        claimStatus={claim.status}
-                        onReviewClick={() => onOpenReviewModal(claim)}
-                      />
+                      <ActionsMenu onClose={handleCloseMenu} />
                     )}
                   </div>
                 </td>
