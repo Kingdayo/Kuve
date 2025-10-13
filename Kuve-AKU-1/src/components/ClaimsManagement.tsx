@@ -117,9 +117,10 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   };
 
   const handleAiBotComplete = (claimId: string) => {
+    const newStatus = Math.random() < 0.5 ? 'Needs Review' : 'Approved & Sent';
     setClaimsData(prevClaims =>
       prevClaims.map(claim =>
-        claim.claimId === claimId ? { ...claim, status: 'Needs Review' } : claim
+        claim.claimId === claimId ? { ...claim, status: newStatus } : claim
       )
     );
     setProcessingClaimId(null);
