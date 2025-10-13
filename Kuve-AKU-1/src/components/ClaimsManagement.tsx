@@ -322,18 +322,16 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      onClick={() => {
-                        if (claim.status === 'Needs Review') {
-                          onOpenReviewModal(claim);
-                        } else {
-                          handleActionsClick(claim.claimId);
-                        }
-                      }}
+                      onClick={() => handleActionsClick(claim.claimId)}
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
-                    {openMenuId === claim.claimId && claim.status !== 'Needs Review' && (
-                      <ActionsMenu onClose={handleCloseMenu} />
+                    {openMenuId === claim.claimId && (
+                      <ActionsMenu
+                        onClose={handleCloseMenu}
+                        claimStatus={claim.status}
+                        onReviewClick={() => onOpenReviewModal(claim)}
+                      />
                     )}
                   </div>
                 </td>
