@@ -18,6 +18,7 @@ function App() {
   const [isLoginView, setIsLoginView] = useState(true);
   const [activeView, setActiveView] = useState('overview');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedClaim, setSelectedClaim] = useState<any | null>(null);
   const [passwordCriteria, setPasswordCriteria] = useState({
     uppercase: false,
     lowercase: false,
@@ -119,14 +120,23 @@ function App() {
     setSelectedClaimForReview(null);
   };
 
+  const handleClaimClick = (claim: any) => {
+    setSelectedClaim(claim);
+  };
+
+  const handleBackToClaims = () => {
+    setSelectedClaim(null);
+  };
+
   if (isLoggedIn) {
     return (
       <div className="app dashboard-view">
         <Sidebar activeView={activeView} setActiveView={setActiveView} />
         <div className="main-content">
-          <header className="header">
-            <div>
-              <h1 className="header-title">
+          {!selectedClaim && (
+            <header className="header">
+              <div>
+                <h1 className="header-title">
                 {activeView === 'overview' ? 'Dashboard Overview' : 'Claims Management'}
               </h1>
               <p className="header-subtitle">
@@ -167,7 +177,15 @@ function App() {
               )}
             </div>
           </header>
-          <Dashboard activeView={activeView} onUploadClaims={handleOpenModal} onOpenReviewModal={handleOpenReviewModal} />
+          )}
+          <Dashboard
+            activeView={activeView}
+            onUploadClaims={handleOpenModal}
+            onOpenReviewModal={handleOpenReviewModal}
+            selectedClaim={selectedClaim}
+            onClaimClick={handleClaimClick}
+            onBackToClaims={handleBackToClaims}
+          />
         </div>
         <UploadClaimsModal isOpen={isModalOpen} onClose={handleCloseModal} />
         <ReviewIssuesModal isOpen={isReviewModalOpen} onClose={handleCloseReviewModal} claimData={selectedClaimForReview} />

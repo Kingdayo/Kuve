@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Dashboard.css';
 import DashboardOverview from './DashboardOverview';
 import ClaimsManagement from './ClaimsManagement';
@@ -8,30 +8,38 @@ interface DashboardProps {
   activeView: string;
   onUploadClaims: () => void;
   onOpenReviewModal: (claim: any) => void;
+  selectedClaim: any | null;
+  onClaimClick: (claim: any) => void;
+  onBackToClaims: () => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ activeView, onUploadClaims, onOpenReviewModal }) => {
-  const [selectedClaim, setSelectedClaim] = useState<any | null>(null);
-
-  const handleClaimClick = (claim: any) => {
-    setSelectedClaim(claim);
-  };
-
-  const handleBackToClaims = () => {
-    setSelectedClaim(null);
-  };
-
+const Dashboard: React.FC<DashboardProps> = ({
+  activeView,
+  onUploadClaims,
+  onOpenReviewModal,
+  selectedClaim,
+  onClaimClick,
+  onBackToClaims,
+}) => {
   if (selectedClaim) {
     return (
       <div className="dashboard-content">
-        <ClaimDetails claim={selectedClaim} onBack={handleBackToClaims} />
+        <ClaimDetails claim={selectedClaim} onBack={onBackToClaims} />
       </div>
     );
   }
 
   return (
     <div className="dashboard-content">
-      {activeView === 'overview' ? <DashboardOverview /> : <ClaimsManagement onUploadClaims={onUploadClaims} onOpenReviewModal={onOpenReviewModal} onClaimClick={handleClaimClick} />}
+      {activeView === 'overview' ? (
+        <DashboardOverview />
+      ) : (
+        <ClaimsManagement
+          onUploadClaims={onUploadClaims}
+          onOpenReviewModal={onOpenReviewModal}
+          onClaimClick={onClaimClick}
+        />
+      )}
     </div>
   );
 };
