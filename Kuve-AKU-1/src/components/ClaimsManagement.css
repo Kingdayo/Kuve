@@ -409,6 +409,7 @@
 .resubmission-tabs-container {
   padding: 8px 16px;
   border-bottom: 1px solid #E5E5E5;
+  background-color: #FFFFFF;
 }
 
 .resubmission-tabs {
@@ -416,48 +417,46 @@
   gap: 16px;
 }
 
-.resubmission-tab-button {
+.resubmission-indicator {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
-  border: none;
+  padding: 8px 12px;
+  border: 1px solid #DDDDDD;
   border-radius: 8px;
-  background-color: transparent;
+  background-color: #F5F5F5;
   cursor: pointer;
+}
+
+.indicator-label {
   font-size: 14px;
-  font-weight: 400;
-  color: #6B7280;
-  transition: all 0.2s ease-in-out;
-}
-
-.resubmission-tab-button:hover {
-  background-color: #F9FAFB;
-}
-
-.resubmission-tab-button.active {
-  background-color: #F3F4F6;
-  color: #1F2937;
   font-weight: 500;
+  color: #333333;
+  line-height: 1;
 }
 
-.resubmission-tab-count {
+.indicator-count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
+  width: 20px;
   height: 20px;
-  padding: 0 6px;
-  border-radius: 9999px;
+  border-radius: 50%;
   font-size: 12px;
-  font-weight: 500;
-  background-color: #E5E7EB;
-  color: #374151;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
-.resubmission-tab-button.active .resubmission-tab-count {
-  background-color: #9CA3AF;
-  color: #FFFFFF;
+.resubmission-indicator.pending-correction .indicator-count {
+  background-color: #FF9900;
+}
+
+.resubmission-indicator.awaiting-provider-response .indicator-count {
+  background-color: #007BFF;
+}
+
+.resubmission-indicator.ready-to-submit .indicator-count {
+  background-color: #28A745;
 }
 
 
