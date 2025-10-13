@@ -247,7 +247,11 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
         </div>
       </div>
 
-
+      {processingClaimId && (
+        <div className="ai-bot-modal-wrapper">
+          <AiBotModal claimId={processingClaimId} />
+        </div>
+      )}
       <div className="claims-table-container">
         <div className="claims-table-header">
           <div className="tabs">
@@ -303,62 +307,50 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
             </tr>
           </thead>
           <tbody>
-            {filteredClaims.map((claim, index) =>
-              processingClaimId === claim.claimId ? (
-                <tr key={`${claim.claimId}-processing`}>
-                  <td colSpan={9} style={{ padding: 0 }}>
-                    <AiBotModal claimId={claim.claimId} />
-                  </td>
-                </tr>
-              ) : (
-                <tr key={index}>
-                  <td className="td-checkbox">
-                    <input
-                      type="checkbox"
-                      checked={selectedClaims.includes(claim.claimId)}
-                      onChange={() => handleSelectClaim(claim.claimId)}
-                    />
-                  </td>
-                  <td className="claim-id">{claim.claimId}</td>
-                  <td>{claim.customer}</td>
-                  <td>
-                    <div className="pill-badge">{claim.provider}</div>
-                  </td>
-                  <td>
-                    <div className="pill-badge">{claim.payer}</div>
-                  </td>
-                  <td className="date-issued">{claim.dateIssued}</td>
-                  <td className="amount">{claim.amount}</td>
-                  <td>
-                    <div className={`status-badge ${claim.status.toLowerCase().replace(' & ', '-').replace(' ', '-')}`}>
-                      <svg className="status-icon" fill="currentColor" viewBox="0 0 20 20">
-                        {claim.status === 'In Process' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 10.586V6z" clipRule="evenodd" />}
-                        {claim.status === 'Needs Review' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 10.586V6z" clipRule="evenodd" />}
-                        {claim.status === 'Approved & Sent' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />}
-                      </svg>
-                      {claim.status}
-                    </div>
-                  </td>
-                  <td className="actions-cell">
-                    <div className="actions-container">
-                      <svg
-                        className="actions-icon"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        onClick={() => handleActionsClick(claim.claimId)}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                      </svg>
-                      {openMenuId === claim.claimId && (
-                        <ActionsMenu onClose={handleCloseMenu} onRunAiBot={() => handleRunAiBot(claim.claimId)} />
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              )
-            )}
+            {filteredClaims.map((claim, index) => (
+              <tr key={index}>
+                <td className="td-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedClaims.includes(claim.claimId)}
+                    onChange={() => handleSelectClaim(claim.claimId)}
+                  />
+                </td>
+                <td className="claim-id">{claim.claimId}</td>
+                <td>{claim.customer}</td>
+                <td><div className="pill-badge">{claim.provider}</div></td>
+                <td><div className="pill-badge">{claim.payer}</div></td>
+                <td className="date-issued">{claim.dateIssued}</td>
+                <td className="amount">{claim.amount}</td>
+                <td>
+                  <div className={`status-badge ${claim.status.toLowerCase().replace(' & ', '-').replace(' ', '-')}`}>
+                    <svg className="status-icon" fill="currentColor" viewBox="0 0 20 20">
+                      {claim.status === 'In Process' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 10.586V6z" clipRule="evenodd" />}
+                      {claim.status === 'Needs Review' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 10.586V6z" clipRule="evenodd" />}
+                      {claim.status === 'Approved & Sent' && <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />}
+                    </svg>
+                    {claim.status}
+                  </div>
+                </td>
+                <td className="actions-cell">
+                  <div className="actions-container">
+                    <svg
+                      className="actions-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      onClick={() => handleActionsClick(claim.claimId)}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                    </svg>
+                    {openMenuId === claim.claimId && (
+                      <ActionsMenu onClose={handleCloseMenu} onRunAiBot={() => handleRunAiBot(claim.claimId)} />
+                    )}
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
