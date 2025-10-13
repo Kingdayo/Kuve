@@ -196,6 +196,10 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
     setActiveResubmissionTab(tab);
   };
 
+  const getResubmissionTabClass = (tab: string) => {
+    return tab.toLowerCase().replace(/\s+/g, '-');
+  };
+
   const resubmissionCounts = {
     'Pending Correction': claimsData.filter(c => c.status === 'Pending Correction').length,
     'Awaiting Provider Response': claimsData.filter(c => c.status === 'Awaiting Provider Response').length,
@@ -377,14 +381,14 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
           <div className="resubmission-tabs-container">
             <div className="resubmission-tabs">
               {['Pending Correction', 'Awaiting Provider Response', 'Ready to Submit'].map(tab => (
-                <button
+                <div
                   key={tab}
-                  className={`resubmission-tab-button ${activeResubmissionTab === tab ? 'active' : ''}`}
+                  className={`resubmission-indicator ${getResubmissionTabClass(tab)}`}
                   onClick={() => handleResubmissionTabClick(tab)}
                 >
-                  <span className="resubmission-tab-count">{resubmissionCounts[tab as keyof typeof resubmissionCounts]}</span>
-                  {tab}
-                </button>
+                  <span className="indicator-count">{resubmissionCounts[tab as keyof typeof resubmissionCounts]}</span>
+                  <span className="indicator-label">{tab}</span>
+                </div>
               ))}
             </div>
           </div>
