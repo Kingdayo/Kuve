@@ -414,7 +414,34 @@
 
 .resubmission-tabs {
   display: flex;
-  gap: 24px;
+  gap: 16px;
+  align-items: center;
+}
+
+.resubmit-claim-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: none;
+  background-color: #1976D2;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: auto;
+}
+
+.resubmit-claim-button:hover {
+  background-color: #1565C0;
+}
+
+.resubmit-claim-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .resubmission-indicator {
