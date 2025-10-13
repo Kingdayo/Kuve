@@ -442,7 +442,7 @@
 
 .resubmission-tabs {
 	display: flex;
-	gap: 16px;
+	gap: 100px;
 	align-items: center;
 }
 
