@@ -31,7 +31,7 @@ const initialClaimsData = [
     payer: 'AIICO',
     dateIssued: '22-04-2025 10:40',
     amount: '$2,556',
-    status: 'Needs Review',
+    status: 'In Process',
   },
   {
     claimId: 'AKU-2025-334',
@@ -40,7 +40,7 @@ const initialClaimsData = [
     payer: 'AIICO',
     dateIssued: '06-05-2025 07:49',
     amount: '$3,625',
-    status: 'Needs Review',
+    status: 'In Process',
   },
     {
     claimId: 'AKU-2025-121',
@@ -49,7 +49,7 @@ const initialClaimsData = [
     payer: 'AIICO',
     dateIssued: '14-06-2025 19:08',
     amount: '$7,752',
-    status: 'Needs Review',
+    status: 'In Process',
   },
   {
     claimId: 'AKU-2025-004',
@@ -58,7 +58,7 @@ const initialClaimsData = [
     payer: 'AIICO',
     dateIssued: '17-07-2025 02:46',
     amount: '$8,322',
-    status: 'Approved & Sent',
+    status: 'In Process',
   },
     {
     claimId: 'AKU-2025-672',
@@ -67,7 +67,7 @@ const initialClaimsData = [
     payer: 'AIICO',
     dateIssued: '11-09-2025 02:46',
     amount: '$8,322',
-    status: 'Approved & Sent',
+    status: 'In Process',
   },
   {
     claimId: 'AKU-2025-009',
@@ -76,7 +76,7 @@ const initialClaimsData = [
     payer: 'AIICO',
     dateIssued: '13-09-2025 13:11',
     amount: '$9,027',
-    status: 'Approved & Sent',
+    status: 'In Process',
   },
   {
     claimId: 'AKU-2025-1431',
@@ -85,7 +85,7 @@ const initialClaimsData = [
     payer: 'AXA',
     dateIssued: '18-12-2025 22:51',
     amount: '$8,215',
-    status: 'Approved & Sent',
+    status: 'In Process',
   },
 ];
 
@@ -114,11 +114,15 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const handleRunAiBot = (claimId: string) => {
     setProcessingClaimId(claimId);
     setOpenMenuId(null); // Close the actions menu
+  };
 
-    // Simulate a 4-second process to allow animation to complete
-    setTimeout(() => {
-      setProcessingClaimId(null);
-    }, 4000);
+  const handleAiBotComplete = (claimId: string) => {
+    setClaimsData(prevClaims =>
+      prevClaims.map(claim =>
+        claim.claimId === claimId ? { ...claim, status: 'Needs Review' } : claim
+      )
+    );
+    setProcessingClaimId(null);
   };
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -248,9 +252,10 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
       </div>
 
       {processingClaimId && (
-        <div className="ai-bot-modal-wrapper">
-          <AiBotModal claimId={processingClaimId} />
-        </div>
+        <AiBotModal
+          claimId={processingClaimId}
+          onComplete={() => handleAiBotComplete(processingClaimId)}
+        />
       )}
       <div className="claims-table-container">
         <div className="claims-table-header">
