@@ -23,7 +23,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 }) => {
   if (selectedClaim) {
     return (
-      <div className="dashboard-content">
+      <div className="dashboard-content" style={{ display: 'flex', flexDirection: 'column' }}>
         <ClaimDetails claim={selectedClaim} onBack={onBackToClaims} />
       </div>
     );
