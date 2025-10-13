@@ -29,19 +29,20 @@ const Dashboard: React.FC<DashboardProps> = ({
     );
   }
 
-  return (
-    <div className="dashboard-content">
-      {activeView === 'overview' ? (
-        <DashboardOverview />
-      ) : (
-        <ClaimsManagement
-          onUploadClaims={onUploadClaims}
-          onOpenReviewModal={onOpenReviewModal}
-          onClaimClick={onClaimClick}
-        />
-      )}
-    </div>
-  );
+  const renderContent = () => {
+    if (activeView === 'overview') {
+      return <DashboardOverview />;
+    }
+    return (
+      <ClaimsManagement
+        onUploadClaims={onUploadClaims}
+        onOpenReviewModal={onOpenReviewModal}
+        onClaimClick={onClaimClick}
+      />
+    );
+  };
+
+  return <div className="dashboard-content">{renderContent()}</div>;
 };
 
 export default Dashboard;
