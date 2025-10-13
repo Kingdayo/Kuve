@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './AiBotModal.css';
 
 interface AiBotModalProps {
@@ -6,6 +6,22 @@ interface AiBotModalProps {
 }
 
 const AiBotModal: React.FC<AiBotModalProps> = ({ claimId }) => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress(prevProgress => {
+        if (prevProgress >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prevProgress + 1;
+      });
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="ai-bot-modal-container">
       <div className="ai-bot-modal-header">
@@ -29,10 +45,10 @@ const AiBotModal: React.FC<AiBotModalProps> = ({ claimId }) => {
           </svg>
         </div>
         <span className="ai-bot-modal-claim-id">{claimId}</span>
-        <span className="ai-bot-modal-percentage">73%</span>
+        <span className="ai-bot-modal-percentage">{Math.round(progress)}%</span>
       </div>
       <div className="ai-bot-modal-progress-bar">
-        <div className="ai-bot-modal-progress" style={{ width: '73%' }}></div>
+        <div className="ai-bot-modal-progress" style={{ width: `${progress}%` }}></div>
       </div>
       <p className="ai-bot-modal-description">
         Processing claim for categorization and analysis...

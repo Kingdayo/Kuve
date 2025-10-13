@@ -115,10 +115,10 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
     setProcessingClaimId(claimId);
     setOpenMenuId(null); // Close the actions menu
 
-    // Simulate a 3-second process
+    // Simulate a 4-second process to allow animation to complete
     setTimeout(() => {
       setProcessingClaimId(null);
-    }, 3000);
+    }, 4000);
   };
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
