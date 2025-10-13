@@ -18,36 +18,36 @@ const BatchAiBotProgress: React.FC<BatchAiBotProgressProps> = ({ claims, onCompl
   );
 
   useEffect(() => {
-    const totalDuration = 2000; // 2 seconds per claim
+    const totalDuration = 3000; // 3 seconds total
     const intervalTime = 50;
     const steps = totalDuration / intervalTime;
-    let claimIndex = 0;
+    let completedCount = 0;
 
-    const processClaim = () => {
-      if (claimIndex >= claims.length) {
-        setTimeout(onComplete, 500);
-        return;
-      }
-
+    const intervals = progressItems.map((item, index) => {
       let currentProgress = 0;
-      const interval = setInterval(() => {
-        currentProgress += 100 / steps;
+      const randomStep = (100 / steps) * (Math.random() * 0.5 + 0.75); // Vary speed
+
+      return setInterval(() => {
+        currentProgress += randomStep;
         if (currentProgress >= 100) {
           currentProgress = 100;
-          clearInterval(interval);
-          claimIndex++;
-          processClaim();
+          clearInterval(intervals[index]);
+          completedCount++;
+          if (completedCount === claims.length) {
+            setTimeout(onComplete, 500);
+          }
         }
         setProgressItems(prevItems =>
-          prevItems.map((item, index) =>
-            index === claimIndex ? { ...item, progress: Math.round(currentProgress) } : item
+          prevItems.map((prevItem, prevIndex) =>
+            prevIndex === index ? { ...prevItem, progress: Math.round(currentProgress) } : prevItem
           )
         );
       }, intervalTime);
+    });
+
+    return () => {
+      intervals.forEach(clearInterval);
     };
-
-    processClaim();
-
   }, [claims, onComplete]);
 
   return (
@@ -67,7 +67,7 @@ const BatchAiBotProgress: React.FC<BatchAiBotProgressProps> = ({ claims, onCompl
               <span className="progress-percentage">{item.progress}%</span>
             </div>
             <div className="progress-bar-bg">
-              <div className="progress-bar" style={{ width: `${item.progress}%` }}></div>
+              <div className="progress-bar" style={{ width: `${item.progress}%`, backgroundColor: '#1976D2' }}></div>
             </div>
           </div>
         ))}
