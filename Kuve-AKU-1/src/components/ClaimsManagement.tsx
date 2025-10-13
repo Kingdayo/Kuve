@@ -516,7 +516,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
           </thead>
           <tbody>
             {filteredClaims.map((claim: any, index) => (
-              <tr key={index} onClick={() => onClaimClick && onClaimClick(claim)} style={{ cursor: 'pointer' }}>
+              <tr key={index} onClick={() => { if (typeof onClaimClick === 'function') { onClaimClick(claim); } }} style={{ cursor: 'pointer' }}>
                 <td className="td-checkbox" onClick={(e) => e.stopPropagation()}>
                   <input
                     type="checkbox"
