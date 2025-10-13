@@ -379,7 +379,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
 
         {activeTab === 'Resubmission' && (
           <div className="resubmission-tabs-container">
-            <div className="resubmission-tabs">
+            <div className="resubmission-tabs" style={{ gap: '24px' }}>
               {['Pending Correction', 'Awaiting Provider Response', 'Ready to Submit'].map(tab => (
                 <div
                   key={tab}
