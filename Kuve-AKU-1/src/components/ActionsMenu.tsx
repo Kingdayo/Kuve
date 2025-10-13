@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './ActionsMenu.css';
 
 interface ActionsMenuProps {
@@ -7,6 +7,7 @@ interface ActionsMenuProps {
 
 const ActionsMenu: React.FC<ActionsMenuProps> = ({ onClose }) => {
   const menuRef = useRef<HTMLDivElement>(null);
+  const [isBotRunning, setIsBotRunning] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,6 +22,14 @@ const ActionsMenu: React.FC<ActionsMenuProps> = ({ onClose }) => {
     };
   }, [onClose]);
 
+  const handleRunAiBot = () => {
+    setIsBotRunning(true);
+    setTimeout(() => {
+      setIsBotRunning(false);
+      onClose(); // Close menu after bot runs
+    }, 2000); // Simulate a 2-second process
+  };
+
   return (
     <div className="actions-menu-container" ref={menuRef}>
       <div className="action-item" onClick={() => console.log('View Details clicked')}>
@@ -31,14 +40,23 @@ const ActionsMenu: React.FC<ActionsMenuProps> = ({ onClose }) => {
         </svg>
         <span>View Details</span>
       </div>
-      <div className="action-item" onClick={() => console.log('Run AI Bot clicked')}>
-        {/* AI Bot Icon */}
-        <svg xmlns="http://www.w3.org/2000/svg" className="action-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10h6c2-1 2.343-2.657 2.343-2.657m0 0A8 8 0 0118.657 17.657m-1.314-1.314A8.002 8.002 0 016.343 6.343" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2m0 16v2M4.929 4.929l1.414 1.414m11.314 11.314l1.414 1.414M2 12h2m16 0h2M4.929 19.071l1.414-1.414m11.314-11.314l1.414-1.414" />
-        </svg>
-        <span>Run AI Bot</span>
-      </div>
+      <button className="action-item" onClick={handleRunAiBot} disabled={isBotRunning}>
+        {isBotRunning ? (
+          <>
+            <div className="loader"></div>
+            <span>Running AI Bot...</span>
+          </>
+        ) : (
+          <>
+            {/* AI Bot Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="action-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10h6c2-1 2.343-2.657 2.343-2.657m0 0A8 8 0 0118.657 17.657m-1.314-1.314A8.002 8.002 0 016.343 6.343" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2m0 16v2M4.929 4.929l1.414 1.414m11.314 11.314l1.414 1.414M2 12h2m16 0h2M4.929 19.071l1.414-1.414m11.314-11.314l1.414-1.414" />
+            </svg>
+            <span>Run AI Bot</span>
+          </>
+        )}
+      </button>
       <div className="action-item" onClick={() => console.log('Contact Provider clicked')}>
         {/* Contact Provider Icon */}
         <svg xmlns="http://www.w3.org/2000/svg" className="action-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
