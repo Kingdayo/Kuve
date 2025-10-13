@@ -407,14 +407,7 @@
   cursor: pointer;
 }
 
-.review-button {
-  background-color: #2563EB;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-}
+/* .review-button is no longer used */
 
 /* This class is no longer used */
 
