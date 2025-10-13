@@ -117,7 +117,7 @@ interface ClaimsManagementProps {
 
 const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onOpenReviewModal }) => {
   const [claimsData, setClaimsData] = useState(initialClaimsData);
-  const [activeTab, setActiveTab] = useState('Resubmission');
+  const [activeTab, setActiveTab] = useState('All Claims');
   const [activeResubmissionTab, setActiveResubmissionTab] = useState('Pending Correction');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
