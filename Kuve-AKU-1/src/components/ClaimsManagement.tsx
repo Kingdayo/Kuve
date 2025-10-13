@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ClaimsManagement.css';
+import ActionsMenu from './ActionsMenu';
 
 // ... (interface definitions if needed)
 
@@ -98,6 +99,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const [activeTab, setActiveTab] = useState('All Claims');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -129,6 +131,14 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   };
 
   const areAllSelected = filteredClaims.length > 0 && selectedClaims.length === filteredClaims.length;
+
+  const handleActionsClick = (claimId: string) => {
+    setOpenMenuId(prev => (prev === claimId ? null : claimId));
+  };
+
+  const handleCloseMenu = () => {
+    setOpenMenuId(null);
+  };
 
   const exportToCsv = () => {
     const headers = ['Claim ID', 'Customer', 'Provider', 'Payer', 'Date Issued', 'Amount', 'Status'];
@@ -305,11 +315,25 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                   </div>
                 </td>
                 <td className="actions-cell">
-                  {claim.status === 'Needs Review' ? (
-                    <button className="review-button" onClick={() => onOpenReviewModal(claim)}>Review</button>
-                  ) : (
-                    <svg className="actions-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg>
-                  )}
+                  <div className="actions-container">
+                    {claim.status === 'Needs Review' ? (
+                      <button className="review-button" onClick={() => onOpenReviewModal(claim)}>Review</button>
+                    ) : (
+                      <svg
+                        className="actions-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        onClick={() => handleActionsClick(claim.claimId)}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                      </svg>
+                    )}
+                    {openMenuId === claim.claimId && (
+                      <ActionsMenu onClose={handleCloseMenu} />
+                    )}
+                  </div>
                 </td>
               </tr>
             ))}

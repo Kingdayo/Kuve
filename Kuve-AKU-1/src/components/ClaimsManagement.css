@@ -391,7 +391,15 @@
 
 .actions-cell {
   text-align: center;
+  position: relative;
 }
+
+.actions-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
 .actions-icon {
   width: 16px;
   height: 16px;
@@ -407,6 +415,8 @@
   padding: 4px 8px;
   cursor: pointer;
 }
+
+/* This class is no longer used */
 
 /* --- Responsive Styles --- */
 
