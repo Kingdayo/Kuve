@@ -107,6 +107,36 @@ const initialClaimsData = [
     amount: '$8,215',
     status: 'Appeal',
   },
+  {
+    claimId: 'AKU-2025-114',
+    customer: 'John Doe',
+    provider: 'OAUTH',
+    payer: 'AIICO',
+    dateIssued: '23-04-2025 11:00',
+    denialReason: 'CO-24',
+    amount: '$1,500',
+    status: 'Pending Correction',
+  },
+  {
+    claimId: 'AKU-2025-628',
+    customer: 'Jane Smith',
+    provider: 'LASUTH',
+    payer: 'BlueCross',
+    dateIssued: '19-01-2025 08:00',
+    denialReason: 'CO-17',
+    amount: '$2,000',
+    status: 'Awaiting Provider Response',
+  },
+  {
+    claimId: 'AKU-2025-005',
+    customer: 'Peter Jones',
+    provider: 'LANDMARK',
+    payer: 'AIICO',
+    dateIssued: '18-07-2025 03:00',
+    denialReason: 'CO-18',
+    amount: '$5,000',
+    status: 'Ready to Submit',
+  },
 ];
 
 
@@ -379,7 +409,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
 
         {activeTab === 'Resubmission' && (
           <div className="resubmission-tabs-container">
-            <div className="resubmission-tabs" style={{ gap: '24px' }}>
+            <div className="resubmission-tabs">
               {['Pending Correction', 'Awaiting Provider Response', 'Ready to Submit'].map(tab => (
                 <div
                   key={tab}
@@ -390,6 +420,19 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                   <span className="indicator-label">{tab}</span>
                 </div>
               ))}
+              {selectedClaims.length > 0 && (
+                <button className="resubmit-claim-button">
+                  <svg
+                    className="resubmit-claim-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 4V1L8 5l4 4V6c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6H4c0 4.411 3.589 8 8 8s8-3.589 8-8-3.589-8-8-8z" />
+                  </svg>
+                  Resubmit Claim
+                </button>
+              )}
             </div>
           </div>
         )}

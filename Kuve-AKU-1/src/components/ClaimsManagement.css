@@ -443,7 +443,6 @@
 .resubmission-tabs {
 	display: flex;
 	gap: 24px;
-	justify-content: space-evenly;
 }
 
 .resubmission-indicator {
