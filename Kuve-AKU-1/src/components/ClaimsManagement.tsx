@@ -97,6 +97,7 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
   const [claimsData, setClaimsData] = useState(initialClaimsData);
   const [activeTab, setActiveTab] = useState('All Claims');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedClaims, setSelectedClaims] = useState<string[]>([]);
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
@@ -110,6 +111,24 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
                         claim.provider.toLowerCase().includes(searchQuery.toLowerCase());
     return statusMatch && searchMatch;
   });
+
+  const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedClaims(filteredClaims.map(claim => claim.claimId));
+    } else {
+      setSelectedClaims([]);
+    }
+  };
+
+  const handleSelectClaim = (claimId: string) => {
+    setSelectedClaims(prev =>
+      prev.includes(claimId)
+        ? prev.filter(id => id !== claimId)
+        : [...prev, claimId]
+    );
+  };
+
+  const areAllSelected = filteredClaims.length > 0 && selectedClaims.length === filteredClaims.length;
 
   const exportToCsv = () => {
     const headers = ['Claim ID', 'Customer', 'Provider', 'Payer', 'Date Issued', 'Amount', 'Status'];
@@ -242,6 +261,13 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
         <table className="claims-table">
           <thead>
             <tr>
+              <th className="th-checkbox">
+                <input
+                  type="checkbox"
+                  checked={areAllSelected}
+                  onChange={handleSelectAll}
+                />
+              </th>
               <th className="th-claim-id">Claim ID</th>
               <th className="th-customer">Customer</th>
               <th className="th-provider">Provider</th>
@@ -255,6 +281,13 @@ const ClaimsManagement: React.FC<ClaimsManagementProps> = ({ onUploadClaims, onO
           <tbody>
             {filteredClaims.map((claim, index) => (
               <tr key={index}>
+                <td className="td-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedClaims.includes(claim.claimId)}
+                    onChange={() => handleSelectClaim(claim.claimId)}
+                  />
+                </td>
                 <td className="claim-id">{claim.claimId}</td>
                 <td>{claim.customer}</td>
                 <td><div className="pill-badge">{claim.provider}</div></td>
