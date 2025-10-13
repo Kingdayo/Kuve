@@ -263,48 +263,6 @@
   white-space: nowrap;
 }
 
-.th-checkbox, .td-checkbox {
-  width: 1%;
-  padding-right: 0;
-  text-align: center;
-}
-
-/* Custom Checkbox Styles */
-.th-checkbox input[type="checkbox"],
-.td-checkbox input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  position: relative;
-  vertical-align: middle;
-  margin: 0;
-}
-
-.th-checkbox input[type="checkbox"]:checked,
-.td-checkbox input[type="checkbox"]:checked {
-  background-color: #1976D2;
-  border-color: #1976D2;
-}
-
-.th-checkbox input[type="checkbox"]:checked::after,
-.td-checkbox input[type="checkbox"]:checked::after {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
 .claims-table th {
   font-weight: 500;
   color: #333333;
@@ -390,8 +348,14 @@
 }
 
 .actions-cell {
-  text-align: center;
   position: relative;
+  text-align: center;
+}
+
+.actions-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
 .actions-container {
@@ -407,9 +371,21 @@
   cursor: pointer;
 }
 
-/* .review-button is no longer used */
+.actions-container .actions-menu-container {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 1001;
+}
 
-/* This class is no longer used */
+.review-button {
+  background-color: #2563EB;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
 
 /* --- Responsive Styles --- */
 
