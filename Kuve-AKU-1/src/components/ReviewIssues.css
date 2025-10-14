@@ -75,7 +75,18 @@
 }
 
 .cell.patient input[type="checkbox"] {
-  background-color: white;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	position: relative;
+	vertical-align: middle;
+	margin: 0;
 }
 
 .patient-name {
@@ -145,6 +156,18 @@
 }
 
 .cell.patient input[type="checkbox"]:checked {
-  background-color: #2563EB;
-  border-color: #2563EB;
+	background-color: #1976d2;
+	border-color: #1976d2;
+}
+
+.cell.patient input[type="checkbox"]:checked::after {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 1px;
+	width: 4px;
+	height: 8px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
 }
