@@ -17,11 +17,18 @@
     align-items: center;
     gap: 8px;
     background: none;
-    border: none;
+    border: 1px solid #D1D5DB;
+    padding: 8px 16px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
     color: #4B5563;
     cursor: pointer;
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
 }
 
 .claim-id-header {
